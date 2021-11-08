@@ -1,0 +1,3 @@
+contract_api:
+  resource: "@EvrinomaContractBundle/Controller/ContractApiController.php"
+  type: annotation
