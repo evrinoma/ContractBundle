@@ -1,0 +1,19 @@
+<?php
+
+namespace Evrinoma\ContractBundle\Dto;
+
+use Evrinoma\DtoBundle\Dto\AbstractDto;
+use Evrinoma\DtoBundle\Dto\DtoInterface;
+use Evrinoma\DtoCommon\ValueObject\IdentityTrait;
+use Evrinoma\DtoCommon\ValueObject\IdTrait;
+use Symfony\Component\HttpFoundation\Request;
+
+class TypeApiDto extends AbstractDto implements TypeApiDtoInterface
+{
+    use IdTrait, IdentityTrait;
+
+    public function toDto(Request $request): DtoInterface
+    {
+       return $this;
+    }
+}
