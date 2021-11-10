@@ -82,11 +82,19 @@ final class ContractApiController extends AbstractApiController implements ApiCo
      *             @OA\Schema(
      *               example={
      *                  "class":"Evrinoma\ContractBundle\Dto\ContractApiDto",
-     *                  "name":"Договор №154/18-СП от 23.10.2018г."
+     *                  "name":"Договор №154/18-СП от 23.10.2018г.",
+     *                  "type": {
+     *                            "id":"2"
+     *                       },
+     *                  "hierarchy": {
+     *                            "id":"1"
+     *                       }
      *                  },
      *               type="object",
      *               @OA\Property(property="class",type="string",default="Evrinoma\ContractBundle\Dto\ContractApiDto"),
-     *               @OA\Property(property="name",type="string")
+     *               @OA\Property(property="name",type="string"),
+     *               @OA\Property(property="type",type="object")
+     *               @OA\Property(property="hierarchy",type="object")
      *            )
      *         )
      *     )
@@ -130,13 +138,21 @@ final class ContractApiController extends AbstractApiController implements ApiCo
      *                  "class":"Evrinoma\ContractBundle\Dto\ContractApiDto",
      *                  "id":"3",
      *                  "active": "b",
-     *                  "name":"Договор генерального подряда"
+     *                  "name":"Договор генерального подряда",
+     *                  "type": {
+     *                            "id":"2"
+     *                   },
+     *                  "hierarchy": {
+     *                            "id":"1"
+     *                       }
      *                  },
      *               type="object",
      *               @OA\Property(property="class",type="string",default="Evrinoma\ContractBundle\Dto\ContractApiDto"),
      *               @OA\Property(property="id",type="string"),
      *               @OA\Property(property="active",type="string"),
-     *               @OA\Property(property="name",type="string")
+     *               @OA\Property(property="name",type="string"),
+     *               @OA\Property(property="type",type="object")
+     *               @OA\Property(property="hierarchy",type="object")
      *            )
      *         )
      *     )
@@ -229,6 +245,60 @@ final class ContractApiController extends AbstractApiController implements ApiCo
         return $this->json(['message' => 'Delete contract', 'data' => $json], $this->commandManager->getRestStatus());
     }
 
+    /**
+     * @Rest\Get("/api/contract/criteria", options={"expose"=true}, name="api_contract_criteria")
+     * @OA\Get(
+     *     tags={"contract"},
+     *     @OA\Parameter(
+     *         description="class",
+     *         in="query",
+     *         name="class",
+     *         required=true,
+     *         @OA\Schema(
+     *           type="string",
+     *           default="Evrinoma\ContractBundle\Dto\ContractApiDto",
+     *           readOnly=true
+     *         )
+     *     ),
+     *      @OA\Parameter(
+     *         description="id Entity",
+     *         in="query",
+     *         name="id",
+     *         @OA\Schema(
+     *           type="string",
+     *         )
+     *     ),
+     *     @OA\Parameter(
+     *         name="type[identity]",
+     *         in="query",
+     *         description="Type Identity",
+     *         @OA\Schema(
+     *              type="array",
+     *              @OA\Items(
+     *                  type="string",
+     *                  ref=@Model(type=Evrinoma\CodeBundle\Form\Rest\TypeChoiceType::class, options={"data":"identity"})
+     *              ),
+     *          ),
+     *         style="form"
+     *     ),
+     *     @OA\Parameter(
+     *         name="hierarchy[identity]",
+     *         in="query",
+     *         description="Hierarchy Identity",
+     *         @OA\Schema(
+     *              type="array",
+     *              @OA\Items(
+     *                  type="string",
+     *                  ref=@Model(type=Evrinoma\CodeBundle\Form\Rest\HierarchyChoiceType::class, options={"data":"identity"})
+     *              ),
+     *          ),
+     *         style="form"
+     *     )
+     * )
+     * @OA\Response(response=200,description="Return contracts")
+     *
+     * @return JsonResponse
+     */
     public function criteriaAction(): JsonResponse
     {
         /** @var ContractApiDtoInterface $contractApiDto */
