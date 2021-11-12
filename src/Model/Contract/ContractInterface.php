@@ -11,7 +11,6 @@ use Evrinoma\UtilsBundle\Entity\IdInterface;
 
 interface ContractInterface extends ActiveInterface, CreateUpdateAtInterface, IdInterface
 {
-
 //region SECTION: Getters/Setters
     /**
      * @return TypeInterface

@@ -1,9 +1,10 @@
 <?php
 
 
-namespace Evrinoma\ContractBundle\Entity\Side;
+namespace Evrinoma\ContractBundle\Entity\Contract;
 
 use Doctrine\ORM\Mapping as ORM;
+use Evrinoma\ContractBundle\Model\Contract\AbstractContract;
 use Evrinoma\ContractBundle\Model\Side\AbstractSide;
 use Evrinoma\UtilsBundle\Entity\IdentityInterface;
 use Evrinoma\UtilsBundle\Entity\IdentityTrait;
@@ -11,10 +12,9 @@ use Evrinoma\UtilsBundle\Entity\IdentityTrait;
 /**
  * Class BaseSide
  *
- * @ORM\Table(name="econtract_side")
+ * @ORM\Table(name="econtract_contract")
  * @ORM\Entity()
  */
-class BaseSide extends AbstractSide implements IdentityInterface
+class BaseContract extends AbstractContract
 {
-    use IdentityTrait;
 }
