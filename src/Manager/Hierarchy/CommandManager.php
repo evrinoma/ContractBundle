@@ -77,7 +77,7 @@ final class CommandManager implements CommandManagerInterface, RestInterface
             throw $e;
         }
 
-        $hierarchy->setBrief($dto->getBrief());
+        $hierarchy->setIdentity($dto->getIdentity());
 
         $errors = $this->validator->validate($hierarchy);
 
