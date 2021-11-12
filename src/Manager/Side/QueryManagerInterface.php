@@ -1,38 +1,38 @@
 <?php
 
-namespace Evrinoma\ContractBundle\Manager\Type;
+namespace Evrinoma\ContractBundle\Manager\Side;
 
-use Evrinoma\ContractBundle\Dto\TypeApiDtoInterface;
-use Evrinoma\ContractBundle\Exception\Type\TypeNotFoundException;
-use Evrinoma\ContractBundle\Exception\Type\TypeProxyException;
-use Evrinoma\ContractBundle\Model\Define\TypeInterface;
+use Evrinoma\ContractBundle\Dto\SideApiDtoInterface;
+use Evrinoma\ContractBundle\Exception\Side\SideNotFoundException;
+use Evrinoma\ContractBundle\Exception\Side\SideProxyException;
+use Evrinoma\ContractBundle\Model\Side\SideInterface;
 
 interface QueryManagerInterface
 {
 //region SECTION: Public
     /**
-     * @param TypeApiDtoInterface $dto
+     * @param SideApiDtoInterface $dto
      *
      * @return array
-     * @throws TypeNotFoundException
+     * @throws SideNotFoundException
      */
-    public function criteria(TypeApiDtoInterface $dto): array;
+    public function criteria(SideApiDtoInterface $dto): array;
 //endregion Public
 
 //region SECTION: Getters/Setters
     /**
-     * @param TypeApiDtoInterface $dto
+     * @param SideApiDtoInterface $dto
      *
-     * @return TypeInterface
-     * @throws TypeNotFoundException
+     * @return SideInterface
+     * @throws SideNotFoundException
      */
-    public function get(TypeApiDtoInterface $dto): TypeInterface;
+    public function get(SideApiDtoInterface $dto): SideInterface;
     /**
-     * @param TypeApiDtoInterface $dto
+     * @param SideApiDtoInterface $dto
      *
-     * @return TypeInterface
-     * @throws TypeProxyException
+     * @return SideInterface
+     * @throws SideProxyException
      */
-    public function proxy(TypeApiDtoInterface $dto): TypeInterface;
+    public function proxy(SideApiDtoInterface $dto): SideInterface;
 //endregion Getters/Setters
 }

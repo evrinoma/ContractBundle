@@ -1,12 +1,12 @@
 <?php
 
-namespace Evrinoma\ContractBundle\Manager\Type;
+namespace Evrinoma\ContractBundle\Manager\Side;
 
-use Evrinoma\ContractBundle\Dto\TypeApiDtoInterface;
-use Evrinoma\ContractBundle\Exception\Type\TypeNotFoundException;
-use Evrinoma\ContractBundle\Exception\Type\TypeProxyException;
-use Evrinoma\ContractBundle\Model\Define\TypeInterface;
-use Evrinoma\ContractBundle\Repository\Type\TypeQueryRepositoryInterface;
+use Evrinoma\ContractBundle\Dto\SideApiDtoInterface;
+use Evrinoma\ContractBundle\Exception\Side\SideNotFoundException;
+use Evrinoma\ContractBundle\Exception\Side\SideProxyException;
+use Evrinoma\ContractBundle\Model\Side\SideInterface;
+use Evrinoma\ContractBundle\Repository\Side\SideQueryRepositoryInterface;
 use Evrinoma\UtilsBundle\Rest\RestInterface;
 use Evrinoma\UtilsBundle\Rest\RestTrait;
 
@@ -15,11 +15,11 @@ final class QueryManager implements QueryManagerInterface, RestInterface
     use RestTrait;
 
 //region SECTION: Fields
-    private TypeQueryRepositoryInterface $repository;
+    private SideQueryRepositoryInterface $repository;
 //endregion Fields
 
 //region SECTION: Constructor
-    public function __construct(TypeQueryRepositoryInterface $repository)
+    public function __construct(SideQueryRepositoryInterface $repository)
     {
         $this->repository = $repository;
     }
@@ -27,20 +27,20 @@ final class QueryManager implements QueryManagerInterface, RestInterface
 
 //region SECTION: Public
     /**
-     * @param TypeApiDtoInterface $dto
+     * @param SideApiDtoInterface $dto
      *
      * @return array
-     * @throws TypeNotFoundException
+     * @throws SideNotFoundException
      */
-    public function criteria(TypeApiDtoInterface $dto): array
+    public function criteria(SideApiDtoInterface $dto): array
     {
         try {
-            $type = $this->repository->findByCriteria($dto);
-        } catch (TypeNotFoundException $e) {
+            $side = $this->repository->findByCriteria($dto);
+        } catch (SideNotFoundException $e) {
             throw $e;
         }
 
-        return $type;
+        return $side;
     }
 //endregion Public
 
@@ -51,37 +51,37 @@ final class QueryManager implements QueryManagerInterface, RestInterface
     }
 
     /**
-     * @param TypeApiDtoInterface $dto
+     * @param SideApiDtoInterface $dto
      *
-     * @return TypeInterface
-     * @throws TypeNotFoundException
+     * @return SideInterface
+     * @throws SideNotFoundException
      */
-    public function get(TypeApiDtoInterface $dto): TypeInterface
+    public function get(SideApiDtoInterface $dto): SideInterface
     {
         try {
-            $type = $this->repository->find($dto->getId());
-        } catch (TypeNotFoundException $e) {
+            $side = $this->repository->find($dto->getId());
+        } catch (SideNotFoundException $e) {
             throw $e;
         }
 
-        return $type;
+        return $side;
     }
 
     /**
-     * @param TypeApiDtoInterface $dto
+     * @param SideApiDtoInterface $dto
      *
-     * @return TypeInterface
-     * @throws TypeProxyException
+     * @return SideInterface
+     * @throws SideProxyException
      */
-    public function proxy(TypeApiDtoInterface $dto): TypeInterface
+    public function proxy(SideApiDtoInterface $dto): SideInterface
     {
         try {
-            $type = $this->repository->proxy($dto->getId());
-        } catch (TypeProxyException $e) {
+            $side = $this->repository->proxy($dto->getId());
+        } catch (SideProxyException $e) {
             throw $e;
         }
 
-        return $type;
+        return $side;
     }
 //endregion Getters/Setters
 }

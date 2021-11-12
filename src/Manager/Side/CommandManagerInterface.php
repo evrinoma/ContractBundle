@@ -1,39 +1,39 @@
 <?php
 
-namespace Evrinoma\ContractBundle\Manager\Type;
+namespace Evrinoma\ContractBundle\Manager\Side;
 
-use Evrinoma\ContractBundle\Dto\TypeApiDtoInterface;
-use Evrinoma\ContractBundle\Exception\Type\TypeCannotBeRemovedException;
-use Evrinoma\ContractBundle\Exception\Type\TypeInvalidException;
-use Evrinoma\ContractBundle\Exception\Type\TypeNotFoundException;
-use Evrinoma\ContractBundle\Model\Define\TypeInterface;
+use Evrinoma\ContractBundle\Dto\SideApiDtoInterface;
+use Evrinoma\ContractBundle\Exception\Side\SideCannotBeRemovedException;
+use Evrinoma\ContractBundle\Exception\Side\SideInvalidException;
+use Evrinoma\ContractBundle\Exception\Side\SideNotFoundException;
+use Evrinoma\ContractBundle\Model\Side\SideInterface;
 
 interface CommandManagerInterface
 {
 //region SECTION: Public
     /**
-     * @param TypeApiDtoInterface $dto
+     * @param SideApiDtoInterface $dto
      *
-     * @return TypeInterface
-     * @throws TypeInvalidException
+     * @return SideInterface
+     * @throws SideInvalidException
      */
-    public function post(TypeApiDtoInterface $dto): TypeInterface;
+    public function post(SideApiDtoInterface $dto): SideInterface;
 
     /**
-     * @param TypeApiDtoInterface $dto
+     * @param SideApiDtoInterface $dto
      *
-     * @return TypeInterface
-     * @throws TypeInvalidException
-     * @throws TypeNotFoundException
+     * @return SideInterface
+     * @throws SideInvalidException
+     * @throws SideNotFoundException
      */
-    public function put(TypeApiDtoInterface $dto): TypeInterface;
+    public function put(SideApiDtoInterface $dto): SideInterface;
 
     /**
-     * @param TypeApiDtoInterface $dto
+     * @param SideApiDtoInterface $dto
      *
-     * @throws TypeCannotBeRemovedException
-     * @throws TypeNotFoundException
+     * @throws SideCannotBeRemovedException
+     * @throws SideNotFoundException
      */
-    public function delete(TypeApiDtoInterface $dto): void;
+    public function delete(SideApiDtoInterface $dto): void;
 //endregion Public
 }
