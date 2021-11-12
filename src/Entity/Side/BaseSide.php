@@ -5,6 +5,8 @@ namespace Evrinoma\ContractBundle\Entity\Define;
 
 use Doctrine\ORM\Mapping as ORM;
 use Evrinoma\ContractBundle\Model\Side\AbstractSide;
+use Evrinoma\UtilsBundle\Entity\IdentityInterface;
+use Evrinoma\UtilsBundle\Entity\IdentityTrait;
 
 /**
  * Class BaseSide
@@ -12,7 +14,7 @@ use Evrinoma\ContractBundle\Model\Side\AbstractSide;
  * @ORM\Table(name="econtract_side")
  * @ORM\Entity()
  */
-class BaseSide extends AbstractSide
+class BaseSide extends AbstractSide implements IdentityInterface
 {
-
+    use IdentityTrait;
 }

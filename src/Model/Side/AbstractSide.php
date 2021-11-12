@@ -4,7 +4,6 @@
 namespace Evrinoma\ContractBundle\Model\Side;
 
 use Doctrine\ORM\Mapping as ORM;
-use Evrinoma\UtilsBundle\Entity\IdentityTrait;
 use Evrinoma\UtilsBundle\Entity\IdTrait;
 
 /**
@@ -15,5 +14,5 @@ use Evrinoma\UtilsBundle\Entity\IdTrait;
  */
 abstract class AbstractSide implements SideInterface
 {
-    use IdTrait, IdentityTrait;
+    use IdTrait;
 }
