@@ -49,6 +49,8 @@ class EvrinomaContractExtension extends Extension
             $loader->load('fixtures.yml');
         }
 
+        return;
+
         $configuration = $this->getConfiguration($configs, $container);
         $config        = $this->processConfiguration($configuration, $configs);
 
@@ -121,8 +123,8 @@ class EvrinomaContractExtension extends Extension
                 $config['decorates'],
                 [
                     '' => [
-                        'command_side'  => 'evrinoma.'.$this->getAlias().'.decorates.side.command',
-                        'query_side'    => 'evrinoma.'.$this->getAlias().'.decorates.side.query',
+                        'command_side'     => 'evrinoma.'.$this->getAlias().'.decorates.side.command',
+                        'query_side'       => 'evrinoma.'.$this->getAlias().'.decorates.side.query',
                         'command_contract' => 'evrinoma.'.$this->getAlias().'.decorates.contract.command',
                         'query_contract'   => 'evrinoma.'.$this->getAlias().'.decorates.contract.query',
                     ],
@@ -130,7 +132,9 @@ class EvrinomaContractExtension extends Extension
             );
         }
     }
+//endregion Public
 
+//region SECTION: Private
     private function wireConstraintTag(ContainerBuilder $container): void
     {
 //        foreach ($container->getDefinitions() as $key => $definition) {
@@ -193,7 +197,7 @@ class EvrinomaContractExtension extends Extension
         $definitionRepository->setArguments($array);
 
     }
-//endregion Public
+//endregion Private
 
 //region SECTION: Getters/Setters
     public function getAlias()
