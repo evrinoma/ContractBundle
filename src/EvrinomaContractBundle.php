@@ -3,6 +3,7 @@
 
 namespace Evrinoma\ContractBundle;
 
+use Evrinoma\ContractBundle\DependencyInjection\Compiler\MapEntityPass;
 use Evrinoma\ContractBundle\DependencyInjection\EvrinomaContractExtension;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
@@ -23,6 +24,8 @@ class EvrinomaContractBundle extends Bundle
     public function build(ContainerBuilder $container)
     {
         parent::build($container);
+        $container
+            ->addCompilerPass(new MapEntityPass($this->getNamespace(), $this->getPath()))
         ;
     }
 //endregion Public
