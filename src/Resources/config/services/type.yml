@@ -1,0 +1,54 @@
+services:
+  Evrinoma\ContractBundle\Controller\TypeApiController:
+    alias: evrinoma.contract.type.api.controller
+    public: true
+
+  evrinoma.contract.type.api.controller:
+    class: Evrinoma\ContractBundle\Controller\TypeApiController
+    arguments:
+      - '@jms_serializer'
+      - '@request_stack'
+      - '@evrinoma.dto.factory'
+      - '@evrinoma.contract.type.command.manager'
+      - '@evrinoma.contract.type.query.manager'
+    autowire: true
+
+  evrinoma.contract.type.factory:
+    class: Evrinoma\ContractBundle\Factory\TypeFactory
+    public: true
+    arguments:
+
+  evrinoma.contract.type.repository:
+    class: Evrinoma\ContractBundle\Repository\Type\TypeRepository
+    public: true
+    arguments:
+
+  evrinoma.contract.type.command.manager:
+    class: Evrinoma\ContractBundle\Manager\Type\CommandManager
+    arguments:
+      - '@evrinoma.contract.type.validator'
+      - '@evrinoma.contract.type.repository'
+      - '@evrinoma.contract.type.factory'
+
+  evrinoma.contract.type.query.manager:
+    class: Evrinoma\ContractBundle\Manager\Type\QueryManager
+    arguments:
+      - '@evrinoma.contract.type.repository'
+
+#  evrinoma.contract.type.validator:
+#    class: Evrinoma\ContractBundle\Validator\TypeValidator
+#    public: true
+#    arguments:
+#
+#  Evrinoma\ContractBundle\Validator\TypeValidator:
+#    alias: evrinoma.contract.type.validator
+#
+#  evrinoma.contract.form.rest.type:
+#    class: Evrinoma\ContractBundle\Form\Rest\TypeChoiceType
+#    arguments:
+#      - '@evrinoma.contract.type.query.manager'
+#    tags: { - name: form.type }
+#
+#  Evrinoma\ContractBundle\Form\Rest\TypeChoiceType:
+#    alias: evrinoma.contract.form.rest.type
+#    public: true

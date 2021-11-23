@@ -1,0 +1,54 @@
+services:
+  Evrinoma\ContractBundle\Controller\HierarchyApiController:
+    alias: evrinoma.contract.hirarchy.api.controller
+    public: true
+
+  evrinoma.contract.hirarchy.api.controller:
+    class: Evrinoma\ContractBundle\Controller\HierarchyApiController
+    arguments:
+      - '@jms_serializer'
+      - '@request_stack'
+      - '@evrinoma.dto.factory'
+      - '@evrinoma.contract.hirarchy.command.manager'
+      - '@evrinoma.contract.hirarchy.query.manager'
+    autowire: true
+
+  evrinoma.contract.hirarchy.factory:
+    class: Evrinoma\ContractBundle\Factory\HierarchyFactory
+    public: true
+    arguments:
+
+  evrinoma.contract.hirarchy.repository:
+    class: Evrinoma\ContractBundle\Repository\Hierarchy\HierarchyRepository
+    public: true
+    arguments:
+
+  evrinoma.contract.hirarchy.command.manager:
+    class: Evrinoma\ContractBundle\Manager\Hierarchy\CommandManager
+    arguments:
+      - '@evrinoma.contract.hirarchy.validator'
+      - '@evrinoma.contract.hirarchy.repository'
+      - '@evrinoma.contract.hirarchy.factory'
+
+  evrinoma.contract.hirarchy.query.manager:
+    class: Evrinoma\ContractBundle\Manager\Hierarchy\QueryManager
+    arguments:
+      - '@evrinoma.contract.hirarchy.repository'
+
+#  evrinoma.contract.hirarchy.validator:
+#    class: Evrinoma\ContractBundle\Validator\HierarchyValidator
+#    public: true
+#    arguments:
+#
+#  Evrinoma\ContractBundle\Validator\HierarchyValidator:
+#    alias: evrinoma.contract.hirarchy.validator
+#
+#  evrinoma.contract.form.rest.hirarchy:
+#    class: Evrinoma\ContractBundle\Form\Rest\HierarchyChoiceType
+#    arguments:
+#      - '@evrinoma.contract.hirarchy.query.manager'
+#    tags: { - name: form.type }
+#
+#  Evrinoma\ContractBundle\Form\Rest\HierarchyChoiceType:
+#    alias: evrinoma.contract.form.rest.hirarchy
+#    public: true

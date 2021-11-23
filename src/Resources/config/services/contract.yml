@@ -1,0 +1,81 @@
+services:
+  Evrinoma\ContractBundle\Controller\ContractApiController:
+    alias: evrinoma.contract.contract.api.controller
+    public: true
+
+  evrinoma.contract.contract.api.controller:
+    class: Evrinoma\ContractBundle\Controller\ContractApiController
+    arguments:
+      - '@jms_serializer'
+      - '@request_stack'
+      - '@evrinoma.dto.factory'
+      - '@evrinoma.contract.contract.command.manager'
+      - '@evrinoma.contract.contract.query.manager'
+    autowire: true
+
+  evrinoma.contract.contract.factory:
+    class: Evrinoma\ContractBundle\Factory\ContractFactory
+    public: true
+    arguments:
+
+  evrinoma.contract.contract.repository:
+    class: Evrinoma\ContractBundle\Repository\Contract\ContractRepository
+    public: true
+    arguments:
+
+  evrinoma.contract.contract.command.manager:
+    class: Evrinoma\ContractBundle\Manager\Contract\CommandManager
+    arguments:
+      - '@evrinoma.contract.contract.validator'
+      - '@evrinoma.contract.contract.repository'
+      - '@evrinoma.contract.contract.factory'
+      - '@evrinoma.contract.contract.command.mediator'
+      - '@evrinoma.contract.owner.query.manager'
+      - '@evrinoma.contract.type.query.manager'
+
+  evrinoma.contract.contract.query.manager:
+    class: Evrinoma\ContractBundle\Manager\Contract\QueryManager
+    arguments:
+      - '@evrinoma.contract.contract.repository'
+
+  evrinoma.contract.contract.validator:
+    class: Evrinoma\ContractBundle\Validator\ContractValidator
+    public: true
+    arguments:
+
+  Evrinoma\ContractBundle\Validator\ContractValidator:
+    alias: evrinoma.contract.contract.validator
+
+  evrinoma.contract.contract.query.mediator:
+    class: Evrinoma\ContractBundle\Mediator\Contract\QueryMediator
+    public: true
+    arguments:
+
+  Evrinoma\ContractBundle\Mediator\Contract\QueryMediator:
+    alias: evrinoma.contract.contract.query.mediator
+
+  Evrinoma\ContractBundle\Mediator\Contract\QueryMediatorInterface:
+    alias: evrinoma.contract.contract.query.mediator
+
+  evrinoma.contract.contract.command.mediator:
+    class: Evrinoma\ContractBundle\Mediator\Contract\CommandMediator
+    public: true
+    arguments:
+
+  Evrinoma\ContractBundle\Mediator\Contract\CommandMediator:
+    alias: evrinoma.contract.contract.command.mediator
+
+  Evrinoma\ContractBundle\Mediator\Contract\CommandMediatorInterface:
+    alias: evrinoma.contract.contract.command.mediator
+
+
+  evrinoma.contract.form.rest.contract:
+    class: Evrinoma\ContractBundle\Form\Rest\ContractChoiceType
+    arguments:
+      - '@evrinoma.contract.contract.query.manager'
+    tags: { - name: form.type }
+
+  Evrinoma\ContractBundle\Form\Rest\ContractChoiceType:
+    alias: evrinoma.contract.form.rest.contract
+    public: true
+
