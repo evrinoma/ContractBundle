@@ -1,12 +1,12 @@
 <?php
 
-namespace Evrinoma\ContractBundle\Manager\Side;
+namespace Evrinoma\ContractBundle\Manager\Contract;
 
-use Evrinoma\ContractBundle\Dto\SideApiDtoInterface;
-use Evrinoma\ContractBundle\Exception\Side\SideNotFoundException;
-use Evrinoma\ContractBundle\Exception\Side\SideProxyException;
-use Evrinoma\ContractBundle\Model\Side\SideInterface;
-use Evrinoma\ContractBundle\Repository\Side\SideQueryRepositoryInterface;
+use Evrinoma\ContractBundle\Dto\ContractApiDtoInterface;
+use Evrinoma\ContractBundle\Exception\Contract\ContractNotFoundException;
+use Evrinoma\ContractBundle\Exception\Contract\ContractProxyException;
+use Evrinoma\ContractBundle\Model\Contract\ContractInterface;
+use Evrinoma\ContractBundle\Repository\Contract\ContractQueryRepositoryInterface;
 use Evrinoma\UtilsBundle\Rest\RestInterface;
 use Evrinoma\UtilsBundle\Rest\RestTrait;
 
@@ -15,11 +15,11 @@ final class QueryManager implements QueryManagerInterface, RestInterface
     use RestTrait;
 
 //region SECTION: Fields
-    private SideQueryRepositoryInterface $repository;
+    private ContractQueryRepositoryInterface $repository;
 //endregion Fields
 
 //region SECTION: Constructor
-    public function __construct(SideQueryRepositoryInterface $repository)
+    public function __construct(ContractQueryRepositoryInterface $repository)
     {
         $this->repository = $repository;
     }
@@ -27,20 +27,20 @@ final class QueryManager implements QueryManagerInterface, RestInterface
 
 //region SECTION: Public
     /**
-     * @param SideApiDtoInterface $dto
+     * @param ContractApiDtoInterface $dto
      *
      * @return array
-     * @throws SideNotFoundException
+     * @throws ContractNotFoundException
      */
-    public function criteria(SideApiDtoInterface $dto): array
+    public function criteria(ContractApiDtoInterface $dto): array
     {
         try {
-            $side = $this->repository->findByCriteria($dto);
-        } catch (SideNotFoundException $e) {
+            $contract = $this->repository->findByCriteria($dto);
+        } catch (ContractNotFoundException $e) {
             throw $e;
         }
 
-        return $side;
+        return $contract;
     }
 //endregion Public
 
@@ -51,37 +51,37 @@ final class QueryManager implements QueryManagerInterface, RestInterface
     }
 
     /**
-     * @param SideApiDtoInterface $dto
+     * @param ContractApiDtoInterface $dto
      *
-     * @return SideInterface
-     * @throws SideNotFoundException
+     * @return ContractInterface
+     * @throws ContractNotFoundException
      */
-    public function get(SideApiDtoInterface $dto): SideInterface
+    public function get(ContractApiDtoInterface $dto): ContractInterface
     {
         try {
-            $side = $this->repository->find($dto->getId());
-        } catch (SideNotFoundException $e) {
+            $contract = $this->repository->find($dto->getId());
+        } catch (ContractNotFoundException $e) {
             throw $e;
         }
 
-        return $side;
+        return $contract;
     }
 
     /**
-     * @param SideApiDtoInterface $dto
+     * @param ContractApiDtoInterface $dto
      *
-     * @return SideInterface
-     * @throws SideProxyException
+     * @return ContractInterface
+     * @throws ContractProxyException
      */
-    public function proxy(SideApiDtoInterface $dto): SideInterface
+    public function proxy(ContractApiDtoInterface $dto): ContractInterface
     {
         try {
-            $side = $this->repository->proxy($dto->getId());
-        } catch (SideProxyException $e) {
+            $contract = $this->repository->proxy($dto->getId());
+        } catch (ContractProxyException $e) {
             throw $e;
         }
 
-        return $side;
+        return $contract;
     }
 //endregion Getters/Setters
 }
