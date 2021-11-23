@@ -24,6 +24,7 @@ class EvrinomaContractBundle extends Bundle
     public function build(ContainerBuilder $container)
     {
         parent::build($container);
+        return;
         $container
             ->addCompilerPass(new MapEntityPass($this->getNamespace(), $this->getPath()))
         ;
