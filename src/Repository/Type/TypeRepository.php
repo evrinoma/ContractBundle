@@ -10,6 +10,7 @@ use Evrinoma\ContractBundle\Exception\Type\TypeCannotBeSavedException;
 use Evrinoma\ContractBundle\Exception\Type\TypeNotFoundException;
 use Evrinoma\ContractBundle\Exception\Type\TypeProxyException;
 use Evrinoma\ContractBundle\Model\Define\TypeInterface;
+use Evrinoma\ContractBundle\Repository\AliasInterface;
 
 class TypeRepository extends ServiceEntityRepository implements TypeRepositoryInterface
 {
@@ -54,7 +55,7 @@ class TypeRepository extends ServiceEntityRepository implements TypeRepositoryIn
 //region SECTION: Find Filters Repository
     public function findByCriteria(TypeApiDtoInterface $dto): array
     {
-        $builder = $this->createQueryBuilder('type');
+        $builder = $this->createQueryBuilder(AliasInterface::TYPE);
 
         if ($dto->hasIdentity()) {
             $builder
