@@ -35,14 +35,14 @@ services:
     arguments:
       - '@evrinoma.contract.hirarchy.repository'
 
-#  evrinoma.contract.hirarchy.validator:
-#    class: Evrinoma\ContractBundle\Validator\HierarchyValidator
-#    public: true
-#    arguments:
-#
-#  Evrinoma\ContractBundle\Validator\HierarchyValidator:
-#    alias: evrinoma.contract.hirarchy.validator
-#
+  evrinoma.contract.hirarchy.validator:
+    class: Evrinoma\ContractBundle\Validator\HierarchyValidator
+    public: true
+    arguments:
+
+  Evrinoma\ContractBundle\Validator\HierarchyValidator:
+    alias: evrinoma.contract.hirarchy.validator
+
 #  evrinoma.contract.form.rest.hirarchy:
 #    class: Evrinoma\ContractBundle\Form\Rest\HierarchyChoiceType
 #    arguments:

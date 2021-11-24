@@ -69,13 +69,13 @@ services:
     alias: evrinoma.contract.contract.command.mediator
 
 
-  evrinoma.contract.form.rest.contract:
-    class: Evrinoma\ContractBundle\Form\Rest\ContractChoiceType
-    arguments:
-      - '@evrinoma.contract.contract.query.manager'
-    tags: { - name: form.type }
-
-  Evrinoma\ContractBundle\Form\Rest\ContractChoiceType:
-    alias: evrinoma.contract.form.rest.contract
-    public: true
+#  evrinoma.contract.form.rest.contract:
+#    class: Evrinoma\ContractBundle\Form\Rest\ContractChoiceType
+#    arguments:
+#      - '@evrinoma.contract.contract.query.manager'
+#    tags: { - name: form.type }
+#
+#  Evrinoma\ContractBundle\Form\Rest\ContractChoiceType:
+#    alias: evrinoma.contract.form.rest.contract
+#    public: true
 

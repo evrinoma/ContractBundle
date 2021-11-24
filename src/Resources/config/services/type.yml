@@ -35,14 +35,14 @@ services:
     arguments:
       - '@evrinoma.contract.type.repository'
 
-#  evrinoma.contract.type.validator:
-#    class: Evrinoma\ContractBundle\Validator\TypeValidator
-#    public: true
-#    arguments:
-#
-#  Evrinoma\ContractBundle\Validator\TypeValidator:
-#    alias: evrinoma.contract.type.validator
-#
+  evrinoma.contract.type.validator:
+    class: Evrinoma\ContractBundle\Validator\TypeValidator
+    public: true
+    arguments:
+
+  Evrinoma\ContractBundle\Validator\TypeValidator:
+    alias: evrinoma.contract.type.validator
+
 #  evrinoma.contract.form.rest.type:
 #    class: Evrinoma\ContractBundle\Form\Rest\TypeChoiceType
 #    arguments:
