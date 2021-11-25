@@ -1,15 +1,15 @@
 <?php
 
-namespace Evrinoma\ContractBundle\Mediator\Side;
+namespace Evrinoma\ContractBundle\Mediator\Contract;
 
-use Evrinoma\ContractBundle\Model\Side\SideInterface;
 use Evrinoma\UtilsBundle\Mediator\AbstractCommandMediator;
+use Evrinoma\ContractBundle\Model\Contract\ContractInterface;
 use Evrinoma\DtoBundle\Dto\DtoInterface;
 
 class CommandMediator extends AbstractCommandMediator implements CommandMediatorInterface
 {
 //region SECTION: Public
-    public function onUpdate(DtoInterface $dto, $entity): SideInterface
+    public function onUpdate(DtoInterface $dto, $entity): ContractInterface
     {
         return $entity;
     }
@@ -18,7 +18,7 @@ class CommandMediator extends AbstractCommandMediator implements CommandMediator
     {
     }
 
-    public function onCreate(DtoInterface $dto, $entity): SideInterface
+    public function onCreate(DtoInterface $dto, $entity): ContractInterface
     {
         return $entity;
     }

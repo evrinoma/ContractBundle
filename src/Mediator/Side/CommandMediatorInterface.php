@@ -2,38 +2,39 @@
 
 namespace Evrinoma\ContractBundle\Mediator\Side;
 
-use Evrinoma\ContractBundle\Dto\ContractApiDtoInterface;
-use Evrinoma\ContractBundle\Exception\Contract\ContractCannotBeCreatedException;
-use Evrinoma\ContractBundle\Exception\Contract\ContractCannotBeRemovedException;
-use Evrinoma\ContractBundle\Exception\Contract\ContractCannotBeSavedException;
-use Evrinoma\ContractBundle\Model\Contract\ContractInterface;
+
+use Evrinoma\ContractBundle\Dto\SideApiDtoInterface;
+use Evrinoma\ContractBundle\Exception\Side\SideCannotBeCreatedException;
+use Evrinoma\ContractBundle\Exception\Side\SideCannotBeRemovedException;
+use Evrinoma\ContractBundle\Exception\Side\SideCannotBeSavedException;
+use Evrinoma\ContractBundle\Model\Side\SideInterface;
 
 interface CommandMediatorInterface
 {
     /**
-     * @param ContractApiDtoInterface $dto
-     * @param ContractInterface       $entity
+     * @param SideApiDtoInterface $dto
+     * @param SideInterface       $entity
      *
-     * @return ContractInterface
-     * @throws ContractCannotBeSavedException
+     * @return SideInterface
+     * @throws SideCannotBeSavedException
      */
-    public function onUpdate(ContractApiDtoInterface $dto, ContractInterface $entity): ContractInterface;
+    public function onUpdate(SideApiDtoInterface $dto, SideInterface $entity): SideInterface;
 
     /**
-     * @param ContractApiDtoInterface $dto
-     * @param ContractInterface       $entity
+     * @param SideApiDtoInterface $dto
+     * @param SideInterface       $entity
      *
-     * @throws ContractCannotBeRemovedException
+     * @throws SideCannotBeRemovedException
      */
-    public function onDelete(ContractApiDtoInterface $dto, ContractInterface $entity): void;
+    public function onDelete(SideApiDtoInterface $dto, SideInterface $entity): void;
 
     /**
-     * @param ContractApiDtoInterface $dto
-     * @param ContractInterface       $entity
+     * @param SideApiDtoInterface $dto
+     * @param SideInterface       $entity
      *
-     * @return ContractInterface
-     * @throws ContractCannotBeSavedException
-     * @throws ContractCannotBeCreatedException
+     * @return SideInterface
+     * @throws SideCannotBeSavedException
+     * @throws SideCannotBeCreatedException
      */
-    public function onCreate(ContractApiDtoInterface $dto, ContractInterface $entity): ContractInterface;
+    public function onCreate(SideApiDtoInterface $dto, SideInterface $entity): SideInterface;
 }

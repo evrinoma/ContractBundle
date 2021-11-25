@@ -1,10 +1,9 @@
 <?php
 
-namespace Evrinoma\ContractBundle\Mediator\Side;
+namespace Evrinoma\ContractBundle\Mediator\Contract;
 
 use Doctrine\ORM\QueryBuilder;
-use Evrinoma\ContractBundle\Dto\SideApiDtoInterface;
-
+use Evrinoma\ContractBundle\Dto\ContractApiDtoInterface;
 
 interface QueryMediatorInterface
 {
@@ -14,20 +13,20 @@ interface QueryMediatorInterface
     public function alias(): string;
 
     /**
-     * @param SideApiDtoInterface $dto
+     * @param ContractApiDtoInterface $dto
      * @param QueryBuilder              $builder
      *
      * @return mixed
      */
-    public function createQuery(SideApiDtoInterface $dto, QueryBuilder $builder):void;
+    public function createQuery(ContractApiDtoInterface $dto, QueryBuilder $builder):void;
 //endregion Public
 
 //region SECTION: Getters/Setters
     /**
-     * @param SideApiDtoInterface $dto
+     * @param ContractApiDtoInterface $dto
      * @param QueryBuilder              $builder
      *
      * @return array
      */
-    public function getResult(SideApiDtoInterface $dto, QueryBuilder $builder): array;
+    public function getResult(ContractApiDtoInterface $dto, QueryBuilder $builder): array;
 }
