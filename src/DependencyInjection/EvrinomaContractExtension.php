@@ -2,6 +2,10 @@
 
 namespace Evrinoma\ContractBundle\DependencyInjection;
 
+use Evrinoma\ContractBundle\DependencyInjection\Compiler\Constraint\ContractPass;
+use Evrinoma\ContractBundle\DependencyInjection\Compiler\Constraint\HierarchyPass;
+use Evrinoma\ContractBundle\DependencyInjection\Compiler\Constraint\SidePass;
+use Evrinoma\ContractBundle\DependencyInjection\Compiler\Constraint\TypePass;
 use Evrinoma\ContractBundle\Dto\ContractApiDto;
 use Evrinoma\ContractBundle\Dto\SideApiDto;
 use Evrinoma\ContractBundle\Entity\Define\BaseHierarchy;
@@ -134,22 +138,22 @@ class EvrinomaContractExtension extends Extension
 //region SECTION: Private
     private function wireConstraintTag(ContainerBuilder $container): void
     {
-//        foreach ($container->getDefinitions() as $key => $definition) {
-//            switch (true) {
-//                case strpos($key, TypePass::CONTRACT_TYPE_CONSTRAINT) !== false :
-//                    $definition->addTag(TypePass::CONTRACT_TYPE_CONSTRAINT);
-//                    break;
-//                case strpos($key, HierarchyPass::CONTRACT_HIERARCHY_CONSTRAINT) !== false :
-//                    $definition->addTag(HierarchyPass::CONTRACT_HIERARCHY_CONSTRAINT);
-//                    break;
-//                case strpos($key, SidePass::CONTRACT_SIDE_CONSTRAINT) !== false :
-//                    $definition->addTag(SidePass::CONTRACT_SIDE_CONSTRAINT);
-//                    break;
-//                case strpos($key, ContractPass::CONTRACT_CODE_CONSTRAINT) !== false :
-//                    $definition->addTag(ContractPass::CONTRACT_CODE_CONSTRAINT);
-//                    break;
-//            }
-//        }
+        foreach ($container->getDefinitions() as $key => $definition) {
+            switch (true) {
+                case strpos($key, TypePass::CONTRACT_TYPE_CONSTRAINT) !== false :
+                    $definition->addTag(TypePass::CONTRACT_TYPE_CONSTRAINT);
+                    break;
+                case strpos($key, HierarchyPass::CONTRACT_HIERARCHY_CONSTRAINT) !== false :
+                    $definition->addTag(HierarchyPass::CONTRACT_HIERARCHY_CONSTRAINT);
+                    break;
+                case strpos($key, SidePass::CONTRACT_SIDE_CONSTRAINT) !== false :
+                    $definition->addTag(SidePass::CONTRACT_SIDE_CONSTRAINT);
+                    break;
+                case strpos($key, ContractPass::CONTRACT_CODE_CONSTRAINT) !== false :
+                    $definition->addTag(ContractPass::CONTRACT_CODE_CONSTRAINT);
+                    break;
+            }
+        }
     }
 
     private function wireFactory(ContainerBuilder $container, string $name, string $class, string $paramClass): void
