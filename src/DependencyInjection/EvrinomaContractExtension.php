@@ -49,8 +49,6 @@ class EvrinomaContractExtension extends Extension
             $loader->load('fixtures.yml');
         }
 
-        return;
-
         $configuration = $this->getConfiguration($configs, $container);
         $config        = $this->processConfiguration($configuration, $configs);
 
