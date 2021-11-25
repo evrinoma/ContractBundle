@@ -1,0 +1,3 @@
+services:
+  evrinoma.contract.constraint.type.indentity:
+    class: Evrinoma\ContractBundle\Constraint\Type\Identity

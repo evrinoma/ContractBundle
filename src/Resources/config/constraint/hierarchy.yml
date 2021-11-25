@@ -1,0 +1,3 @@
+services:
+  evrinoma.contract.constraint.hierarchy.indentity:
+    class: Evrinoma\ContractBundle\Constraint\Hierarchy\Identity

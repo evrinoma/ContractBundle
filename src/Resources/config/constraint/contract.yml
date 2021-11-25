@@ -1,1 +1,8 @@
 services:
+  evrinoma.contract.constraint.contract.type:
+    class: Evrinoma\ContractBundle\Constraint\Contract\Type
+
+  evrinoma.contract.constraint.contract.hierarchy:
+    class: Evrinoma\ContractBundle\Constraint\Contract\Hierarchy
+
+
