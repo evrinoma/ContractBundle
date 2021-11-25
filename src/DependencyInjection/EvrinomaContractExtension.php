@@ -83,9 +83,8 @@ class EvrinomaContractExtension extends Extension
             [
                 '' => [
                     'db_driver'    => 'evrinoma.'.$this->getAlias().'.storage',
-                    'entity_bunch' => 'evrinoma.'.$this->getAlias().'.entity_bunch',
-                    'entity_code'  => 'evrinoma.'.$this->getAlias().'.entity_code',
-                    'entity_bind'  => 'evrinoma.'.$this->getAlias().'.entity_bind',
+                    'entity_side' => 'evrinoma.'.$this->getAlias().'.entity_side',
+                    'entity_contract'  => 'evrinoma.'.$this->getAlias().'.entity_contract',
                 ],
             ]
         );

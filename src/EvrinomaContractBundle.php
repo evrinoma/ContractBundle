@@ -3,6 +3,7 @@
 
 namespace Evrinoma\ContractBundle;
 
+use Evrinoma\ContractBundle\DependencyInjection\Compiler\DecoratorPass;
 use Evrinoma\ContractBundle\DependencyInjection\Compiler\MapEntityPass;
 use Evrinoma\ContractBundle\DependencyInjection\EvrinomaContractExtension;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
@@ -24,9 +25,9 @@ class EvrinomaContractBundle extends Bundle
     public function build(ContainerBuilder $container)
     {
         parent::build($container);
-        return;
         $container
             ->addCompilerPass(new MapEntityPass($this->getNamespace(), $this->getPath()))
+            ->addCompilerPass(new DecoratorPass())
         ;
     }
 //endregion Public
