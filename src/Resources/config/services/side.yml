@@ -30,7 +30,6 @@ services:
       - '@evrinoma.contract.side.repository'
       - '@evrinoma.contract.side.factory'
       - '@evrinoma.contract.side.command.mediator'
-      - '@evrinoma.contract.type.query.manager'
 
   evrinoma.contract.side.query.manager:
     class: Evrinoma\ContractBundle\Manager\Side\QueryManager

@@ -30,8 +30,8 @@ services:
       - '@evrinoma.contract.contract.repository'
       - '@evrinoma.contract.contract.factory'
       - '@evrinoma.contract.contract.command.mediator'
-      - '@evrinoma.contract.owner.query.manager'
       - '@evrinoma.contract.type.query.manager'
+      - '@evrinoma.contract.hierarchy.query.manager'
 
   evrinoma.contract.contract.query.manager:
     class: Evrinoma\ContractBundle\Manager\Contract\QueryManager
