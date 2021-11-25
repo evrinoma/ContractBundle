@@ -3,6 +3,10 @@
 
 namespace Evrinoma\ContractBundle;
 
+use Evrinoma\ContractBundle\DependencyInjection\Compiler\Constraint\ContractPass;
+use Evrinoma\ContractBundle\DependencyInjection\Compiler\Constraint\HierarchyPass;
+use Evrinoma\ContractBundle\DependencyInjection\Compiler\Constraint\SidePass;
+use Evrinoma\ContractBundle\DependencyInjection\Compiler\Constraint\TypePass;
 use Evrinoma\ContractBundle\DependencyInjection\Compiler\DecoratorPass;
 use Evrinoma\ContractBundle\DependencyInjection\Compiler\MapEntityPass;
 use Evrinoma\ContractBundle\DependencyInjection\EvrinomaContractExtension;
@@ -28,6 +32,10 @@ class EvrinomaContractBundle extends Bundle
         $container
             ->addCompilerPass(new MapEntityPass($this->getNamespace(), $this->getPath()))
             ->addCompilerPass(new DecoratorPass())
+            ->addCompilerPass(new ContractPass())
+            ->addCompilerPass(new TypePass())
+            ->addCompilerPass(new HierarchyPass())
+            ->addCompilerPass(new SidePass())
         ;
     }
 //endregion Public

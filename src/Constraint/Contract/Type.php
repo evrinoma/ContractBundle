@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Evrinoma\ContractBundle\Constraint\Bunch;
+namespace Evrinoma\ContractBundle\Constraint\Contract;
 
 use Evrinoma\ContractBundle\Constraint\Common\TypeTrait;
 use Evrinoma\UtilsBundle\Constraint\ConstraintInterface;
