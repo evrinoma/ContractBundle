@@ -1,0 +1,22 @@
+<?php
+
+namespace Evrinoma\ContractBundle\Constraint\Common;
+
+use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\Component\Validator\Constraints\NotNull;
+
+trait HierarchyTrait
+{
+    public function getConstraints(): array
+    {
+        return [
+            new NotBlank(),
+            new NotNull()
+        ];
+    }
+
+    public function getPropertyName(): string
+    {
+        return 'hierarchy';
+    }
+}
