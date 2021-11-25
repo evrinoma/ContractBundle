@@ -7,6 +7,7 @@ use Evrinoma\ContractBundle\Exception\Side\SideCannotBeRemovedException;
 use Evrinoma\ContractBundle\Exception\Side\SideInvalidException;
 use Evrinoma\ContractBundle\Exception\Side\SideNotFoundException;
 use Evrinoma\ContractBundle\Factory\SideFactoryInterface;
+use Evrinoma\ContractBundle\Mediator\Side\CommandMediatorInterface;
 use Evrinoma\ContractBundle\Model\Side\SideInterface;
 use Evrinoma\ContractBundle\Repository\Side\SideCommandRepositoryInterface;
 use Evrinoma\UtilsBundle\Rest\RestInterface;
@@ -21,6 +22,7 @@ final class CommandManager implements CommandManagerInterface, RestInterface
     private SideCommandRepositoryInterface $repository;
     private ValidatorInterface             $validator;
     private SideFactoryInterface           $factory;
+    private CommandMediatorInterface       $mediator;
 //endregion Fields
 
 //region SECTION: Constructor
@@ -29,11 +31,12 @@ final class CommandManager implements CommandManagerInterface, RestInterface
      * @param SideCommandRepositoryInterface $repository
      * @param SideFactoryInterface           $factory
      */
-    public function __construct(ValidatorInterface $validator, SideCommandRepositoryInterface $repository, SideFactoryInterface $factory)
+    public function __construct(ValidatorInterface $validator, SideCommandRepositoryInterface $repository, SideFactoryInterface $factory, CommandMediatorInterface $mediator)
     {
         $this->validator  = $validator;
         $this->repository = $repository;
         $this->factory    = $factory;
+        $this->mediator   = $mediator;
     }
 //endregion Constructor
 
@@ -47,6 +50,8 @@ final class CommandManager implements CommandManagerInterface, RestInterface
     public function post(SideApiDtoInterface $dto): SideInterface
     {
         $side = $this->factory->create($dto);
+
+        $this->mediator->onCreate($dto, $side);
 
         $errors = $this->validator->validate($side);
 
@@ -79,6 +84,8 @@ final class CommandManager implements CommandManagerInterface, RestInterface
 
         $side->setIdentity($dto->getIdentity());
 
+        $this->mediator->onUpdate($dto, $side);
+
         $errors = $this->validator->validate($side);
 
         if (count($errors) > 0) {
@@ -106,6 +113,7 @@ final class CommandManager implements CommandManagerInterface, RestInterface
         } catch (SideNotFoundException $e) {
             throw $e;
         }
+        $this->mediator->onDelete($dto, $side);
         try {
             $this->repository->remove($side);
         } catch (SideCannotBeRemovedException $e) {

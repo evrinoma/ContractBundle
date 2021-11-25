@@ -10,6 +10,7 @@ use Evrinoma\ContractBundle\Exception\Contract\ContractNotFoundException;
 use Evrinoma\ContractBundle\Factory\ContractFactoryInterface;
 use Evrinoma\ContractBundle\Manager\Hierarchy\QueryManagerInterface as HierarchyQueryManagerInterface;
 use Evrinoma\ContractBundle\Manager\Type\QueryManagerInterface as TypeQueryManagerInterface;
+use Evrinoma\ContractBundle\Mediator\Contract\CommandMediatorInterface;
 use Evrinoma\ContractBundle\Model\Contract\ContractInterface;
 use Evrinoma\ContractBundle\Model\Define\HierarchyInterface;
 use Evrinoma\ContractBundle\Model\Define\TypeInterface;
@@ -28,6 +29,7 @@ final class CommandManager implements CommandManagerInterface, RestInterface
     private ContractFactoryInterface           $factory;
     private TypeQueryManagerInterface          $typeQueryManager;
     private HierarchyQueryManagerInterface     $hierarchyQueryManager;
+    private CommandMediatorInterface $mediator;
 //endregion Fields
 
 //region SECTION: Constructor
@@ -38,11 +40,12 @@ final class CommandManager implements CommandManagerInterface, RestInterface
      * @param TypeQueryManagerInterface          $typeQueryManager
      * @param HierarchyQueryManagerInterface     $hierarchyQueryManager
      */
-    public function __construct(ValidatorInterface $validator, ContractCommandRepositoryInterface $repository, ContractFactoryInterface $factory, TypeQueryManagerInterface $typeQueryManager, HierarchyQueryManagerInterface $hierarchyQueryManager)
+    public function __construct(ValidatorInterface $validator, ContractCommandRepositoryInterface $repository, ContractFactoryInterface $factory, CommandMediatorInterface $mediator, TypeQueryManagerInterface $typeQueryManager, HierarchyQueryManagerInterface $hierarchyQueryManager)
     {
         $this->validator             = $validator;
         $this->repository            = $repository;
         $this->factory               = $factory;
+        $this->mediator              = $mediator;
         $this->typeQueryManager      = $typeQueryManager;
         $this->hierarchyQueryManager = $hierarchyQueryManager;
     }
@@ -58,6 +61,8 @@ final class CommandManager implements CommandManagerInterface, RestInterface
     public function post(ContractApiDtoInterface $dto): ContractInterface
     {
         $contract = $this->factory->create($dto);
+
+        $this->mediator->onCreate($dto, $contract);
 
         $errors = $this->validator->validate($contract);
 
@@ -106,6 +111,8 @@ final class CommandManager implements CommandManagerInterface, RestInterface
             ->setUpdatedAt(new \DateTimeImmutable())
             ->setActive($dto->getActive());
 
+        $this->mediator->onUpdate($dto, $contract);
+
         $errors = $this->validator->validate($contract);
 
         if (count($errors) > 0) {
@@ -133,6 +140,7 @@ final class CommandManager implements CommandManagerInterface, RestInterface
         } catch (ContractNotFoundException $e) {
             throw $e;
         }
+        $this->mediator->onDelete($dto, $contract);
         try {
             $this->repository->remove($contract);
         } catch (ContractCannotBeRemovedException $e) {
