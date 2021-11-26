@@ -1,0 +1,12 @@
+services:
+
+  evrinoma.contract.fixtures.type:
+    class: Evrinoma\ContractBundle\Fixtures\TypeFixtures
+    tags:
+      - { name: doctrine.fixture.orm }
+
+  evrinoma.contract.fixtures.hierarchy:
+    class: Evrinoma\ContractBundle\Fixtures\HierarchyFixtures
+    tags:
+      - { name: doctrine.fixture.orm }
+
