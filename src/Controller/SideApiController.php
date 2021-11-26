@@ -20,6 +20,7 @@ use OpenApi\Annotations as OA;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
+use Nelmio\ApiDocBundle\Annotation\Model;
 
 final class SideApiController extends AbstractApiController implements ApiControllerInterface
 {
@@ -98,7 +99,7 @@ final class SideApiController extends AbstractApiController implements ApiContro
      *               type="object",
      *               @OA\Property(property="class",type="string",default="Evrinoma\ContractBundle\Dto\SideApiDto"),
      *               @OA\Property(property="name",type="string"),
-     *               @OA\Property(property="type",type="object")
+     *               @OA\Property(property="type",type="object"),
      *               @OA\Property(property="hierarchy",type="object")
      *            )
      *         )
@@ -156,7 +157,7 @@ final class SideApiController extends AbstractApiController implements ApiContro
      *               @OA\Property(property="id",type="string"),
      *               @OA\Property(property="active",type="string"),
      *               @OA\Property(property="name",type="string"),
-     *               @OA\Property(property="type",type="object")
+     *               @OA\Property(property="type",type="object"),
      *               @OA\Property(property="hierarchy",type="object")
      *            )
      *         )

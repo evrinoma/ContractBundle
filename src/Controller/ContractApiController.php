@@ -20,6 +20,7 @@ use JMS\Serializer\SerializerInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
+use Nelmio\ApiDocBundle\Annotation\Model;
 
 final class ContractApiController extends AbstractApiController implements ApiControllerInterface
 {
@@ -82,7 +83,7 @@ final class ContractApiController extends AbstractApiController implements ApiCo
      *             @OA\Schema(
      *               example={
      *                  "class":"Evrinoma\ContractBundle\Dto\ContractApiDto",
-     *                  "name":"Договор №154/18-СП от 23.10.2018г.",
+     *                  "name":"Договор №154\/18-СП от 23.10.2018г.",
      *                  "type": {
      *                            "id":"2"
      *                       },
@@ -93,7 +94,7 @@ final class ContractApiController extends AbstractApiController implements ApiCo
      *               type="object",
      *               @OA\Property(property="class",type="string",default="Evrinoma\ContractBundle\Dto\ContractApiDto"),
      *               @OA\Property(property="name",type="string"),
-     *               @OA\Property(property="type",type="object")
+     *               @OA\Property(property="type",type="object"),
      *               @OA\Property(property="hierarchy",type="object")
      *            )
      *         )
@@ -151,7 +152,7 @@ final class ContractApiController extends AbstractApiController implements ApiCo
      *               @OA\Property(property="id",type="string"),
      *               @OA\Property(property="active",type="string"),
      *               @OA\Property(property="name",type="string"),
-     *               @OA\Property(property="type",type="object")
+     *               @OA\Property(property="type",type="object"),
      *               @OA\Property(property="hierarchy",type="object")
      *            )
      *         )
