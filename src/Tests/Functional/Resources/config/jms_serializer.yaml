@@ -1,0 +1,6 @@
+jms_serializer:
+  metadata:
+    directories:
+      ContractBundle:
+        namespace_prefix: "Evrinoma\\ContractBundle"
+        path: '%kernel.root_dir%/Resources/config/serializer/ContractBundle'

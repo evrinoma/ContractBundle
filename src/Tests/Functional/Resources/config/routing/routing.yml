@@ -1,0 +1,2 @@
+contract:
+    resource: "@EvrinomaContractBundle/Resources/config/routes.yml"

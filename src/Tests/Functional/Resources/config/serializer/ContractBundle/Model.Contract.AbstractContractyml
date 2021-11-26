@@ -1,0 +1,17 @@
+Evrinoma\ContractBundle\Model\Contract\AbstractContract:
+  exclusion_policy: ALL
+  properties:
+    id:
+      groups: [ api_get_contract, api_post_contract, api_put_contract ]
+      expose: true
+    createdAt:
+      type: DateTimeImmutable<'Y-m-d H:i'>
+      groups: [ api_get_contract, api_post_contract, api_put_contract  ]
+    updatedAt:
+      type: DateTimeImmutable<'Y-m-d H:i'>
+      groups: [ api_get_contract, api_post_contract, api_put_contract ]
+    active:
+      groups: [ api_get_contract, api_post_contract, api_put_contract ]
+      expose: true
+
+
