@@ -8,16 +8,19 @@ use Evrinoma\ContractBundle\Model\Side\SideInterface;
 
 final class SideFactory implements SideFactoryInterface
 {
+//region SECTION: Fields
     private static string $entityClass = BaseSide::class;
+//endregion Fields
 
+//region SECTION: Public
     public function create(SideApiDtoInterface $dto): SideInterface
     {
-        /** @var BaseSide $type */
-        $type = new self::$entityClass;
+        /** @var BaseSide $side */
+        $side = new self::$entityClass;
 
-        $type
-            ->setIdentity($dto->getIdentity());
+        $side->setIdentity(trim($dto->getIdentity()));
 
-        return $type;
+        return $side;
     }
+//endregion Public
 }

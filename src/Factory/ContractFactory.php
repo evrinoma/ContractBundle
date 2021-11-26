@@ -8,17 +8,20 @@ use Evrinoma\ContractBundle\Model\Contract\ContractInterface;
 
 final class ContractFactory implements ContractFactoryInterface
 {
+//region SECTION: Fields
     private static string $entityClass = BaseContract::class;
+//endregion Fields
 
+//region SECTION: Public
     public function create(ContractApiDtoInterface $dto): ContractInterface
     {
-        /** @var BaseContract $type */
-        $type = new self::$entityClass;
+        /** @var BaseContract $contract */
+        $contract = new self::$entityClass;
 
-        $type
-            ->setCreatedAt(new \DateTimeImmutable())
+        $contract->setCreatedAt(new \DateTimeImmutable())
             ->setActiveToActive();
 
-        return $type;
+        return $contract;
     }
+//endregion Public
 }

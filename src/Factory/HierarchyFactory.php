@@ -1,4 +1,5 @@
 <?php
+
 namespace Evrinoma\ContractBundle\Factory;
 
 use Evrinoma\ContractBundle\Dto\HierarchyApiDtoInterface;
@@ -7,16 +8,19 @@ use Evrinoma\ContractBundle\Model\Define\HierarchyInterface;
 
 final class HierarchyFactory implements HierarchyFactoryInterface
 {
+//region SECTION: Fields
     private static string $entityClass = BaseHierarchy::class;
+//endregion Fields
 
+//region SECTION: Public
     public function create(HierarchyApiDtoInterface $dto): HierarchyInterface
     {
-        /** @var BaseHierarchy $owner */
-        $owner = new self::$entityClass;
+        /** @var BaseHierarchy $hierarchy */
+        $hierarchy = new self::$entityClass;
 
-        $owner
-            ->setIdentity($dto->getIdentity());
+        $hierarchy->setIdentity($dto->getIdentity());
 
-        return $owner;
+        return $hierarchy;
     }
+//endregion Public
 }
