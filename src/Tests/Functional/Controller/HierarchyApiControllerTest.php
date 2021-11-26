@@ -3,7 +3,6 @@
 namespace Evrinoma\ContractBundle\Tests\Functional\Controller;
 
 
-use Evrinoma\ContractBundle\Dto\HierarchyApiDto;
 use Evrinoma\ContractBundle\Dto\TypeApiDto;
 use Evrinoma\ContractBundle\Fixtures\FixtureInterface;
 use Evrinoma\ContractBundle\Tests\Functional\CaseTest;
@@ -17,14 +16,14 @@ use Evrinoma\TestUtilsBundle\Helper\ResponseStatusTestTrait;
 /**
  * @group functional
  */
-class TypeApiControllerTest extends CaseTest implements ApiControllerTestInterface, ApiBrowserTestInterface, ApiMethodTestInterface
+class HierarchyApiControllerTest extends CaseTest implements ApiControllerTestInterface, ApiBrowserTestInterface, ApiMethodTestInterface
 {
 //region SECTION: Fields
-    public const API_GET      = 'evrinoma/api/contract/type';
-    public const API_CRITERIA = 'evrinoma/api/contract/type/criteria';
-    public const API_DELETE   = 'evrinoma/api/contract/type/delete';
-    public const API_PUT      = 'evrinoma/api/contract/type/save';
-    public const API_POST     = 'evrinoma/api/contract/type/create';
+    public const API_GET      = 'evrinoma/api/contract/hierarchy';
+    public const API_CRITERIA = 'evrinoma/api/contract/hierarchy/criteria';
+    public const API_DELETE   = 'evrinoma/api/contract/hierarchy/delete';
+    public const API_PUT      = 'evrinoma/api/contract/hierarchy/save';
+    public const API_POST     = 'evrinoma/api/contract/hierarchy/create';
 //endregion Fields
 
     use ApiBrowserTestTrait, ApiMethodTestTrait, ResponseStatusTestTrait;
@@ -37,7 +36,7 @@ class TypeApiControllerTest extends CaseTest implements ApiControllerTestInterfa
     {
         return [
             "class"    => static::getDtoClass(),
-            "identity" => 'main_income_own',
+            "identity" => 'contract_own',
         ];
     }
 
@@ -100,12 +99,12 @@ class TypeApiControllerTest extends CaseTest implements ApiControllerTestInterfa
 //region SECTION: Getters/Setters
     public static function getDtoClass(): string
     {
-        return HierarchyApiDto::class;
+        return TypeApiDto::class;
     }
 
     public static function getFixtures(): array
     {
-        return [FixtureInterface::HIERARCHY_FIXTURES];
+        return [FixtureInterface::TYPE_FIXTURES];
     }
 //endregion Getters/Setters
 }
