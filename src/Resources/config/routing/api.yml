@@ -1,3 +1,15 @@
 contract_api:
   resource: "@EvrinomaContractBundle/Controller/ContractApiController.php"
   type: annotation
+
+contract_hierarchy_api:
+  resource: "@EvrinomaContractBundle/Controller/HierarchyApiController.php"
+  type: annotation
+
+contract_type_api:
+  resource: "@EvrinomaContractBundle/Controller/TypeApiController.php"
+  type: annotation
+
+code_side_api:
+  resource: "@EvrinomaContractBundle/Controller/SideApiController.php"
+  type: annotation
