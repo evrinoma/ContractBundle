@@ -3,7 +3,7 @@
 namespace Evrinoma\ContractBundle\Tests\Functional\Controller;
 
 
-use Evrinoma\ContractBundle\Dto\TypeApiDto;
+use Evrinoma\ContractBundle\Dto\HierarchyApiDto;
 use Evrinoma\ContractBundle\Fixtures\FixtureInterface;
 use Evrinoma\ContractBundle\Tests\Functional\CaseTest;
 use Evrinoma\TestUtilsBundle\Browser\ApiBrowserTestInterface;
@@ -99,12 +99,12 @@ class HierarchyApiControllerTest extends CaseTest implements ApiControllerTestIn
 //region SECTION: Getters/Setters
     public static function getDtoClass(): string
     {
-        return TypeApiDto::class;
+        return HierarchyApiDto::class;
     }
 
     public static function getFixtures(): array
     {
-        return [FixtureInterface::TYPE_FIXTURES];
+        return [FixtureInterface::HIERARCHY_FIXTURES];
     }
 //endregion Getters/Setters
 }

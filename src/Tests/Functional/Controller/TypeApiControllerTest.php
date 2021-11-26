@@ -3,7 +3,6 @@
 namespace Evrinoma\ContractBundle\Tests\Functional\Controller;
 
 
-use Evrinoma\ContractBundle\Dto\HierarchyApiDto;
 use Evrinoma\ContractBundle\Dto\TypeApiDto;
 use Evrinoma\ContractBundle\Fixtures\FixtureInterface;
 use Evrinoma\ContractBundle\Tests\Functional\CaseTest;
@@ -41,9 +40,41 @@ class TypeApiControllerTest extends CaseTest implements ApiControllerTestInterfa
         ];
     }
 
+    public function testPostUnprocessable(): void
+    {
+        $this->postWrong();
+        $this->testResponseStatusUnprocessable();
+    }
+
+
     public function testPost(): void
     {
-        $this->assertEquals(true, true, 'test');
+        $this->createType();
+        $this->testResponseStatusCreated();
+    }
+
+    public function testPostDuplicate(): void
+    {
+        $this->createType();
+        $this->testResponseStatusCreated();
+
+        $this->createType();
+        $this->testResponseStatusConflict();
+    }
+
+    public function testPutUnprocessable(): void
+    {
+        $query = static::getDefault(['id' => '']);
+
+        $this->put($query);
+        $this->testResponseStatusUnprocessable();
+
+        $this->createType();
+
+        $query = static::getDefault(['identity' => '']);
+
+        $this->put($query);
+        $this->testResponseStatusUnprocessable();
     }
 
     public function testCriteria(): void
@@ -72,40 +103,50 @@ class TypeApiControllerTest extends CaseTest implements ApiControllerTestInterfa
     {
     }
 
-    public function testPutUnprocessable(): void
-    {
-    }
-
     public function testDeleteNotFound(): void
     {
     }
 
     public function testDeleteUnprocessable(): void
     {
+
     }
 
     public function testGetNotFound(): void
     {
     }
 
-    public function testPostDuplicate(): void
+    private function createTypeDuplicateIdentity(): array
     {
+        $query = static::getDefault(['identity' => 'main_income']);
+
+        return $this->post($query);
     }
 
-    public function testPostUnprocessable(): void
+    private function createType(): array
     {
+        $query = static::getDefault();
+
+        return $this->post($query);
+    }
+
+    private function createConstraintBlankId(): array
+    {
+        $query = static::getDefault(['id' => '']);
+
+        return $this->post($query);
     }
 //endregion Public
 
 //region SECTION: Getters/Setters
     public static function getDtoClass(): string
     {
-        return HierarchyApiDto::class;
+        return TypeApiDto::class;
     }
 
     public static function getFixtures(): array
     {
-        return [FixtureInterface::HIERARCHY_FIXTURES];
+        return [FixtureInterface::TYPE_FIXTURES];
     }
 //endregion Getters/Setters
 }
