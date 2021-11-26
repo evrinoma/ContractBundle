@@ -10,7 +10,8 @@ use Evrinoma\ContractBundle\Entity\Side\BaseSide;
 use Evrinoma\ContractBundle\Model\Contract\ContractInterface;
 use Evrinoma\ContractBundle\Model\Define\HierarchyInterface;
 use Evrinoma\ContractBundle\Model\Define\TypeInterface;
-use Evrinoma\ContractBundle\Model\Side\SideInterface;
+use Evrinoma\ContractBundle\Model\Side\LeftSideInterface;
+use Evrinoma\ContractBundle\Model\Side\RightSideInterface;
 use Evrinoma\UtilsBundle\DependencyInjection\Compiler\AbstractMapEntity;
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
@@ -36,7 +37,7 @@ class MapEntityPass extends AbstractMapEntity implements CompilerPassInterface
         $this->addResolveTargetEntity(
             [
                 BaseHierarchy::class => HierarchyInterface::class,
-                BaseType::class  => TypeInterface::class,
+                BaseType::class      => TypeInterface::class,
             ],
             false
         );
@@ -44,7 +45,8 @@ class MapEntityPass extends AbstractMapEntity implements CompilerPassInterface
         $entityBunch = $container->getParameter('evrinoma.contract.entity_side');
         if ((strpos($entityBunch, EvrinomaContractExtension::ENTITY) !== false)) {
             $this->loadMetadata($driver, $referenceAnnotationReader, '%s/Model/Side', '%s/Entity/Side');
-            $this->addResolveTargetEntity([BaseSide::class => SideInterface::class,], false);
+            $this->addResolveTargetEntity([BaseSide::class => LeftSideInterface::class,], false);
+            $this->addResolveTargetEntity([BaseSide::class => RightSideInterface::class,], false);
         }
 
         $entityCode = $container->getParameter('evrinoma.contract.entity_contract');
