@@ -12,7 +12,7 @@ use Evrinoma\UtilsBundle\Entity\IdentityTrait;
 /**
  * Class BaseSide
  *
- * @ORM\Table(name="econtract_contract")
+ * @ORM\Table(name="e_contract_contract")
  * @ORM\Entity()
  */
 class BaseContract extends AbstractContract

@@ -9,7 +9,7 @@ use Evrinoma\ContractBundle\Model\Define\AbstractHierarchy;
 /**
  * Class BaseHierarchy
  *
- * @ORM\Table(name="econtract_hierarchy")
+ * @ORM\Table(name="e_contract_hierarchy")
  * @ORM\Entity()
  */
 class BaseHierarchy extends AbstractHierarchy
