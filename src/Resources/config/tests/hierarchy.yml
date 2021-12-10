@@ -1,0 +1,9 @@
+services:
+  evrinoma.contract.hierarchy.test.functional.action.hierarchy:
+    class: Evrinoma\ContractBundle\Tests\Functional\Action\Hierarchy\BaseHierarchy
+    public: true
+    arguments:
+
+  Evrinoma\ContractBundle\Tests\Functional\Action\Hierarchy\BaseHierarchy:
+    alias: evrinoma.contract.hierarchy.test.functional.action.hierarchy
+    public: true

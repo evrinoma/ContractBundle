@@ -1,0 +1,3 @@
+imports:
+  - { resource: tests/type.yml }
+  - { resource: tests/hierarchy.yml }
