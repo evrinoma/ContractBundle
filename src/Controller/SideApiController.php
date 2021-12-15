@@ -78,7 +78,7 @@ final class SideApiController extends AbstractApiController implements ApiContro
 
 //region SECTION: Public
     /**
-     * @Rest\Post("/api/side/create", options={"expose"=true}, name="api_create_side")
+     * @Rest\Post("/api/contract/side/create", options={"expose"=true}, name="api_contract_side_create")
      * @OA\Post(
      *     tags={"side"},
      *     description="the method perform create side",
@@ -132,7 +132,7 @@ final class SideApiController extends AbstractApiController implements ApiContro
     }
 
     /**
-     * @Rest\Put("/api/side/save", options={"expose"=true}, name="api_save_side")
+     * @Rest\Put("/api/contract/side/save", options={"expose"=true}, name="api_contract_side_save")
      * @OA\Put(
      *     tags={"side"},
      *     description="the method perform save side for current entity",
@@ -194,7 +194,7 @@ final class SideApiController extends AbstractApiController implements ApiContro
     }
 
     /**
-     * @Rest\Delete("/api/side/delete", options={"expose"=true}, name="api_delete_side")
+     * @Rest\Delete("/api/contract/side/delete", options={"expose"=true}, name="api_contract_side_delete")
      * @OA\Delete(
      *     tags={"side"},
      *     @OA\Parameter(
@@ -252,7 +252,7 @@ final class SideApiController extends AbstractApiController implements ApiContro
     }
 
     /**
-     * @Rest\Get("/api/side/criteria", options={"expose"=true}, name="api_side_criteria")
+     * @Rest\Get("/api/contract/side/criteria", options={"expose"=true}, name="api_contract_side_criteria")
      * @OA\Get(
      *     tags={"side"},
      *     @OA\Parameter(
@@ -322,7 +322,7 @@ final class SideApiController extends AbstractApiController implements ApiContro
 
 //region SECTION: Getters/Setters
     /**
-     * @Rest\Get("/api/side", options={"expose"=true}, name="api_side")
+     * @Rest\Get("/api/contract/side", options={"expose"=true}, name="api_contract_side")
      * @OA\Get(
      *     tags={"side"},
      *     @OA\Parameter(

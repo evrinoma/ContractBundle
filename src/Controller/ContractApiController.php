@@ -73,7 +73,7 @@ final class ContractApiController extends AbstractApiController implements ApiCo
     }
 
     /**
-     * @Rest\Post("/api/contract/create", options={"expose"=true}, name="api_create_contract")
+     * @Rest\Post("/api/contract/create", options={"expose"=true}, name="api_contract_create")
      * @OA\Post(
      *     tags={"contract"},
      *     description="the method perform create contract",
@@ -127,7 +127,7 @@ final class ContractApiController extends AbstractApiController implements ApiCo
     }
 
     /**
-     * @Rest\Put("/api/contract/save", options={"expose"=true}, name="api_save_contract")
+     * @Rest\Put("/api/contract/save", options={"expose"=true}, name="api_contract_save")
      * @OA\Put(
      *     tags={"contract"},
      *     description="the method perform save contract for current entity",
@@ -189,7 +189,7 @@ final class ContractApiController extends AbstractApiController implements ApiCo
     }
 
     /**
-     * @Rest\Delete("/api/contract/delete", options={"expose"=true}, name="api_delete_contract")
+     * @Rest\Delete("/api/contract/delete", options={"expose"=true}, name="api_contract_delete")
      * @OA\Delete(
      *     tags={"contract"},
      *     @OA\Parameter(

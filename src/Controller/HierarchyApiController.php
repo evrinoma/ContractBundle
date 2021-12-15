@@ -24,7 +24,6 @@ use Symfony\Component\HttpFoundation\RequestStack;
 
 final class HierarchyApiController extends AbstractApiController implements ApiControllerInterface
 {
-
     /**
      * @var ?Request
      */
@@ -70,7 +69,7 @@ final class HierarchyApiController extends AbstractApiController implements ApiC
     }
 
     /**
-     * @Rest\Post("/api/contract/create", options={"expose"=true}, name="api_create_contract_hierarchy")
+     * @Rest\Post("/api/contract/hierarchy/create", options={"expose"=true}, name="api_contract_hierarchy_create")
      * @OA\Post(
      *     tags={"contract"},
      *     description="the method perform create hierarchy contract",
@@ -116,7 +115,7 @@ final class HierarchyApiController extends AbstractApiController implements ApiC
     }
 
     /**
-     * @Rest\Put("/api/contract/hierarchy/save", options={"expose"=true}, name="api_save_contract_hierarchy")
+     * @Rest\Put("/api/contract/hierarchy/save", options={"expose"=true}, name="api_contract_hierarchy_save")
      * @OA\Put(
      *     tags={"contract"},
      *     description="the method perform save hierarchy contract for current entity",
@@ -168,7 +167,7 @@ final class HierarchyApiController extends AbstractApiController implements ApiC
     }
 
     /**
-     * @Rest\Delete("/api/contract/hierarchy/delete", options={"expose"=true}, name="api_delete_contract_hierarchy")
+     * @Rest\Delete("/api/contract/hierarchy/delete", options={"expose"=true}, name="api_contract_hierarchy_delete")
      * @OA\Delete(
      *     tags={"contract"},
      *     @OA\Parameter(

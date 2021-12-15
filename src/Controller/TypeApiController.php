@@ -70,7 +70,7 @@ final class TypeApiController extends AbstractApiController implements ApiContro
     }
 
     /**
-     * @Rest\Post("/api/contract/type/create", options={"expose"=true}, name="api_create_contract_type")
+     * @Rest\Post("/api/contract/type/create", options={"expose"=true}, name="api_contract_type_create")
      * @OA\Post(
      *     tags={"contract"},
      *     description="the method perform create type contract",
@@ -116,7 +116,7 @@ final class TypeApiController extends AbstractApiController implements ApiContro
     }
 
     /**
-     * @Rest\Put("/api/contract/type/save", options={"expose"=true}, name="api_save_contract_type")
+     * @Rest\Put("/api/contract/type/save", options={"expose"=true}, name="api_contract_type_save")
      * @OA\Put(
      *     tags={"contract"},
      *     description="the method perform save type contract for current entity",
@@ -168,7 +168,7 @@ final class TypeApiController extends AbstractApiController implements ApiContro
     }
 
     /**
-     * @Rest\Delete("/api/contract/type/delete", options={"expose"=true}, name="api_delete_contract_type")
+     * @Rest\Delete("/api/contract/type/delete", options={"expose"=true}, name="api_contract_type_delete")
      * @OA\Delete(
      *     tags={"contract"},
      *     @OA\Parameter(
