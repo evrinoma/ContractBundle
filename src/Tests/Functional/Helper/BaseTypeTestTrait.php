@@ -3,26 +3,14 @@
 namespace Evrinoma\ContractBundle\Tests\Functional\Helper;
 
 
+use Evrinoma\ContractBundle\Tests\Functional\ValueObject\Type\Identity;
+
 trait BaseTypeTestTrait
 {
 //region SECTION: Protected
-    protected function createTypeDuplicateIdentity(): array
-    {
-        $query = static::getDefault(['identity' => 'main_income']);
-
-        return $this->post($query);
-    }
-
     protected function createType(): array
     {
-        $query = static::getDefault();
-
-        return $this->post($query);
-    }
-
-    protected function createConstraintBlankId(): array
-    {
-        $query = static::getDefault(['id' => '']);
+        $query = static::getDefault(['identity' => Identity::valueOwn()]);
 
         return $this->post($query);
     }
