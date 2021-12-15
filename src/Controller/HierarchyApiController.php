@@ -225,7 +225,7 @@ final class HierarchyApiController extends AbstractApiController implements ApiC
     }
 
     /**
-     * @Rest\Get("/api/contract/hierarchy/criteria", options={"expose"=true}, name="api_contract_type_criteria")
+     * @Rest\Get("/api/contract/hierarchy/criteria", options={"expose"=true}, name="api_contract_hierarchy_criteria")
      * @OA\Get(
      *     tags={"contract"},
      *     @OA\Parameter(
