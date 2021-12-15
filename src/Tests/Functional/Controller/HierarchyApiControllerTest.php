@@ -14,7 +14,7 @@ use Psr\Container\ContainerInterface;
 final class HierarchyApiControllerTest extends AbstractFunctionalTest
 {
 //region SECTION: Fields
-    protected string $actionServiceName = 'evrinoma.contract.type.test.functional.action.type';
+    protected string $actionServiceName = 'evrinoma.contract.hierarchy.test.functional.action.hierarchy';
 //endregion Fields
 
 //region SECTION: Protected
