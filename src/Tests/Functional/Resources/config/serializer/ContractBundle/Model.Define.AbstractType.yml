@@ -1,0 +1,10 @@
+Evrinoma\ContractBundle\Model\Define\AbstractType:
+  exclusion_policy: ALL
+  properties:
+    id:
+      groups: [ api_get_contract_type, api_post_contract_type, api_put_contract_type, api_get_contract, api_post_contract, api_put_contract ]
+      expose: true
+    identity:
+      groups: [ api_get_contract_type, api_post_contract_type, api_put_contract_type, api_get_contract, api_post_contract, api_put_contract ]
+      expose: true
+
