@@ -76,7 +76,11 @@ final class QueryManager implements QueryManagerInterface, RestInterface
     public function proxy(HierarchyApiDtoInterface $dto): HierarchyInterface
     {
         try {
-            $hierarchy = $this->repository->proxy($dto->getId());
+            if ($dto->hasId()) {
+                $hierarchy = $this->repository->proxy($dto->getId());
+            } else {
+                throw new HierarchyProxyException("Id value is not set while trying get proxy object");
+            }
         } catch (HierarchyProxyException $e) {
             throw $e;
         }

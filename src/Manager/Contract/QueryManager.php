@@ -76,7 +76,11 @@ final class QueryManager implements QueryManagerInterface, RestInterface
     public function proxy(ContractApiDtoInterface $dto): ContractInterface
     {
         try {
-            $contract = $this->repository->proxy($dto->getId());
+            if ($dto->hasId()) {
+                $contract = $this->repository->proxy($dto->getId());
+            } else {
+                throw new ContractProxyException("Id value is not set while trying get proxy object");
+            }
         } catch (ContractProxyException $e) {
             throw $e;
         }
