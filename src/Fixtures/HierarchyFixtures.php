@@ -29,7 +29,7 @@ final class HierarchyFixtures extends Fixture implements FixtureGroupInterface, 
      */
     public function load(ObjectManager $manager)
     {
-        $this->createTypes($manager);
+        $this->create($manager);
 
         $manager->flush();
     }
@@ -37,7 +37,7 @@ final class HierarchyFixtures extends Fixture implements FixtureGroupInterface, 
 //endregion Public
 
 //region SECTION: Private
-    private function createTypes(ObjectManager $manager)
+    private function create(ObjectManager $manager)
     {
         $short = (new \ReflectionClass(BaseHierarchy::class))->getShortName()."_";
         $i     = 0;

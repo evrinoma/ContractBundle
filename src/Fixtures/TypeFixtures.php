@@ -29,7 +29,7 @@ final class TypeFixtures extends Fixture implements FixtureGroupInterface, Order
      */
     public function load(ObjectManager $manager)
     {
-        $this->createTypes($manager);
+        $this->create($manager);
 
         $manager->flush();
     }
@@ -37,7 +37,7 @@ final class TypeFixtures extends Fixture implements FixtureGroupInterface, Order
 //endregion Public
 
 //region SECTION: Private
-    private function createTypes(ObjectManager $manager)
+    private function create(ObjectManager $manager)
     {
         $short = (new \ReflectionClass(BaseType::class))->getShortName()."_";
         $i     = 0;
