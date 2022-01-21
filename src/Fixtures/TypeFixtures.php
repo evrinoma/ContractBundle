@@ -4,14 +4,14 @@ namespace Evrinoma\ContractBundle\Fixtures;
 
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Bundle\FixturesBundle\FixtureGroupInterface;
-use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Persistence\ObjectManager;
 use Evrinoma\ContractBundle\Entity\Define\BaseType;
+use Evrinoma\ContractBundle\Fixtures\Payload\Type;
 
-final class TypeFixtures extends Fixture implements FixtureGroupInterface, OrderedFixtureInterface
+final class TypeFixtures extends Fixture implements FixtureGroupInterface
 {
 //region SECTION: Fields
-    private array $data = [
+    private static array $data = [
         ['identity' => 'main_income'],
         ['identity' => 'sub_expenses'],
         ['identity' => 'other',],
@@ -34,37 +34,36 @@ final class TypeFixtures extends Fixture implements FixtureGroupInterface, Order
         $manager->flush();
     }
 //endregion Public
-//endregion Public
 
 //region SECTION: Private
     private function create(ObjectManager $manager)
     {
-        $short = (new \ReflectionClass(BaseType::class))->getShortName()."_";
+        $short = self::getReferenceName();
         $i     = 0;
 
-        foreach ($this->data as $record) {
+        foreach (self::$data as $record) {
             $entity = new BaseType();
             $entity->setIdentity($record['identity']);
-            $this->addReference($short.$i, $entity);
             $manager->persist($entity);
+            $this->addReference($short.$i, $entity);
             $i++;
         }
 
         return $this;
     }
 
+    public static function getReferenceName(): string
+    {
+        return (new \ReflectionClass(BaseType::class))->getShortName();
+    }
 //endregion Private
 
 //region SECTION: Getters/Setters
     public static function getGroups(): array
     {
         return [
-            FixtureInterface::TYPE_FIXTURES
+            FixtureInterface::TYPE_FIXTURES,
+            FixtureInterface::CONTRACT_FIXTURES,
         ];
-    }
-
-    public function getOrder()
-    {
-        return 0;
     }
 }

@@ -4,14 +4,13 @@ namespace Evrinoma\ContractBundle\Fixtures;
 
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Bundle\FixturesBundle\FixtureGroupInterface;
-use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Persistence\ObjectManager;
 use Evrinoma\ContractBundle\Entity\Define\BaseHierarchy;
 
-final class HierarchyFixtures extends Fixture implements FixtureGroupInterface, OrderedFixtureInterface
+final class HierarchyFixtures extends Fixture implements FixtureGroupInterface
 {
 //region SECTION: Fields
-    private array $data = [
+    private static array $data = [
         ['identity' => 'contract'],
         ['identity' => 'add_agr'],
         ['identity' => 'contract_other'],
@@ -34,37 +33,36 @@ final class HierarchyFixtures extends Fixture implements FixtureGroupInterface, 
         $manager->flush();
     }
 //endregion Public
-//endregion Public
 
 //region SECTION: Private
     private function create(ObjectManager $manager)
     {
-        $short = (new \ReflectionClass(BaseHierarchy::class))->getShortName()."_";
+        $short = self::getReferenceName();
         $i     = 0;
 
-        foreach ($this->data as $record) {
+        foreach (self::$data as $record) {
             $entity = new BaseHierarchy();
             $entity->setIdentity($record['identity']);
-            $this->addReference($short.$i, $entity);
             $manager->persist($entity);
+            $this->addReference($short.$i, $entity);
             $i++;
         }
 
         return $this;
     }
 
+    public static function getReferenceName(): string
+    {
+        return (new \ReflectionClass(BaseHierarchy::class))->getShortName();
+    }
 //endregion Private
 
 //region SECTION: Getters/Setters
     public static function getGroups(): array
     {
         return [
-            FixtureInterface::HIERARCHY_FIXTURES
+            FixtureInterface::HIERARCHY_FIXTURES,
+            FixtureInterface::CONTRACT_FIXTURES,
         ];
-    }
-
-    public function getOrder()
-    {
-        return 0;
     }
 }
