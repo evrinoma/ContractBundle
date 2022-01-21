@@ -1,21 +1,21 @@
 <?php
 
-namespace Evrinoma\ContractBundle\Tests\Functional\Action\Contract;
+namespace Evrinoma\ContractBundle\Tests\Functional\Action\Side;
 
-use Evrinoma\ContractBundle\Dto\ContractApiDto;
-use Evrinoma\ContractBundle\Tests\Functional\Helper\BaseContractTestTrait;
+use Evrinoma\ContractBundle\Dto\SideApiDto;
+use Evrinoma\ContractBundle\Tests\Functional\Helper\BaseSideTestTrait;
 use Evrinoma\TestUtilsBundle\Action\AbstractServiceTest;
 
-class BaseContract extends AbstractServiceTest implements BaseContractTestInterface
+class BaseSide extends AbstractServiceTest implements BaseSideTestInterface
 {
-    use BaseContractTestTrait;
+    use BaseSideTestTrait;
 
 //region SECTION: Fields
-    public const API_GET      = 'evrinoma/api/contract/contract';
-    public const API_CRITERIA = 'evrinoma/api/contract/contract/criteria';
-    public const API_DELETE   = 'evrinoma/api/contract/contract/delete';
-    public const API_PUT      = 'evrinoma/api/contract/contract/save';
-    public const API_POST     = 'evrinoma/api/contract/contract/create';
+    public const API_GET      = 'evrinoma/api/contract/side';
+    public const API_CRITERIA = 'evrinoma/api/contract/side/criteria';
+    public const API_DELETE   = 'evrinoma/api/contract/side/delete';
+    public const API_PUT      = 'evrinoma/api/contract/side/save';
+    public const API_POST     = 'evrinoma/api/contract/side/create';
 //endregion Fields
 
 //region SECTION: Public
@@ -96,7 +96,7 @@ class BaseContract extends AbstractServiceTest implements BaseContractTestInterf
 //region SECTION: Getters/Setters
     public static function getDtoClass(): string
     {
-        return ContractApiDto::class;
+        return SideApiDto::class;
     }
 //endregion Getters/Setters
 }

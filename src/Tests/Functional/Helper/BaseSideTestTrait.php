@@ -2,6 +2,8 @@
 
 namespace Evrinoma\ContractBundle\Tests\Functional\Helper;
 
-trait BaseContractTestTrait
+
+trait BaseSideTestTrait
 {
 }
+
