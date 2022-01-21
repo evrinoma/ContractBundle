@@ -109,7 +109,10 @@ final class CommandManager implements CommandManagerInterface, RestInterface
 
         $contract
             ->setUpdatedAt(new \DateTimeImmutable())
-            ->setActive($dto->getActive());
+            ->setActive($dto->getActive())
+            ->setName($dto->getName())
+            ->setDescription($dto->getDescription())
+        ;
 
         $this->mediator->onUpdate($dto, $contract);
 
