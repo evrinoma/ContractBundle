@@ -28,6 +28,14 @@ class BaseContract extends AbstractServiceTest implements BaseContractTestInterf
     {
         $this->postWrong();
         $this->testResponseStatusUnprocessable();
+        $this->post(static::getDefault(["description" => "",]));
+        $this->testResponseStatusUnprocessable();
+        $this->post(static::getDefault(["name" => "",]));
+        $this->testResponseStatusUnprocessable();
+        $this->post(static::getDefault(["type" => [],]));
+        $this->testResponseStatusUnprocessable();
+        $this->post(static::getDefault(["hierarchy" => [],]));
+        $this->testResponseStatusUnprocessable();
     }
 
 //testCriteria testGet testDelete testPutNotFound testPut
@@ -39,12 +47,26 @@ class BaseContract extends AbstractServiceTest implements BaseContractTestInterf
 
     public function actionPostDuplicate(): void
     {
+        $this->createContract();
+        $this->testResponseStatusCreated();
 
+        $this->createContract();
+        $this->testResponseStatusConflict();
     }
 
     public function actionPutUnprocessable(): void
     {
+        $query = static::getDefault(['id' => Id::empty()]);
 
+        $this->put($query);
+        $this->testResponseStatusUnprocessable();
+
+        $this->createContract();
+
+        $query = static::getDefault(['identity' => Identity::empty()]);
+
+        $this->put($query);
+        $this->testResponseStatusUnprocessable();
     }
 
     public function actionCriteria(): void
