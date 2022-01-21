@@ -12,12 +12,14 @@ abstract class AbstractSide implements SideInterface
     use IdTrait;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Evrinoma\ContractBundle\Model\Contract\ContractInterface", inversedBy="leftSide")
+     * @ORM\ManyToOne(targetEntity="Evrinoma\ContractBundle\Model\Contract\ContractInterface")
+     * @ORM\JoinColumn(name="left_id", referencedColumnName="id")
      */
     protected ContractInterface $left;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Evrinoma\ContractBundle\Model\Contract\ContractInterface", inversedBy="rightSide")
+     * @ORM\ManyToOne(targetEntity="Evrinoma\ContractBundle\Model\Contract\ContractInterface")
+     * @ORM\JoinColumn(name="right_id", referencedColumnName="id")
      */
     protected ContractInterface $right;
 

@@ -6,6 +6,7 @@ namespace Evrinoma\ContractBundle\Model\Contract;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\PersistentCollection;
 use Evrinoma\ContractBundle\Model\Define\HierarchyInterface;
 use Evrinoma\ContractBundle\Model\Define\TypeInterface;
 use Evrinoma\ContractBundle\Model\Side\LeftSideInterface;
@@ -28,15 +29,17 @@ abstract class AbstractContract implements ContractInterface
     /**
      * @var ArrayCollection|LeftSideInterface[]
      *
-     * @ORM\OneToMany(targetEntity="Evrinoma\ContractBundle\Model\Side\LeftSideInterface", mappedBy="left")
+     * @ORM\ManyToMany(targetEntity="Evrinoma\ContractBundle\Model\Side\LeftSideInterface")
+     * @ORM\JoinColumn(name="id", referencedColumnName="left_id", nullable=true)
      */
-    protected ArrayCollection $leftSide;
+    protected $leftSide;
     /**
      * @var ArrayCollection|RightSideInterface[]
      *
-     * @ORM\OneToMany(targetEntity="Evrinoma\ContractBundle\Model\Side\RightSideInterface", mappedBy="right")
+     * @ORM\ManyToMany(targetEntity="Evrinoma\ContractBundle\Model\Side\RightSideInterface")
+     * @ORM\JoinColumn(name="id", referencedColumnName="right_id", nullable=true)
      */
-    protected ArrayCollection $rightSide;
+    protected $rightSide;
     /**
      * @var TypeInterface
      *
