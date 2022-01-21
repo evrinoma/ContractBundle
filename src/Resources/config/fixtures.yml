@@ -14,3 +14,10 @@ services:
     class: Evrinoma\ContractBundle\Fixtures\ContractFixtures
     tags:
       - { name: doctrine.fixture.orm }
+
+  evrinoma.contract.fixtures.side:
+    class: Evrinoma\ContractBundle\Fixtures\SideFixtures
+    tags:
+      - { name: doctrine.fixture.orm }
+
+

@@ -2,4 +2,6 @@ imports:
   - { resource: tests/type.yml }
   - { resource: tests/hierarchy.yml }
   - { resource: tests/contract.yml }
+  - { resource: tests/side.yml }
+
 

@@ -1,0 +1,9 @@
+services:
+  evrinoma.contract.side.test.functional.action.side:
+    class: Evrinoma\ContractBundle\Tests\Functional\Action\Side\BaseSide
+    public: true
+    arguments:
+
+  Evrinoma\ContractBundle\Tests\Functional\Action\Side\BaseSide:
+    alias: evrinoma.contract.side.test.functional.action.side
+    public: true
