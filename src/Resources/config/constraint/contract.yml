@@ -5,4 +5,8 @@ services:
   evrinoma.contract.constraint.contract.hierarchy:
     class: Evrinoma\ContractBundle\Constraint\Contract\Hierarchy
 
+  evrinoma.contract.constraint.contract.description:
+    class: Evrinoma\ContractBundle\Constraint\Contract\Description
 
+  evrinoma.contract.constraint.contract.name:
+    class: Evrinoma\ContractBundle\Constraint\Contract\Name
