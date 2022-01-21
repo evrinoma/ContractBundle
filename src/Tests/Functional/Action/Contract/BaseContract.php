@@ -3,7 +3,12 @@
 namespace Evrinoma\ContractBundle\Tests\Functional\Action\Contract;
 
 use Evrinoma\ContractBundle\Dto\ContractApiDto;
+use Evrinoma\ContractBundle\Tests\Functional\Action\Type\BaseType;
+use Evrinoma\ContractBundle\Tests\Functional\Action\Hierarchy\BaseHierarchy;
 use Evrinoma\ContractBundle\Tests\Functional\Helper\BaseContractTestTrait;
+use Evrinoma\ContractBundle\Tests\Functional\ValueObject\Contract\Description;
+use Evrinoma\ContractBundle\Tests\Functional\ValueObject\Contract\Id;
+use Evrinoma\ContractBundle\Tests\Functional\ValueObject\Contract\Name;
 use Evrinoma\TestUtilsBundle\Action\AbstractServiceTest;
 
 class BaseContract extends AbstractServiceTest implements BaseContractTestInterface
@@ -11,11 +16,11 @@ class BaseContract extends AbstractServiceTest implements BaseContractTestInterf
     use BaseContractTestTrait;
 
 //region SECTION: Fields
-    public const API_GET      = 'evrinoma/api/contract/contract';
-    public const API_CRITERIA = 'evrinoma/api/contract/contract/criteria';
-    public const API_DELETE   = 'evrinoma/api/contract/contract/delete';
-    public const API_PUT      = 'evrinoma/api/contract/contract/save';
-    public const API_POST     = 'evrinoma/api/contract/contract/create';
+    public const API_GET      = 'evrinoma/api/contract';
+    public const API_CRITERIA = 'evrinoma/api/contract/criteria';
+    public const API_DELETE   = 'evrinoma/api/contract/delete';
+    public const API_PUT      = 'evrinoma/api/contract/save';
+    public const API_POST     = 'evrinoma/api/contract/create';
 //endregion Fields
 
 //region SECTION: Public
@@ -28,6 +33,8 @@ class BaseContract extends AbstractServiceTest implements BaseContractTestInterf
 //testCriteria testGet testDelete testPutNotFound testPut
     public function actionPost(): void
     {
+        $this->createContract();
+        $this->testResponseStatusCreated();
     }
 
     public function actionPostDuplicate(): void
@@ -88,7 +95,12 @@ class BaseContract extends AbstractServiceTest implements BaseContractTestInterf
     public static function defaultData(): array
     {
         return [
-            "class" => static::getDtoClass(),
+            "class"       => static::getDtoClass(),
+            "type"        => BaseType::defaultData(),
+            "hierarchy"   => BaseHierarchy::defaultData(),
+            "id"          => Id::value(),
+            "name"        => Name::value(),
+            "description" => Description::value(),
         ];
     }
 //endregion Public
