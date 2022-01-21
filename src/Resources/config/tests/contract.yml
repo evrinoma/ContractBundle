@@ -1,0 +1,9 @@
+services:
+  evrinoma.contract.contract.test.functional.action.contract:
+    class: Evrinoma\ContractBundle\Tests\Functional\Action\Contract\BaseContract
+    public: true
+    arguments:
+
+  Evrinoma\ContractBundle\Tests\Functional\Action\Contract\BaseContract:
+    alias: evrinoma.contract.contract.test.functional.action.contract
+    public: true

@@ -10,3 +10,7 @@ services:
     tags:
       - { name: doctrine.fixture.orm }
 
+  evrinoma.contract.fixtures.contract:
+    class: Evrinoma\ContractBundle\Fixtures\ContractFixtures
+    tags:
+      - { name: doctrine.fixture.orm }
