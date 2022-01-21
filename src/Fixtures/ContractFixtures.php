@@ -2,18 +2,18 @@
 
 namespace Evrinoma\ContractBundle\Fixtures;
 
-use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Bundle\FixturesBundle\FixtureGroupInterface;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Persistence\ObjectManager;
 use Evrinoma\ContractBundle\Entity\Contract\BaseContract;
 use Evrinoma\ContractBundle\Entity\Define\BaseHierarchy;
 use Evrinoma\ContractBundle\Entity\Define\BaseType;
+use Evrinoma\TestUtilsBundle\Fixtures\AbstractFixture;
 
-final class ContractFixtures extends Fixture implements FixtureGroupInterface, DependentFixtureInterface
+class ContractFixtures extends AbstractFixture implements FixtureGroupInterface, DependentFixtureInterface
 {
 //region SECTION: Fields
-    private array $data = [
+    protected static array $data = [
         ['active' => 'a', 'created_at' => '2006-10-23 10:21:50', 'updated_at' => '2013-10-23 10:21:50',],
         ['active' => 'a', 'created_at' => '2007-10-23 10:21:50', 'updated_at' => '2014-10-23 10:21:50',],
         ['active' => 'a', 'created_at' => '2008-10-23 10:21:50', 'updated_at' => '2015-10-23 10:21:50',],
@@ -29,24 +29,12 @@ final class ContractFixtures extends Fixture implements FixtureGroupInterface, D
         ['active' => 'd', 'created_at' => '2018-10-23 10:21:50',],
         ['active' => 'd', 'created_at' => '2019-10-23 10:21:50',],
     ];
+
+    protected static string $class = BaseContract::class;
 //endregion Fields
 
-//region SECTION: Public
-    /**
-     * Load data fixtures with the passed EntityManager
-     *
-     * @param ObjectManager $manager
-     */
-    public function load(ObjectManager $manager)
-    {
-        $this->create($manager);
-
-        $manager->flush();
-    }
-//endregion Public
-
 //region SECTION: Private
-    private function create(ObjectManager $manager)
+    protected function create(ObjectManager $manager)
     {
         $short          = self::getReferenceName();
         $shortType      = TypeFixtures::getReferenceName();
@@ -61,7 +49,7 @@ final class ContractFixtures extends Fixture implements FixtureGroupInterface, D
                 if (!str_contains($keyHierarchy, $shortHierarchy)) {
                     continue;
                 }
-                foreach ($this->data as $record) {
+                foreach (static::$data as $record) {
                     $entity = new BaseContract();
                     $entity->setActive($record['active']);
                     $entity->setCreatedAt(new \DateTimeImmutable($record['created_at']));
@@ -81,11 +69,6 @@ final class ContractFixtures extends Fixture implements FixtureGroupInterface, D
 
         return $this;
     }
-
-    public static function getReferenceName(): string
-    {
-        return (new \ReflectionClass(BaseContract::class))->getShortName()."_";
-    }
 //endregion Private
 
 //region SECTION: Getters/Setters
@@ -93,6 +76,7 @@ final class ContractFixtures extends Fixture implements FixtureGroupInterface, D
     {
         return [
             FixtureInterface::CONTRACT_FIXTURES,
+            FixtureInterface::SIDE_FIXTURES,
         ];
     }
 
@@ -101,6 +85,9 @@ final class ContractFixtures extends Fixture implements FixtureGroupInterface, D
      */
     public function getDependencies()
     {
-        return [TypeFixtures::class, HierarchyFixtures::class];
+        return [
+            TypeFixtures::class,
+            HierarchyFixtures::class
+        ];
     }
 }

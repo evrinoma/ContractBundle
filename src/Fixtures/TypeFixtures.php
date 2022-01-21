@@ -2,16 +2,15 @@
 
 namespace Evrinoma\ContractBundle\Fixtures;
 
-use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Bundle\FixturesBundle\FixtureGroupInterface;
 use Doctrine\Persistence\ObjectManager;
 use Evrinoma\ContractBundle\Entity\Define\BaseType;
-use Evrinoma\ContractBundle\Fixtures\Payload\Type;
+use Evrinoma\TestUtilsBundle\Fixtures\AbstractFixture;
 
-final class TypeFixtures extends Fixture implements FixtureGroupInterface
+final class TypeFixtures extends AbstractFixture implements FixtureGroupInterface
 {
 //region SECTION: Fields
-    private static array $data = [
+    protected static array $data = [
         ['identity' => 'main_income'],
         ['identity' => 'sub_expenses'],
         ['identity' => 'other',],
@@ -19,24 +18,12 @@ final class TypeFixtures extends Fixture implements FixtureGroupInterface
         ['identity' => 'gost'],
         ['identity' => 'sys'],
     ];
+
+    protected static string $class = BaseType::class;
 //endregion Fields
 
-//region SECTION: Public
-    /**
-     * Load data fixtures with the passed EntityManager
-     *
-     * @param ObjectManager $manager
-     */
-    public function load(ObjectManager $manager)
-    {
-        $this->create($manager);
-
-        $manager->flush();
-    }
-//endregion Public
-
 //region SECTION: Private
-    private function create(ObjectManager $manager)
+    protected function create(ObjectManager $manager)
     {
         $short = self::getReferenceName();
         $i     = 0;
@@ -51,11 +38,6 @@ final class TypeFixtures extends Fixture implements FixtureGroupInterface
 
         return $this;
     }
-
-    public static function getReferenceName(): string
-    {
-        return (new \ReflectionClass(BaseType::class))->getShortName();
-    }
 //endregion Private
 
 //region SECTION: Getters/Setters
@@ -64,6 +46,7 @@ final class TypeFixtures extends Fixture implements FixtureGroupInterface
         return [
             FixtureInterface::TYPE_FIXTURES,
             FixtureInterface::CONTRACT_FIXTURES,
+            FixtureInterface::SIDE_FIXTURES,
         ];
     }
 }
