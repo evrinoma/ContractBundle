@@ -157,6 +157,7 @@ class BaseHierarchy extends AbstractServiceTest implements BaseHierarchyTestInte
         return [
             "class"    => static::getDtoClass(),
             "identity" => Identity::value(),
+            "id"       => Id::value(),
         ];
     }
 //endregion Public

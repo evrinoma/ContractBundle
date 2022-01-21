@@ -158,6 +158,7 @@ class BaseType extends AbstractServiceTest implements BaseTypeTestInterface
         return [
             "class"    => static::getDtoClass(),
             "identity" => Identity::value(),
+            "id"       => Id::value(),
         ];
     }
 //endregion Public
