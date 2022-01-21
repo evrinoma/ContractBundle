@@ -7,9 +7,10 @@ use Evrinoma\ContractBundle\Model\Define\HierarchyInterface;
 use Evrinoma\ContractBundle\Model\Define\TypeInterface;
 use Evrinoma\UtilsBundle\Entity\ActiveInterface;
 use Evrinoma\UtilsBundle\Entity\CreateUpdateAtInterface;
+use Evrinoma\UtilsBundle\Entity\DescriptionInterface;
 use Evrinoma\UtilsBundle\Entity\IdInterface;
 
-interface ContractInterface extends ActiveInterface, CreateUpdateAtInterface, IdInterface
+interface ContractInterface extends ActiveInterface, CreateUpdateAtInterface, IdInterface, DescriptionInterface
 {
 //region SECTION: Getters/Setters
     /**

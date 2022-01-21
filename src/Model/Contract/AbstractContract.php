@@ -6,14 +6,15 @@ namespace Evrinoma\ContractBundle\Model\Contract;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
-use Doctrine\ORM\PersistentCollection;
 use Evrinoma\ContractBundle\Model\Define\HierarchyInterface;
 use Evrinoma\ContractBundle\Model\Define\TypeInterface;
 use Evrinoma\ContractBundle\Model\Side\LeftSideInterface;
 use Evrinoma\ContractBundle\Model\Side\RightSideInterface;
 use Evrinoma\UtilsBundle\Entity\ActiveTrait;
 use Evrinoma\UtilsBundle\Entity\CreateUpdateAtTrait;
+use Evrinoma\UtilsBundle\Entity\DescriptionTrait;
 use Evrinoma\UtilsBundle\Entity\IdTrait;
+use Evrinoma\UtilsBundle\Entity\NameTrait;
 
 /**
  * Class AbstractType
@@ -23,7 +24,7 @@ use Evrinoma\UtilsBundle\Entity\IdTrait;
  */
 abstract class AbstractContract implements ContractInterface
 {
-    use IdTrait, ActiveTrait, CreateUpdateAtTrait;
+    use IdTrait, ActiveTrait, CreateUpdateAtTrait, NameTrait, DescriptionTrait;
 
 //region SECTION: Fields
     /**
@@ -128,7 +129,5 @@ abstract class AbstractContract implements ContractInterface
 
         return $this;
     }
-
-
 //endregion Getters/Setters
 }
