@@ -20,7 +20,7 @@ use Evrinoma\UtilsBundle\Entity\NameTrait;
  * Class AbstractType
  *
  * @ORM\MappedSuperclass
- * @ORM\Table()
+ * @ORM\Table(uniqueConstraints={@ORM\UniqueConstraint(name="idx_contract", columns={"type_id", "hierarchy_id", "name", "description"})})
  */
 abstract class AbstractContract implements ContractInterface
 {
@@ -45,16 +45,16 @@ abstract class AbstractContract implements ContractInterface
      * @var TypeInterface
      *
      * @ORM\ManyToOne(targetEntity="Evrinoma\ContractBundle\Model\Define\TypeInterface")
-     * @ORM\JoinColumn(name="type_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="type_id", referencedColumnName="id", nullable=false)
      */
-    private TypeInterface $type;
+    protected TypeInterface $type;
     /**
      * @var HierarchyInterface
      *
      * @ORM\ManyToOne(targetEntity="Evrinoma\ContractBundle\Model\Define\HierarchyInterface")
-     * @ORM\JoinColumn(name="hierarchy_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="hierarchy_id", referencedColumnName="id", nullable=false)
      */
-    private HierarchyInterface $hierarchy;
+    protected HierarchyInterface $hierarchy;
 //endregion Fields
 
 //region SECTION: Constructor
