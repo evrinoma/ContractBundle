@@ -3,6 +3,7 @@
 namespace Evrinoma\ContractBundle\Manager\Contract;
 
 use Evrinoma\ContractBundle\Dto\ContractApiDtoInterface;
+use Evrinoma\ContractBundle\Exception\Contract\ContractCannotBeCreatedException;
 use Evrinoma\ContractBundle\Exception\Contract\ContractCannotBeRemovedException;
 use Evrinoma\ContractBundle\Exception\Contract\ContractCannotBeSavedException;
 use Evrinoma\ContractBundle\Exception\Contract\ContractInvalidException;
@@ -29,7 +30,7 @@ final class CommandManager implements CommandManagerInterface, RestInterface
     private ContractFactoryInterface           $factory;
     private TypeQueryManagerInterface          $typeQueryManager;
     private HierarchyQueryManagerInterface     $hierarchyQueryManager;
-    private CommandMediatorInterface $mediator;
+    private CommandMediatorInterface           $mediator;
 //endregion Fields
 
 //region SECTION: Constructor
@@ -57,12 +58,38 @@ final class CommandManager implements CommandManagerInterface, RestInterface
      *
      * @return ContractInterface
      * @throws ContractInvalidException
+     * @throws ContractCannotBeCreatedException
+     * @throws ContractCannotBeSavedException
      */
     public function post(ContractApiDtoInterface $dto): ContractInterface
     {
         $contract = $this->factory->create($dto);
 
         $this->mediator->onCreate($dto, $contract);
+
+        try {
+            if ($dto->hasTypeApiDto()) {
+                $contract->setType($this->typeQueryManager->proxy($dto->getTypeApiDto()));
+            } else {
+                throw new ContractInvalidException('The Dto isn\'t invalid');
+            }
+        } catch (ContractInvalidException $e) {
+            throw $e;
+        } catch (\Exception $e) {
+            throw new ContractCannotBeCreatedException($e->getMessage());
+        }
+
+        try {
+            if ($dto->hasHierarchyApiDto()) {
+                $contract->setHierarchy($this->hierarchyQueryManager->proxy($dto->getHierarchyApiDto()));
+            } else {
+                throw new ContractInvalidException('The Dto isn\'t invalid');
+            }
+        } catch (ContractInvalidException $e) {
+            throw $e;
+        } catch (\Exception $e) {
+            throw new ContractCannotBeCreatedException($e->getMessage());
+        }
 
         $errors = $this->validator->validate($contract);
 
@@ -84,6 +111,7 @@ final class CommandManager implements CommandManagerInterface, RestInterface
      * @return ContractInterface
      * @throws ContractInvalidException
      * @throws ContractNotFoundException
+     * @throws ContractCannotBeSavedException
      */
     public function put(ContractApiDtoInterface $dto): ContractInterface
     {
@@ -94,15 +122,25 @@ final class CommandManager implements CommandManagerInterface, RestInterface
         }
 
         try {
-            /** @var $type TypeInterface */
-            $contract->setType($this->typeQueryManager->proxy($dto->getTypeApiDto()));
+            if ($dto->hasTypeApiDto()) {
+                $contract->setType($this->typeQueryManager->proxy($dto->getTypeApiDto()));
+            } else {
+                throw new ContractInvalidException('The Dto isn\'t invalid');
+            }
+        } catch (ContractInvalidException $e) {
+            throw $e;
         } catch (\Exception $e) {
             throw new ContractCannotBeSavedException($e->getMessage());
         }
 
         try {
-            /** @var $hierarchy HierarchyInterface */
-            $contract->setHierarchy($this->hierarchyQueryManager->proxy($dto->getHierarchyApiDto()));
+            if ($dto->hasHierarchyApiDto()) {
+                $contract->setHierarchy($this->hierarchyQueryManager->proxy($dto->getHierarchyApiDto()));
+            } else {
+                throw new ContractInvalidException('The Dto isn\'t invalid');
+            }
+        } catch (ContractInvalidException $e) {
+            throw $e;
         } catch (\Exception $e) {
             throw new ContractCannotBeSavedException($e->getMessage());
         }
@@ -111,8 +149,7 @@ final class CommandManager implements CommandManagerInterface, RestInterface
             ->setUpdatedAt(new \DateTimeImmutable())
             ->setActive($dto->getActive())
             ->setName($dto->getName())
-            ->setDescription($dto->getDescription())
-        ;
+            ->setDescription($dto->getDescription());
 
         $this->mediator->onUpdate($dto, $contract);
 
