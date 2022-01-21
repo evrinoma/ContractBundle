@@ -141,16 +141,17 @@ class ContractApiDto extends AbstractDto implements ContractApiDtoInterface
     {
         $this->name = $name;
     }
+
 //region SECTION: Dto
     public function toDto(Request $request): DtoInterface
     {
         $class = $request->get(DtoInterface::DTO_CLASS);
 
         if ($class === $this->getClass()) {
-            $id     = $request->get(ModelInterface::ID);
-            $active = $request->get(ModelInterface::ACTIVE);
+            $id          = $request->get(ModelInterface::ID);
+            $active      = $request->get(ModelInterface::ACTIVE);
             $description = $request->get(ModelInterface::DESCRIPTION);
-            $name       = $request->get(ModelInterface::NAME);
+            $name        = $request->get(ModelInterface::NAME);
 
             if ($active) {
                 $this->setActive($active);
