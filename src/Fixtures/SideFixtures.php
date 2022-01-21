@@ -5,6 +5,7 @@ namespace Evrinoma\ContractBundle\Fixtures;
 use Doctrine\Bundle\FixturesBundle\FixtureGroupInterface;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Persistence\ObjectManager;
+use Evrinoma\CodeBundle\Fixtures\BunchFixtures;
 use Evrinoma\ContractBundle\Entity\Contract\BaseContract;
 use Evrinoma\ContractBundle\Entity\Side\BaseSide;
 use Evrinoma\TestUtilsBundle\Fixtures\AbstractFixture;
@@ -21,7 +22,12 @@ class SideFixtures extends AbstractFixture implements FixtureGroupInterface, Dep
 //endregion Fields
 
 //region SECTION: Private
-    protected function create(ObjectManager $manager)
+    /**
+     * @param ObjectManager $manager
+     *
+     * @return $this
+     */
+    protected function create(ObjectManager $manager): self
     {
         $short         = self::getReferenceName();
         $shortContract = ContractFixtures::getReferenceName();

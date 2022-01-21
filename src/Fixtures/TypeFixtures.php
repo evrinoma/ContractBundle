@@ -4,6 +4,7 @@ namespace Evrinoma\ContractBundle\Fixtures;
 
 use Doctrine\Bundle\FixturesBundle\FixtureGroupInterface;
 use Doctrine\Persistence\ObjectManager;
+use Evrinoma\CodeBundle\Fixtures\BunchFixtures;
 use Evrinoma\ContractBundle\Entity\Define\BaseType;
 use Evrinoma\TestUtilsBundle\Fixtures\AbstractFixture;
 
@@ -23,7 +24,12 @@ final class TypeFixtures extends AbstractFixture implements FixtureGroupInterfac
 //endregion Fields
 
 //region SECTION: Private
-    protected function create(ObjectManager $manager)
+    /**
+     * @param ObjectManager $manager
+     *
+     * @return $this
+     */
+    protected function create(ObjectManager $manager): self
     {
         $short = self::getReferenceName();
         $i     = 0;

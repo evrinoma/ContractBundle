@@ -34,7 +34,13 @@ class ContractFixtures extends AbstractFixture implements FixtureGroupInterface,
 //endregion Fields
 
 //region SECTION: Private
-    protected function create(ObjectManager $manager)
+    /**
+     * @param ObjectManager $manager
+     *
+     * @return $this
+     * @throws \Exception
+     */
+    protected function create(ObjectManager $manager): self
     {
         $short          = self::getReferenceName();
         $shortType      = TypeFixtures::getReferenceName();
@@ -87,7 +93,7 @@ class ContractFixtures extends AbstractFixture implements FixtureGroupInterface,
     {
         return [
             TypeFixtures::class,
-            HierarchyFixtures::class
+            HierarchyFixtures::class,
         ];
     }
 }
