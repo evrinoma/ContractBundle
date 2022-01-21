@@ -16,7 +16,7 @@ class HierarchyApiDto extends  AbstractDto implements HierarchyApiDtoInterface
     /**
      * @param string $identity
      */
-    private function setIdentity(string $identity): void
+    protected function setIdentity(string $identity): void
     {
         $this->identity = $identity;
     }
@@ -24,7 +24,7 @@ class HierarchyApiDto extends  AbstractDto implements HierarchyApiDtoInterface
     /**
      * @param int|null $id
      */
-    private function setId(?int $id): void
+    protected function setId(?int $id): void
     {
         $this->id = $id;
     }

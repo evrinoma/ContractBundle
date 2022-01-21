@@ -33,7 +33,7 @@ class SideApiDto extends AbstractDto implements SideApiDtoInterface
     /**
      * @param string $active
      */
-    private function setActive(string $active): void
+    protected function setActive(string $active): void
     {
         $this->active = $active;
     }
@@ -41,7 +41,7 @@ class SideApiDto extends AbstractDto implements SideApiDtoInterface
     /**
      * @param int|null $id
      */
-    private function setId(?int $id): void
+    protected function setId(?int $id): void
     {
         $this->id = $id;
     }
