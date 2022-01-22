@@ -7,9 +7,13 @@ use Evrinoma\ContractBundle\Tests\Functional\Action\Type\BaseType;
 use Evrinoma\ContractBundle\Tests\Functional\Action\Hierarchy\BaseHierarchy;
 use Evrinoma\ContractBundle\Tests\Functional\Helper\BaseContractTestTrait;
 use Evrinoma\ContractBundle\Tests\Functional\ValueObject\Contract\Description;
+use Evrinoma\ContractBundle\Tests\Functional\ValueObject\Type\Id as TypeId;
+use Evrinoma\ContractBundle\Tests\Functional\ValueObject\Type\Identity as TypeIdentity;
 use Evrinoma\ContractBundle\Tests\Functional\ValueObject\Contract\Id;
 use Evrinoma\ContractBundle\Tests\Functional\ValueObject\Contract\Name;
 use Evrinoma\TestUtilsBundle\Action\AbstractServiceTest;
+use Evrinoma\UtilsBundle\Model\ActiveModel;
+use PHPUnit\Framework\Assert;
 
 class BaseContract extends AbstractServiceTest implements BaseContractTestInterface
 {
@@ -28,9 +32,9 @@ class BaseContract extends AbstractServiceTest implements BaseContractTestInterf
     {
         $this->postWrong();
         $this->testResponseStatusUnprocessable();
-        $this->post(static::getDefault(["description" => "",]));
+        $this->post(static::getDefault(["description" => Description::empty(),]));
         $this->testResponseStatusUnprocessable();
-        $this->post(static::getDefault(["name" => "",]));
+        $this->post(static::getDefault(["name" => Name::empty(),]));
         $this->testResponseStatusUnprocessable();
         $this->post(static::getDefault(["type" => [],]));
         $this->testResponseStatusUnprocessable();
@@ -56,22 +60,71 @@ class BaseContract extends AbstractServiceTest implements BaseContractTestInterf
 
     public function actionPutUnprocessable(): void
     {
-        $query = static::getDefault(['id' => Id::empty()]);
-
-        $this->put($query);
+        $this->put(static::getDefault(['id' => Id::empty()]));
         $this->testResponseStatusUnprocessable();
-
-        $this->createContract();
-
-        $query = static::getDefault(['identity' => Identity::empty()]);
-
-        $this->put($query);
+        $this->put(static::getDefault(["description" => Description::empty(),]));
+        $this->testResponseStatusUnprocessable();
+        $this->put(static::getDefault(["name" => Name::empty(),]));
+        $this->testResponseStatusUnprocessable();
+        $this->put(static::getDefault(["type" => [],]));
+        $this->testResponseStatusUnprocessable();
+        $this->put(static::getDefault(["hierarchy" => [],]));
         $this->testResponseStatusUnprocessable();
     }
 
     public function actionCriteria(): void
     {
+        $this->createContract();
+        $this->testResponseStatusCreated();
 
+        $query    = static::getDefault(['id' => Id::empty(), 'name' => Name::value()]);
+        $response = $this->criteria($query);
+
+        Assert::assertArrayHasKey('data', $response);
+        Assert::assertCount(1, $response['data']);
+
+        $query    = static::getDefault(["type" => [], "hierarchy" => [], 'id' => Id::empty(), 'name' => Name::valueOwn(), 'description' => Description::valueOwn()]);
+        $response = $this->criteria($query);
+
+        Assert::assertArrayHasKey('data', $response);
+        Assert::assertCount(36, $response['data']);
+
+        $query    = static::getDefault([
+            "type"        => [],
+            "hierarchy"   => [],
+            'id'          => Id::empty(),
+            'name'        => Name::valueOwn(),
+            'description' => Description::valueOwn(),
+        ]);
+        $response = $this->criteria($query);
+
+        Assert::assertArrayHasKey('data', $response);
+        Assert::assertCount(36, $response['data']);
+
+        $query    = static::getDefault([
+                "type"        => self::merge(BaseType::defaultData(), ['identity' => TypeIdentity::empty()]),
+                "hierarchy"   => self::merge(BaseHierarchy::defaultData(), ['identity' => TypeIdentity::empty()]),
+                'id'          => Id::empty(),
+                'name'        => Name::valueOwn(),
+                'description' => Description::valueOwn(),
+            ]
+        );
+        $response = $this->criteria($query);
+
+        Assert::assertArrayHasKey('data', $response);
+        Assert::assertCount(1, $response['data']);
+        $query    = static::getDefault([
+                "type"        => self::merge(BaseType::defaultData(), ['id' => TypeId::empty()]),
+                "hierarchy"   => self::merge(BaseHierarchy::defaultData(), ['id' => TypeId::empty()]),
+                'id'          => Id::empty(),
+                'name'        => Name::valueOwn(),
+                'description' => Description::valueOwn(),
+            ]
+        );
+        $response = $this->criteria($query);
+
+        Assert::assertArrayHasKey('data', $response);
+        Assert::assertCount(1, $response['data']);
     }
 
     public function actionCriteriaNotFound(): void
@@ -96,22 +149,42 @@ class BaseContract extends AbstractServiceTest implements BaseContractTestInterf
 
     public function actionPutNotFound(): void
     {
+        $this->createContract();
+        $this->testResponseStatusCreated();
 
+        $query    = static::getDefault(['id' => Id::empty(), 'name' => Name::value()]);
+        $response = $this->criteria($query);
+
+        Assert::assertArrayHasKey('data', $response);
+        Assert::assertCount(1, $response['data']);
+
+        $id = $response['data'][0]['id'];
+
+        $this->delete($id);
+        $this->testResponseStatusAccepted();
+
+        $response = $this->get($id);
+        $this->testResponseStatusOK();
+        Assert::assertArrayHasKey('data', $response);
+        Assert::assertEquals($response['data']['active'], ActiveModel::DELETED);
     }
 
     public function actionDeleteNotFound(): void
     {
-
+        $this->delete(Id::wrong());
+        $this->testResponseStatusNotFound();
     }
 
     public function actionDeleteUnprocessable(): void
     {
-
+        $this->delete(Id::empty());
+        $this->testResponseStatusUnprocessable();
     }
 
     public function actionGetNotFound(): void
     {
-
+        $this->get(Id::wrong());
+        $this->testResponseStatusNotFound();
     }
 
     public static function defaultData(): array
@@ -123,6 +196,7 @@ class BaseContract extends AbstractServiceTest implements BaseContractTestInterf
             "id"          => Id::value(),
             "name"        => Name::value(),
             "description" => Description::value(),
+            "active"      => ActiveModel::ACTIVE,
         ];
     }
 //endregion Public

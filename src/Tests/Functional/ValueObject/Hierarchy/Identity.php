@@ -7,7 +7,7 @@ use Evrinoma\TestUtilsBundle\ValueObject\Common\AbstractIdentity;
 class Identity extends AbstractIdentity
 {
 //region SECTION: Fields
-    protected static string $value = "contract_other";
+    protected static string $value = "contract";
 //endregion Fields
 
 //region SECTION: Public
