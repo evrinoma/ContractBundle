@@ -7,6 +7,7 @@ use Evrinoma\ContractBundle\Tests\Functional\Action\Type\BaseType;
 use Evrinoma\ContractBundle\Tests\Functional\Action\Hierarchy\BaseHierarchy;
 use Evrinoma\ContractBundle\Tests\Functional\Helper\BaseContractTestTrait;
 use Evrinoma\ContractBundle\Tests\Functional\ValueObject\Contract\Description;
+use Evrinoma\ContractBundle\Tests\Functional\ValueObject\Contract\Number;
 use Evrinoma\ContractBundle\Tests\Functional\ValueObject\Type\Id as TypeId;
 use Evrinoma\ContractBundle\Tests\Functional\ValueObject\Type\Identity as TypeIdentity;
 use Evrinoma\ContractBundle\Tests\Functional\ValueObject\Contract\Id;
@@ -83,7 +84,7 @@ class BaseContract extends AbstractServiceTest implements BaseContractTestInterf
         Assert::assertArrayHasKey('data', $response);
         Assert::assertCount(1, $response['data']);
 
-        $query    = static::getDefault(["type" => [], "hierarchy" => [], 'id' => Id::empty(), 'name' => Name::valueOwn(), 'description' => Description::valueOwn()]);
+        $query    = static::getDefault(["type" => [], "hierarchy" => [], 'id' => Id::empty(), 'name' => Name::valueOwn(), 'description' => Description::valueOwn(), 'number' => Number::empty(),]);
         $response = $this->criteria($query);
 
         Assert::assertArrayHasKey('data', $response);
@@ -95,6 +96,7 @@ class BaseContract extends AbstractServiceTest implements BaseContractTestInterf
             'id'          => Id::empty(),
             'name'        => Name::valueOwn(),
             'description' => Description::valueOwn(),
+            'number'      => Number::empty(),
         ]);
         $response = $this->criteria($query);
 
@@ -107,6 +109,7 @@ class BaseContract extends AbstractServiceTest implements BaseContractTestInterf
                 'id'          => Id::empty(),
                 'name'        => Name::valueOwn(),
                 'description' => Description::valueOwn(),
+                'number'      => Number::empty(),
             ]
         );
         $response = $this->criteria($query);
@@ -119,6 +122,7 @@ class BaseContract extends AbstractServiceTest implements BaseContractTestInterf
                 'id'          => Id::empty(),
                 'name'        => Name::valueOwn(),
                 'description' => Description::valueOwn(),
+                'number'      => Number::empty(),
             ]
         );
         $response = $this->criteria($query);
@@ -245,6 +249,7 @@ class BaseContract extends AbstractServiceTest implements BaseContractTestInterf
             "hierarchy"   => BaseHierarchy::defaultData(),
             "id"          => Id::value(),
             "name"        => Name::value(),
+            "number"      => Number::value(),
             "description" => Description::value(),
             "active"      => ActiveModel::ACTIVE,
         ];
