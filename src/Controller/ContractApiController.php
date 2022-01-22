@@ -277,11 +277,11 @@ final class ContractApiController extends AbstractApiController implements ApiCo
      *         name="type",
      *         in="query",
      *         description="Type Identity",
-     *         OA\Schema(
+     *         @OA\Schema(
      *              type="array",
-     *              OA\Items(
+     *              @OA\Items(
      *                  type="string",
-     *                  ref=Model(type=Evrinoma\CodeBundle\Form\Rest\TypeChoiceType::class, options={"data":"identity"})
+     *                  ref=@Model(type=Evrinoma\CodeBundle\Form\Rest\TypeChoiceType::class, options={"data":"identity"})
      *              ),
      *          ),
      *         style="form"
@@ -290,11 +290,11 @@ final class ContractApiController extends AbstractApiController implements ApiCo
      *         name="hierarchy",
      *         in="query",
      *         description="Hierarchy Identity",
-     *         OA\Schema(
+     *         @OA\Schema(
      *              type="array",
-     *              OA\Items(
+     *              @OA\Items(
      *                  type="string",
-     *                  ref=Model(type=Evrinoma\CodeBundle\Form\Rest\HierarchyChoiceType::class, options={"data":"identity"})
+     *                  ref=@Model(type=Evrinoma\CodeBundle\Form\Rest\HierarchyChoiceType::class, options={"data":"identity"})
      *              ),
      *          ),
      *         style="form"
