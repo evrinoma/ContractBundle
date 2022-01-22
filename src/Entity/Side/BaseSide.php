@@ -14,7 +14,6 @@ use Evrinoma\UtilsBundle\Entity\IdentityTrait;
  * @ORM\Table(name="e_contract_side")
  * @ORM\Entity()
  */
-class BaseSide extends AbstractSide implements IdentityInterface
+class BaseSide extends AbstractSide
 {
-    use IdentityTrait;
 }

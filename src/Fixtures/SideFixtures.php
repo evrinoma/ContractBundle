@@ -39,7 +39,6 @@ class SideFixtures extends AbstractFixture implements FixtureGroupInterface, Dep
             $reference = $manager->getReference(BaseContract::class, $type->getId());
             foreach (static::$data['left'] as $value) {
                 $entity = new BaseSide();
-                $entity->setIdentity($value);
                 $entity->setLeft($reference);
                 $manager->persist($entity);
                 $this->addReference($short.$i, $entity);
@@ -48,7 +47,6 @@ class SideFixtures extends AbstractFixture implements FixtureGroupInterface, Dep
 
             foreach (static::$data['right'] as $value) {
                 $entity = new BaseSide();
-                $entity->setIdentity($value);
                 $entity->setRight($reference);
                 $manager->persist($entity);
                 $this->addReference($short.$i, $entity);

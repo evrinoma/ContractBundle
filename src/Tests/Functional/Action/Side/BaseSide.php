@@ -3,6 +3,7 @@
 namespace Evrinoma\ContractBundle\Tests\Functional\Action\Side;
 
 use Evrinoma\ContractBundle\Dto\SideApiDto;
+use Evrinoma\ContractBundle\Tests\Functional\Action\Contract\BaseContract;
 use Evrinoma\ContractBundle\Tests\Functional\Helper\BaseSideTestTrait;
 use Evrinoma\TestUtilsBundle\Action\AbstractServiceTest;
 
@@ -89,6 +90,8 @@ class BaseSide extends AbstractServiceTest implements BaseSideTestInterface
     {
         return [
             "class" => static::getDtoClass(),
+            "left"  => [BaseContract::defaultData(),],
+            "right" => [BaseContract::defaultData(),],
         ];
     }
 //endregion Public
