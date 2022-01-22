@@ -37,5 +37,16 @@ interface ContractInterface extends ActiveInterface, CreateUpdateAtInterface, Id
      */
     public function setHierarchy(HierarchyInterface $hierarchy): ContractInterface;
 
+    /**
+     * @param string $number
+     *
+     * @return ContractInterface
+     */
+    public function setNumber(string $number): ContractInterface;
+
+    /**
+     * @return string
+     */
+    public function getNumber(): string;
 //endregion Getters/Setters
 }

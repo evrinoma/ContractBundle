@@ -20,7 +20,7 @@ use Evrinoma\UtilsBundle\Entity\NameTrait;
  * Class AbstractType
  *
  * @ORM\MappedSuperclass
- * @ORM\Table(uniqueConstraints={@ORM\UniqueConstraint(name="idx_contract", columns={"type_id", "hierarchy_id", "name", "description"})})
+ * @ORM\Table(uniqueConstraints={@ORM\UniqueConstraint(name="idx_contract", columns={"type_id", "hierarchy_id", "name", "description", "number"})})
  */
 abstract class AbstractContract implements ContractInterface
 {
@@ -55,6 +55,12 @@ abstract class AbstractContract implements ContractInterface
      * @ORM\JoinColumn(name="hierarchy_id", referencedColumnName="id", nullable=false)
      */
     protected HierarchyInterface $hierarchy;
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="number", type="string", length=255, nullable=false)
+     */
+    protected string $number;
 //endregion Fields
 
 //region SECTION: Constructor
@@ -66,6 +72,26 @@ abstract class AbstractContract implements ContractInterface
 //endregion Constructor
 
 //region SECTION: Getters/Setters
+    /**
+     * @return string
+     */
+    public function getNumber(): string
+    {
+        return $this->number;
+    }
+
+    /**
+     * @param string $number
+     *
+     * @return ContractInterface
+     */
+    public function setNumber(string $number): ContractInterface
+    {
+        $this->number = $number;
+
+        return $this;
+    }
+
     /**
      * @return ArrayCollection|LeftSideInterface[]
      */

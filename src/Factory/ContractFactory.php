@@ -20,6 +20,7 @@ final class ContractFactory implements ContractFactoryInterface
 
         $contract
             ->setName($dto->getName())
+            ->setNumber($dto->getNumber())
             ->setDescription($dto->getDescription())
             ->setCreatedAt(new \DateTimeImmutable())
             ->setActiveToActive();

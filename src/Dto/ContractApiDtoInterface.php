@@ -29,4 +29,14 @@ interface ContractApiDtoInterface extends DtoInterface, IdInterface, NameInterfa
      * @return TypeApiDto
      */
     public function getTypeApiDto(): TypeApiDto;
+
+    /**
+     * @return bool
+     */
+    public function hasNumber(): bool;
+
+    /**
+     * @return string
+     */
+    public function getNumber(): string;
 }

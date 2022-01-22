@@ -10,3 +10,6 @@ services:
 
   evrinoma.contract.constraint.contract.name:
     class: Evrinoma\ContractBundle\Constraint\Contract\Name
+
+  evrinoma.contract.constraint.contract.number:
+    class: Evrinoma\ContractBundle\Constraint\Contract\Number

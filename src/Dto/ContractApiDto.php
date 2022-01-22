@@ -29,6 +29,27 @@ class ContractApiDto extends AbstractDto implements ContractApiDtoInterface
     private ?HierarchyApiDto $hierarchyApiDto = null;
 
     /**
+     * @var string
+     */
+    private string $number = '';
+
+    /**
+     * @return bool
+     */
+    public function hasNumber(): bool
+    {
+        return $this->number !== '';
+    }
+
+    /**
+     * @return string
+     */
+    public function getNumber(): string
+    {
+        return $this->number;
+    }
+
+    /**
      * @return TypeApiDto
      */
     public function getTypeApiDto(): TypeApiDto
@@ -127,6 +148,14 @@ class ContractApiDto extends AbstractDto implements ContractApiDtoInterface
     }
 
     /**
+     * @param string $number
+     */
+    protected function setNumber(string $number): void
+    {
+        $this->number = $number;
+    }
+
+    /**
      * @param string $description
      */
     protected function setDescription(string $description): void
@@ -151,7 +180,8 @@ class ContractApiDto extends AbstractDto implements ContractApiDtoInterface
             $id          = $request->get(ModelInterface::ID);
             $active      = $request->get(ModelInterface::ACTIVE);
             $description = $request->get(ModelInterface::DESCRIPTION);
-            $name        = $request->get(ModelInterface::NAME);
+            $name        = $request->get(ModelInterface::NAME, "");
+            $number      = $request->get(ModelInterface::NUMBER);
 
             if ($active) {
                 $this->setActive($active);
@@ -159,6 +189,10 @@ class ContractApiDto extends AbstractDto implements ContractApiDtoInterface
 
             if ($id) {
                 $this->setId($id);
+            }
+
+            if ($number != "") {
+                $this->setNumber($number);
             }
 
             if ($name) {

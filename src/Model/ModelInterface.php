@@ -10,5 +10,6 @@ interface ModelInterface
     public const IDENTITY    = 'identity';
     public const NAME        = 'name';
     public const DESCRIPTION = 'description';
+    public const NUMBER      = 'number';
 //endregion Fields
 }

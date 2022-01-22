@@ -69,6 +69,12 @@ class QueryMediator extends AbstractQueryMediator implements QueryMediatorInterf
                 ->andWhere($alias.'.active = :active')
                 ->setParameter('active', $dto->getActive());
         }
+
+        if ($dto->hasNumber()) {
+            $builder
+                ->andWhere($alias.'.number like :number')
+                ->setParameter('number', '%'.$dto->getNumber().'%');
+        }
     }
 //endregion Public
 }
