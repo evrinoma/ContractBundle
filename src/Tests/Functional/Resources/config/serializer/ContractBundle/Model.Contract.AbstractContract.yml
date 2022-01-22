@@ -13,5 +13,12 @@ Evrinoma\ContractBundle\Model\Contract\AbstractContract:
     active:
       groups: [ api_get_contract, api_post_contract, api_put_contract ]
       expose: true
-
+    type:
+      type: Evrinoma\ContractBundle\Model\Define\AbstractType
+      groups: [ api_get_contract, api_post_contract, api_put_contract ]
+      expose: true
+    hierarchy:
+      type: Evrinoma\ContractBundle\Model\Define\AbstractHierarchy
+      groups: [ api_get_contract, api_post_contract, api_put_contract ]
+      expose: true
 
