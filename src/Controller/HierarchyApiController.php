@@ -235,7 +235,7 @@ final class HierarchyApiController extends AbstractApiController implements ApiC
      *         required=true,
      *         @OA\Schema(
      *           type="string",
-     *           default="Evrinoma\ContractBundle\Dto\TypeApiDto",
+     *           default="Evrinoma\ContractBundle\Dto\HierarchyApiDto",
      *           readOnly=true
      *         )
      *     ),

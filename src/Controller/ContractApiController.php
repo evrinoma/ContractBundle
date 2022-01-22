@@ -84,6 +84,8 @@ final class ContractApiController extends AbstractApiController implements ApiCo
      *               example={
      *                  "class":"Evrinoma\ContractBundle\Dto\ContractApiDto",
      *                  "name":"Договор №154\/18-СП от 23.10.2018г.",
+     *                  "description":"Договор генерального подряда бла",
+     *                  "number":"0",
      *                  "type": {
      *                            "id":"2"
      *                       },
@@ -140,6 +142,8 @@ final class ContractApiController extends AbstractApiController implements ApiCo
      *                  "id":"3",
      *                  "active": "b",
      *                  "name":"Договор генерального подряда",
+     *                  "description":"Договор генерального подряда бла",
+     *                  "number":"0",
      *                  "type": {
      *                            "id":"2"
      *                   },
@@ -270,27 +274,27 @@ final class ContractApiController extends AbstractApiController implements ApiCo
      *         )
      *     ),
      *     @OA\Parameter(
-     *         name="type[identity]",
+     *         name="type",
      *         in="query",
      *         description="Type Identity",
-     *         @OA\Schema(
+     *         OA\Schema(
      *              type="array",
-     *              @OA\Items(
+     *              OA\Items(
      *                  type="string",
-     *                  ref=@Model(type=Evrinoma\CodeBundle\Form\Rest\TypeChoiceType::class, options={"data":"identity"})
+     *                  ref=Model(type=Evrinoma\CodeBundle\Form\Rest\TypeChoiceType::class, options={"data":"identity"})
      *              ),
      *          ),
      *         style="form"
      *     ),
      *     @OA\Parameter(
-     *         name="hierarchy[identity]",
+     *         name="hierarchy",
      *         in="query",
      *         description="Hierarchy Identity",
-     *         @OA\Schema(
+     *         OA\Schema(
      *              type="array",
-     *              @OA\Items(
+     *              OA\Items(
      *                  type="string",
-     *                  ref=@Model(type=Evrinoma\CodeBundle\Form\Rest\HierarchyChoiceType::class, options={"data":"identity"})
+     *                  ref=Model(type=Evrinoma\CodeBundle\Form\Rest\HierarchyChoiceType::class, options={"data":"identity"})
      *              ),
      *          ),
      *         style="form"

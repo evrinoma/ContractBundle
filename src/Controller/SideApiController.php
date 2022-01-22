@@ -88,18 +88,17 @@ final class SideApiController extends AbstractApiController implements ApiContro
      *             @OA\Schema(
      *               example={
      *                  "class":"Evrinoma\ContractBundle\Dto\SideApiDto",
-     *                  "name":"Договор №154/18-СП от 23.10.2018г.",
-     *                  "type": {
+     *                  "left": {
      *                            "id":"2"
      *                       },
-     *                  "hierarchy": {
+     *                  "right": {
      *                            "id":"1"
      *                       }
      *                  },
      *               type="object",
      *               @OA\Property(property="class",type="string",default="Evrinoma\ContractBundle\Dto\SideApiDto"),
-     *               @OA\Property(property="name",type="string"),
-     *               @OA\Property(property="type",type="object"),
+     *               @OA\Property(property="left",type="object"),
+     *               @OA\Property(property="right",type="object"),
      *               @OA\Property(property="hierarchy",type="object")
      *            )
      *         )
