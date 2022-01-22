@@ -58,7 +58,9 @@ class ContractRepository extends ServiceEntityRepository implements ContractRepo
      */
     public function remove(ContractInterface $contract): bool
     {
-        $contract->setActiveToDelete();
+        $contract
+            ->setUpdatedAt(new \DateTimeImmutable())
+            ->setActiveToDelete();
 
         return true;
     }
