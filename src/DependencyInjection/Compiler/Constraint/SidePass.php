@@ -9,7 +9,7 @@ use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 
 class SidePass extends AbstractConstraint implements CompilerPassInterface
 {
-    public const CONTRACT_SIDE_CONSTRAINT = 'evrinoma.side.constraint.side';
+    public const CONTRACT_SIDE_CONSTRAINT = 'evrinoma.contract.constraint.side';
 
     protected static string $alias = self::CONTRACT_SIDE_CONSTRAINT;
     protected static string $class = SideValidator::class;
