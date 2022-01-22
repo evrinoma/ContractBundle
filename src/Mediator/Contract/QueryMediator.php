@@ -31,8 +31,8 @@ class QueryMediator extends AbstractQueryMediator implements QueryMediatorInterf
                     ->setParameter('idType', $dto->getTypeApiDto()->getId());
             }
             if ($dto->getTypeApiDto()->hasIdentity()) {
-                $builder->andWhere($aliasType.'.identity like :identityType')
-                    ->setParameter('identityType', '%'.$dto->getTypeApiDto()->getIdentity().'%');
+                $builder->andWhere($aliasType.'.identity = :identityType')
+                    ->setParameter('identityType', $dto->getTypeApiDto()->getIdentity());
             }
         }
 
@@ -47,8 +47,8 @@ class QueryMediator extends AbstractQueryMediator implements QueryMediatorInterf
                     ->setParameter('idHierarchy', $dto->getHierarchyApiDto()->getId());
             }
             if ($dto->getHierarchyApiDto()->hasIdentity()) {
-                $builder->andWhere($aliasHierarchy.'.identity like :identityHierarchy')
-                    ->setParameter('identityHierarchy', '%'.$dto->getHierarchyApiDto()->getIdentity().'%');
+                $builder->andWhere($aliasHierarchy.'.identity = :identityHierarchy')
+                    ->setParameter('identityHierarchy', $dto->getHierarchyApiDto()->getIdentity());
             }
         }
 
