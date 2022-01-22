@@ -67,7 +67,7 @@ class BaseHierarchy extends AbstractServiceTest implements BaseHierarchyTestInte
         $response = $this->criteria($query);
 
         Assert::assertArrayHasKey('data', $response);
-        Assert::assertCount(2, $response['data']);
+        Assert::assertCount(1, $response['data']);
     }
 
     public function actionCriteriaNotFound(): void

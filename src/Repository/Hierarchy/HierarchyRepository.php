@@ -58,8 +58,8 @@ class HierarchyRepository extends ServiceEntityRepository implements HierarchyRe
 
         if ($dto->hasIdentity()) {
             $builder
-                ->andWhere('hierarchy.identity like :identity')
-                ->setParameter('identity', '%'.$dto->getIdentity().'%');
+                ->andWhere('hierarchy.identity = :identity')
+                ->setParameter('identity', $dto->getIdentity());
         }
 
         $hierarchy = $builder->getQuery()->getResult();
