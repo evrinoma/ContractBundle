@@ -129,22 +129,72 @@ class BaseContract extends AbstractServiceTest implements BaseContractTestInterf
 
     public function actionCriteriaNotFound(): void
     {
+        $query    = static::getDefault(['id' => Id::empty(), 'name' => Name::wrong()]);
+        $response = $this->criteria($query);
 
+        Assert::assertArrayHasKey('data', $response);
+        $this->testResponseStatusNotFound();
     }
 
     public function actionDelete(): void
     {
+        $this->createContract();
+        $this->testResponseStatusCreated();
 
+        $query    = static::getDefault(['id' => Id::empty(), 'name' => Name::value()]);
+        $response = $this->criteria($query);
+
+        Assert::assertArrayHasKey('data', $response);
+        Assert::assertCount(1, $response['data']);
+
+        $id = $response['data'][0]['id'];
+
+        $this->delete($id);
+        $this->testResponseStatusAccepted();
+
+        $response = $this->get($id);
+        $this->testResponseStatusOK();
+
+        Assert::assertArrayHasKey('data', $response);
+        Assert::assertEquals($response['data']['active'], ActiveModel::DELETED);
     }
 
     public function actionGet(): void
     {
+        $created = $this->createContract();
+        $this->testResponseStatusCreated();
 
+        $criteria = $this->get($created['data']['id']);
+        Assert::assertArrayHasKey('data', $criteria);
+
+        $find = $this->get($criteria['data']['id']);
+        Assert::assertTrue($created['data'] == $find['data']);
     }
 
     public function actionPut(): void
     {
+        $created = $this->createContract();
+        $this->testResponseStatusCreated();
 
+        $id = $created['data']['id'];
+
+        $query   = static::getDefault([
+                "type"        => ['id' => 2],
+                "hierarchy"   => ['id' => 2],
+                'id'          => $id,
+                'name'        => Name::value(),
+                'description' => Description::value(),
+            ]
+        );
+        $updated = $this->put($query);
+        $this->testResponseStatusOK();
+        Assert::assertArrayHasKey('data', $updated);
+
+        $criteria = $this->get($id);
+        $this->testResponseStatusOK();
+        Assert::assertArrayHasKey('data', $criteria);
+
+        Assert::assertTrue($criteria['data'] == $updated['data']);
     }
 
     public function actionPutNotFound(): void
