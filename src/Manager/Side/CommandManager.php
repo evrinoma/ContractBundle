@@ -82,8 +82,6 @@ final class CommandManager implements CommandManagerInterface, RestInterface
             throw $e;
         }
 
-        $side->setIdentity($dto->getIdentity());
-
         $this->mediator->onUpdate($dto, $side);
 
         $errors = $this->validator->validate($side);

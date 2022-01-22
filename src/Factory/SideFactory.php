@@ -16,11 +16,7 @@ final class SideFactory implements SideFactoryInterface
     public function create(SideApiDtoInterface $dto): SideInterface
     {
         /** @var BaseSide $side */
-        $side = new self::$entityClass;
-
-        $side->setIdentity(trim($dto->getIdentity()));
-
-        return $side;
+        return new self::$entityClass;
     }
 //endregion Public
 }
