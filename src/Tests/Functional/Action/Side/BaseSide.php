@@ -26,7 +26,6 @@ class BaseSide extends AbstractServiceTest implements BaseSideTestInterface
         $this->testResponseStatusUnprocessable();
     }
 
-//testCriteria testGet testDelete testPutNotFound testPut
     public function actionPost(): void
     {
     }
@@ -90,8 +89,8 @@ class BaseSide extends AbstractServiceTest implements BaseSideTestInterface
     {
         return [
             "class" => static::getDtoClass(),
-            "left"  => [BaseContract::defaultData(),],
-            "right" => [BaseContract::defaultData(),],
+            "left"  => [],
+            "right" => [],
         ];
     }
 //endregion Public
