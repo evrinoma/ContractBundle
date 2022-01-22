@@ -4,7 +4,6 @@ namespace Evrinoma\ContractBundle\Fixtures;
 
 use Doctrine\Bundle\FixturesBundle\FixtureGroupInterface;
 use Doctrine\Persistence\ObjectManager;
-use Evrinoma\CodeBundle\Fixtures\BunchFixtures;
 use Evrinoma\ContractBundle\Entity\Define\BaseHierarchy;
 use Evrinoma\TestUtilsBundle\Fixtures\AbstractFixture;
 

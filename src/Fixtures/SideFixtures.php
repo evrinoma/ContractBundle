@@ -5,7 +5,6 @@ namespace Evrinoma\ContractBundle\Fixtures;
 use Doctrine\Bundle\FixturesBundle\FixtureGroupInterface;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Persistence\ObjectManager;
-use Evrinoma\CodeBundle\Fixtures\BunchFixtures;
 use Evrinoma\ContractBundle\Entity\Contract\BaseContract;
 use Evrinoma\ContractBundle\Entity\Side\BaseSide;
 use Evrinoma\TestUtilsBundle\Fixtures\AbstractFixture;
