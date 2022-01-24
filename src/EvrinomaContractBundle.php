@@ -3,10 +3,10 @@
 
 namespace Evrinoma\ContractBundle;
 
-use Evrinoma\ContractBundle\DependencyInjection\Compiler\Constraint\ContractPass;
-use Evrinoma\ContractBundle\DependencyInjection\Compiler\Constraint\HierarchyPass;
-use Evrinoma\ContractBundle\DependencyInjection\Compiler\Constraint\SidePass;
-use Evrinoma\ContractBundle\DependencyInjection\Compiler\Constraint\TypePass;
+use Evrinoma\ContractBundle\DependencyInjection\Compiler\Constraint\Property\ContractPass;
+use Evrinoma\ContractBundle\DependencyInjection\Compiler\Constraint\Property\HierarchyPass;
+use Evrinoma\ContractBundle\DependencyInjection\Compiler\Constraint\Property\SidePass;
+use Evrinoma\ContractBundle\DependencyInjection\Compiler\Constraint\Property\TypePass;
 use Evrinoma\ContractBundle\DependencyInjection\Compiler\DecoratorPass;
 use Evrinoma\ContractBundle\DependencyInjection\Compiler\MapEntityPass;
 use Evrinoma\ContractBundle\DependencyInjection\EvrinomaContractExtension;
