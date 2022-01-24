@@ -21,14 +21,14 @@ interface ContractApiDtoInterface extends DtoInterface, IdInterface, NameInterfa
     public function hasHierarchyApiDto(): bool;
 
     /**
-     * @return HierarchyApiDto
+     * @return HierarchyApiDtoInterface
      */
-    public function getHierarchyApiDto(): HierarchyApiDto;
+    public function getHierarchyApiDto(): HierarchyApiDtoInterface;
 
     /**
-     * @return TypeApiDto
+     * @return TypeApiDtoInterface
      */
-    public function getTypeApiDto(): TypeApiDto;
+    public function getTypeApiDto(): TypeApiDtoInterface;
 
     /**
      * @return bool

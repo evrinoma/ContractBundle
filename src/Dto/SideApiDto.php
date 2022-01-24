@@ -13,29 +13,34 @@ use Symfony\Component\HttpFoundation\Request;
 
 class SideApiDto extends AbstractDto implements SideApiDtoInterface
 {
-    use IdTrait, IdentityTrait;
+    use IdTrait;
 
-//region SECTION: Fields
     /**
-     * @Dto(class="Evrinoma\ContractBundle\Dto\TypeApiDto", generator="genRequestTypApiDto")
-     * @var TypeApiDto|null
+     * @Dto(class="Evrinoma\ContractBundle\Dto\ContractApiDto", generator="genRequestRightContractApiDto")
+     * @var ContractApiDto|null
      */
-    private ?TypeApiDto $typeApiDto = null;
+    private ?ContractApiDto $left = null;
     /**
-     * @Dto(class="Evrinoma\ContractBundle\Dto\HierarchyApiDto", generator="genRequestHierarchyApiDto")
-     * @var HierarchyApiDto|null
+     * @Dto(class="Evrinoma\ContractBundle\Dto\ContractApiDto", generator="genRequestLeftContractApiDto")
+     * @var ContractApiDto|null
      */
-    private ?HierarchyApiDto $hierarchyApiDto = null;
-//endregion Fields
-
-
+    private ?ContractApiDto $right = null;
 //region SECTION: Private
+
     /**
-     * @param string $active
+     * @return bool
      */
-    protected function setActive(string $active): void
+    public function hasLeft(): bool
     {
-        $this->active = $active;
+        return $this->left !== null;
+    }
+
+    /**
+     * @return bool
+     */
+    public function hasRight(): bool
+    {
+        return $this->right !== null;
     }
 
     /**
@@ -45,21 +50,70 @@ class SideApiDto extends AbstractDto implements SideApiDtoInterface
     {
         $this->id = $id;
     }
+
+    /**
+     * @param ContractApiDtoInterface $left
+     */
+    public function setLeft(ContractApiDtoInterface $left): void
+    {
+        $this->left = $left;
+    }
+
+    /**
+     * @param ContractApiDtoInterface $right
+     */
+    public function setRight(ContractApiDtoInterface $right): void
+    {
+        $this->right = $right;
+    }
+
+    /**
+     * @return \Generator
+     */
+    public function genRequestRightContractApiDto(?Request $request): ?\Generator
+    {
+        if ($request) {
+            $type = $request->get('left');
+            if ($type) {
+                $newRequest                    = $this->getCloneRequest();
+                $type[DtoInterface::DTO_CLASS] = ContractApiDto::class;
+                $newRequest->request->add($type);
+
+                yield $newRequest;
+            }
+        }
+    }
+
+    /**
+     * @return \Generator
+     */
+    public function genRequestLeftContractApiDto(?Request $request): ?\Generator
+    {
+        if ($request) {
+            $type = $request->get('right');
+            if ($type) {
+                $newRequest                    = $this->getCloneRequest();
+                $type[DtoInterface::DTO_CLASS] = ContractApiDto::class;
+                $newRequest->request->add($type);
+
+                yield $newRequest;
+            }
+        }
+    }
 //endregion Private
 
 //region SECTION: Dto
+    /**
+     * @param Request $request
+     *
+     * @return DtoInterface
+     */
     public function toDto(Request $request): DtoInterface
     {
         $class = $request->get(DtoInterface::DTO_CLASS);
 
         if ($class === $this->getClass()) {
-            $id     = $request->get(ModelInterface::ID);
-            $active = $request->get(ModelInterface::ACTIVE);
-
-            if ($active) {
-                $this->setActive($active);
-            }
-
+            $id = $request->get(ModelInterface::ID);
             if ($id) {
                 $this->setId($id);
             }
@@ -67,59 +121,21 @@ class SideApiDto extends AbstractDto implements SideApiDtoInterface
 
         return $this;
     }
-
-    public function hasTypeApiDto(): bool
-    {
-        return $this->typeApiDto !== null;
-    }
-
-    public function getTypeApiDto(): TypeApiDto
-    {
-        return $this->typeApiDto;
-    }
-
-    public function hasHierarchyApiDto(): bool
-    {
-        return $this->hierarchyApiDto !== null;
-    }
-
-    public function getHierarchyApiDto(): HierarchyApiDto
-    {
-        return $this->hierarchyApiDto;
-    }
-
-    /**
-     * @return \Generator
-     */
-    public function genRequestHierarchyApiDto(?Request $request): ?\Generator
-    {
-        if ($request) {
-            $owner = $request->get('hierarchy');
-            if ($owner) {
-                $newRequest                     = $this->getCloneRequest();
-                $owner[DtoInterface::DTO_CLASS] = HierarchyApiDto::class;
-                $newRequest->request->add($owner);
-
-                yield $newRequest;
-            }
-        }
-    }
-
-    /**
-     * @return \Generator
-     */
-    public function genRequestTypApiDto(?Request $request): ?\Generator
-    {
-        if ($request) {
-            $type = $request->get('type');
-            if ($type) {
-                $newRequest                    = $this->getCloneRequest();
-                $type[DtoInterface::DTO_CLASS] = TypeApiDto::class;
-                $newRequest->request->add($type);
-
-                yield $newRequest;
-            }
-        }
-    }
 //endregion SECTION: Dto
+
+    /**
+     * @return ContractApiDtoInterface
+     */
+    public function getLeft(): ContractApiDtoInterface
+    {
+        return $this->left;
+    }
+
+    /**
+     * @return ContractApiDtoInterface
+     */
+    public function getRight(): ContractApiDtoInterface
+    {
+        return $this->right;
+    }
 }

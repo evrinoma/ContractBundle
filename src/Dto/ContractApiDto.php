@@ -50,17 +50,17 @@ class ContractApiDto extends AbstractDto implements ContractApiDtoInterface
     }
 
     /**
-     * @return TypeApiDto
+     * @return TypeApiDtoInterface
      */
-    public function getTypeApiDto(): TypeApiDto
+    public function getTypeApiDto(): TypeApiDtoInterface
     {
         return $this->typeApiDto;
     }
 
     /**
-     * @return HierarchyApiDto
+     * @return HierarchyApiDtoInterface
      */
-    public function getHierarchyApiDto(): HierarchyApiDto
+    public function getHierarchyApiDto(): HierarchyApiDtoInterface
     {
         return $this->hierarchyApiDto;
     }
@@ -116,17 +116,17 @@ class ContractApiDto extends AbstractDto implements ContractApiDtoInterface
     }
 
     /**
-     * @param TypeApiDto $typeApiDto
+     * @param TypeApiDtoInterface $typeApiDto
      */
-    public function setTypeApiDto(TypeApiDto $typeApiDto): void
+    public function setTypeApiDto(TypeApiDtoInterface $typeApiDto): void
     {
         $this->typeApiDto = $typeApiDto;
     }
 
     /**
-     * @param HierarchyApiDto $hierarchyApiDto
+     * @param HierarchyApiDtoInterface $hierarchyApiDto
      */
-    public function setHierarchyApiDto(HierarchyApiDto $hierarchyApiDto): void
+    public function setHierarchyApiDto(HierarchyApiDtoInterface $hierarchyApiDto): void
     {
         $this->hierarchyApiDto = $hierarchyApiDto;
     }
