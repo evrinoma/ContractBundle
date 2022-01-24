@@ -32,7 +32,15 @@ class BaseSide extends AbstractServiceTest implements BaseSideTestInterface
 
     public function actionPostDuplicate(): void
     {
+        $this->createLeftSide();
+        $this->testResponseStatusCreated();
+        $this->createRightSide();
+        $this->testResponseStatusCreated();
 
+        $this->createLeftSide();
+        $this->testResponseStatusCreated();
+        $this->createRightSide();
+        $this->testResponseStatusCreated();
     }
 
     public function actionPutUnprocessable(): void

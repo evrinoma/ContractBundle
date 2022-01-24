@@ -11,5 +11,7 @@ interface ModelInterface
     public const NAME        = 'name';
     public const DESCRIPTION = 'description';
     public const NUMBER      = 'number';
+    public const LEFT        = 'left';
+    public const RIGHT       = 'right';
 //endregion Fields
 }
