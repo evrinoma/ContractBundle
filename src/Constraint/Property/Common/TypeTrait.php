@@ -1,11 +1,11 @@
 <?php
 
-namespace Evrinoma\ContractBundle\Constraint\Common;
+namespace Evrinoma\ContractBundle\Constraint\Property\Common;
 
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Validator\Constraints\NotNull;
 
-trait HierarchyTrait
+trait TypeTrait
 {
     public function getConstraints(): array
     {
@@ -17,6 +17,6 @@ trait HierarchyTrait
 
     public function getPropertyName(): string
     {
-        return 'hierarchy';
+        return 'type';
     }
 }

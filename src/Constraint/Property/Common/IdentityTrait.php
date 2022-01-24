@@ -1,6 +1,6 @@
 <?php
 
-namespace Evrinoma\ContractBundle\Constraint\Common;
+namespace Evrinoma\ContractBundle\Constraint\Property\Common;
 
 use Symfony\Component\Validator\Constraints\NotBlank;
 

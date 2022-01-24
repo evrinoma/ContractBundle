@@ -1,9 +1,9 @@
 <?php
 
 
-namespace Evrinoma\ContractBundle\Constraint\Side;
+namespace Evrinoma\ContractBundle\Constraint\Property\Side;
 
-use Evrinoma\ContractBundle\Constraint\Common\SideTrait;
+use Evrinoma\ContractBundle\Constraint\Property\Common\SideTrait;
 use Evrinoma\UtilsBundle\Constraint\Property\ConstraintInterface;
 
 final class Right implements ConstraintInterface

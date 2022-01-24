@@ -1,22 +1,22 @@
 <?php
 
-namespace Evrinoma\ContractBundle\Constraint\Common;
 
+namespace Evrinoma\ContractBundle\Constraint\Property\Contract;
+
+use Evrinoma\UtilsBundle\Constraint\Property\ConstraintInterface;
 use Symfony\Component\Validator\Constraints\NotBlank;
-use Symfony\Component\Validator\Constraints\NotNull;
 
-trait TypeTrait
+final class Description implements ConstraintInterface
 {
     public function getConstraints(): array
     {
         return [
             new NotBlank(),
-            new NotNull()
         ];
     }
 
     public function getPropertyName(): string
     {
-        return 'type';
+        return 'description';
     }
 }

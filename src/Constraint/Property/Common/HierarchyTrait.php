@@ -1,22 +1,22 @@
 <?php
 
+namespace Evrinoma\ContractBundle\Constraint\Property\Common;
 
-namespace Evrinoma\ContractBundle\Constraint\Contract;
-
-use Evrinoma\UtilsBundle\Constraint\Property\ConstraintInterface;
 use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\Component\Validator\Constraints\NotNull;
 
-final class Description implements ConstraintInterface
+trait HierarchyTrait
 {
     public function getConstraints(): array
     {
         return [
             new NotBlank(),
+            new NotNull()
         ];
     }
 
     public function getPropertyName(): string
     {
-        return 'description';
+        return 'hierarchy';
     }
 }
