@@ -9,6 +9,11 @@ interface RightSideInterface
 {
 //region SECTION: Getters/Setters
     /**
+     * @return bool
+     */
+    public function hasRight(): bool;
+
+    /**
      * @return ContractInterface
      */
     public function getRight(): ContractInterface;

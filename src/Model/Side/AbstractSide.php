@@ -15,13 +15,13 @@ abstract class AbstractSide implements SideInterface
      * @ORM\ManyToOne(targetEntity="Evrinoma\ContractBundle\Model\Contract\ContractInterface")
      * @ORM\JoinColumn(name="left_id", referencedColumnName="id")
      */
-    protected ContractInterface $left;
+    protected ?ContractInterface $left = null;
 
     /**
      * @ORM\ManyToOne(targetEntity="Evrinoma\ContractBundle\Model\Contract\ContractInterface")
      * @ORM\JoinColumn(name="right_id", referencedColumnName="id")
      */
-    protected ContractInterface $right;
+    protected ?ContractInterface $right = null;
 
     /**
      * @return ContractInterface
@@ -44,6 +44,14 @@ abstract class AbstractSide implements SideInterface
     }
 
     /**
+     * @return bool
+     */
+    public function hasRight(): bool
+    {
+        return null !== $this->right;
+    }
+
+    /**
      * @return ContractInterface
      */
     public function getLeft(): ContractInterface
@@ -61,5 +69,13 @@ abstract class AbstractSide implements SideInterface
         $this->left = $left;
 
         return $this;
+    }
+
+    /**
+     * @return bool
+     */
+    public function hasLeft(): bool
+    {
+        return null !== $this->left;
     }
 }

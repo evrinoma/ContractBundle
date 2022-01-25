@@ -9,6 +9,11 @@ interface LeftSideInterface
 {
 //region SECTION: Getters/Setters
     /**
+     * @return bool
+     */
+    public function hasLeft(): bool;
+
+    /**
      * @return ContractInterface
      */
     public function getLeft(): ContractInterface;
