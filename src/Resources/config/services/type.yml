@@ -39,6 +39,7 @@ services:
     class: Evrinoma\ContractBundle\Validator\TypeValidator
     public: true
     arguments:
+      - '@validator'
 
   Evrinoma\ContractBundle\Validator\TypeValidator:
     alias: evrinoma.contract.type.validator

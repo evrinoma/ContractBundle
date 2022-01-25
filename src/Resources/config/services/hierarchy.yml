@@ -39,6 +39,7 @@ services:
     class: Evrinoma\ContractBundle\Validator\HierarchyValidator
     public: true
     arguments:
+      - '@validator'
 
   Evrinoma\ContractBundle\Validator\HierarchyValidator:
     alias: evrinoma.contract.hierarchy.validator
