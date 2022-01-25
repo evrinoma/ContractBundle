@@ -40,6 +40,9 @@ services:
   evrinoma.contract.side.validator:
     class: Evrinoma\ContractBundle\Validator\SideValidator
     public: true
+  #    arguments:
+  #      - '213123'
+  #      - '@validator'
 
   Evrinoma\ContractBundle\Validator\SideValidator:
     alias: evrinoma.contract.side.validator
@@ -66,12 +69,17 @@ services:
   Evrinoma\ContractBundle\Mediator\Side\CommandMediatorInterface:
     alias: evrinoma.contract.side.command.mediator
 
-#  evrinoma.contract.form.rest.side:
-#    class: Evrinoma\ContractBundle\Form\Rest\SideChoiceType
-#    arguments:
-#      - '@evrinoma.contract.side.query.manager'
-#    tags: { - name: form.type }
-#
-#  Evrinoma\ContractBundle\Form\Rest\SideChoiceType:
-#    alias: evrinoma.contract.form.rest.side
-#    public: true
+  #  evrinoma.contract.form.rest.side:
+  #    class: Evrinoma\ContractBundle\Form\Rest\SideChoiceType
+  #    arguments:
+  #      - '@evrinoma.contract.side.query.manager'
+  #    tags: { - name: form.type }
+  #
+  #  Evrinoma\ContractBundle\Form\Rest\SideChoiceType:
+  #    alias: evrinoma.contract.form.rest.side
+  #    public: true
+
+  evrinoma.contract.side.validator.account_company_validator:
+    class: Evrinoma\ContractBundle\Validator\ContainsAlphanumericValidator
+    tags:
+      - { name: validator.constraint_validator }

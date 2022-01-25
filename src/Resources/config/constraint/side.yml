@@ -1,6 +1,4 @@
 services:
-  evrinoma.contract.constraint.side.property.left:
-    class: Evrinoma\ContractBundle\Constraint\Property\Side\Left
+  evrinoma.contract.constraint.complex.side.side:
+    class: Evrinoma\ContractBundle\Constraint\Complex\Side\Side
 
-  evrinoma.contract.constraint.side.property.right:
-    class: Evrinoma\ContractBundle\Constraint\Property\Side\Right

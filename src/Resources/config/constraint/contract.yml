@@ -1,15 +1,15 @@
 services:
-  evrinoma.contract.constraint.contract.property.type:
+  evrinoma.contract.constraint.property.contract.type:
     class: Evrinoma\ContractBundle\Constraint\Property\Contract\Type
 
-  evrinoma.contract.constraint.contract.property.hierarchy:
+  evrinoma.contract.constraint.property.contract.hierarchy:
     class: Evrinoma\ContractBundle\Constraint\Property\Contract\Hierarchy
 
-  evrinoma.contract.constraint.contract.property.description:
+  evrinoma.contract.constraint.property.contract.description:
     class: Evrinoma\ContractBundle\Constraint\Property\Contract\Description
 
-  evrinoma.contract.constraint.contract.property.name:
+  evrinoma.contract.constraint.property.contract.name:
     class: Evrinoma\ContractBundle\Constraint\Property\Contract\Name
 
-  evrinoma.contract.constraint.contract.property.number:
+  evrinoma.contract.constraint.property.contract.number:
     class: Evrinoma\ContractBundle\Constraint\Property\Contract\Number
