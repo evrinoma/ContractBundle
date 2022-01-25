@@ -2,10 +2,11 @@
 
 namespace Evrinoma\ContractBundle\DependencyInjection;
 
-use Evrinoma\ContractBundle\DependencyInjection\Compiler\Constraint\Property\ContractPass;
-use Evrinoma\ContractBundle\DependencyInjection\Compiler\Constraint\Property\HierarchyPass;
-use Evrinoma\ContractBundle\DependencyInjection\Compiler\Constraint\Property\SidePass;
-use Evrinoma\ContractBundle\DependencyInjection\Compiler\Constraint\Property\TypePass;
+use Evrinoma\ContractBundle\DependencyInjection\Compiler\Constraint\Complex\SidePass;
+use Evrinoma\ContractBundle\DependencyInjection\Compiler\Constraint\Property\ContractPass as PropertyContractPass;
+use Evrinoma\ContractBundle\DependencyInjection\Compiler\Constraint\Property\HierarchyPass as PropertyHierarchyPass;
+use Evrinoma\ContractBundle\DependencyInjection\Compiler\Constraint\Property\SidePass as PropertySidePass;
+use Evrinoma\ContractBundle\DependencyInjection\Compiler\Constraint\Property\TypePass as PropertyTypePass;
 use Evrinoma\ContractBundle\Dto\ContractApiDto;
 use Evrinoma\ContractBundle\Dto\SideApiDto;
 use Evrinoma\ContractBundle\Entity\Define\BaseHierarchy;
@@ -17,11 +18,14 @@ use Symfony\Component\DependencyInjection\Alias;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Definition;
 use Symfony\Component\DependencyInjection\Extension\Extension;
+use Symfony\Component\DependencyInjection\Extension\PrependExtensionInterface;
 use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
 use Symfony\Component\DependencyInjection\Reference;
+use Symfony\Component\Validator\Validator\TraceableValidator;
+use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 
-class EvrinomaContractExtension extends Extension
+class EvrinomaContractExtension extends Extension //implements PrependExtensionInterface
 {
     use HelperTrait;
 
@@ -91,9 +95,9 @@ class EvrinomaContractExtension extends Extension
             $config,
             [
                 '' => [
-                    'db_driver'    => 'evrinoma.'.$this->getAlias().'.storage',
-                    'entity_side' => 'evrinoma.'.$this->getAlias().'.entity_side',
-                    'entity_contract'  => 'evrinoma.'.$this->getAlias().'.entity_contract',
+                    'db_driver'       => 'evrinoma.'.$this->getAlias().'.storage',
+                    'entity_side'     => 'evrinoma.'.$this->getAlias().'.entity_side',
+                    'entity_contract' => 'evrinoma.'.$this->getAlias().'.entity_contract',
                 ],
             ]
         );
@@ -145,17 +149,20 @@ class EvrinomaContractExtension extends Extension
     {
         foreach ($container->getDefinitions() as $key => $definition) {
             switch (true) {
-                case strpos($key, TypePass::CONTRACT_TYPE_CONSTRAINT) !== false :
-                    $definition->addTag(TypePass::CONTRACT_TYPE_CONSTRAINT);
+                case strpos($key, PropertyTypePass::CONTRACT_TYPE_CONSTRAINT) !== false :
+                    $definition->addTag(PropertyTypePass::CONTRACT_TYPE_CONSTRAINT);
                     break;
-                case strpos($key, HierarchyPass::CONTRACT_HIERARCHY_CONSTRAINT) !== false :
-                    $definition->addTag(HierarchyPass::CONTRACT_HIERARCHY_CONSTRAINT);
+                case strpos($key, PropertyHierarchyPass::CONTRACT_HIERARCHY_CONSTRAINT) !== false :
+                    $definition->addTag(PropertyHierarchyPass::CONTRACT_HIERARCHY_CONSTRAINT);
                     break;
                 case strpos($key, SidePass::CONTRACT_SIDE_CONSTRAINT) !== false :
                     $definition->addTag(SidePass::CONTRACT_SIDE_CONSTRAINT);
                     break;
-                case strpos($key, ContractPass::CONTRACT_CODE_CONSTRAINT) !== false :
-                    $definition->addTag(ContractPass::CONTRACT_CODE_CONSTRAINT);
+                case strpos($key, PropertySidePass::CONTRACT_SIDE_CONSTRAINT) !== false :
+                    $definition->addTag(PropertySidePass::CONTRACT_SIDE_CONSTRAINT);
+                    break;
+                case strpos($key, PropertyContractPass::CONTRACT_CODE_CONSTRAINT) !== false :
+                    $definition->addTag(PropertyContractPass::CONTRACT_CODE_CONSTRAINT);
                     break;
             }
         }
@@ -181,6 +188,7 @@ class EvrinomaContractExtension extends Extension
     {
         $definitionApiController = $container->getDefinition('evrinoma.'.$this->getAlias().'.'.$name.'.validator');
         $definitionApiController->setArgument(0, $class);
+        $definitionApiController->setArgument(1, new Reference('validator'));
     }
 
     private function wireRepository(ContainerBuilder $container, Reference $doctrineRegistry, string $name, string $class): void

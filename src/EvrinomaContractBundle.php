@@ -3,10 +3,11 @@
 
 namespace Evrinoma\ContractBundle;
 
-use Evrinoma\ContractBundle\DependencyInjection\Compiler\Constraint\Property\ContractPass;
-use Evrinoma\ContractBundle\DependencyInjection\Compiler\Constraint\Property\HierarchyPass;
-use Evrinoma\ContractBundle\DependencyInjection\Compiler\Constraint\Property\SidePass;
-use Evrinoma\ContractBundle\DependencyInjection\Compiler\Constraint\Property\TypePass;
+use Evrinoma\ContractBundle\DependencyInjection\Compiler\Constraint\Complex\SidePass;
+use Evrinoma\ContractBundle\DependencyInjection\Compiler\Constraint\Property\ContractPass as PropertyContractPass;
+use Evrinoma\ContractBundle\DependencyInjection\Compiler\Constraint\Property\HierarchyPass as PropertyHierarchyPass;
+use Evrinoma\ContractBundle\DependencyInjection\Compiler\Constraint\Property\SidePass as PropertySidePass;
+use Evrinoma\ContractBundle\DependencyInjection\Compiler\Constraint\Property\TypePass as PropertyTypePass;
 use Evrinoma\ContractBundle\DependencyInjection\Compiler\DecoratorPass;
 use Evrinoma\ContractBundle\DependencyInjection\Compiler\MapEntityPass;
 use Evrinoma\ContractBundle\DependencyInjection\EvrinomaContractExtension;
@@ -32,9 +33,10 @@ class EvrinomaContractBundle extends Bundle
         $container
             ->addCompilerPass(new MapEntityPass($this->getNamespace(), $this->getPath()))
             ->addCompilerPass(new DecoratorPass())
-            ->addCompilerPass(new ContractPass())
-            ->addCompilerPass(new TypePass())
-            ->addCompilerPass(new HierarchyPass())
+            ->addCompilerPass(new PropertyContractPass())
+            ->addCompilerPass(new PropertyTypePass())
+            ->addCompilerPass(new PropertyHierarchyPass())
+            ->addCompilerPass(new PropertySidePass())
             ->addCompilerPass(new SidePass())
         ;
     }

@@ -9,7 +9,7 @@ use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 
 class ContractPass extends AbstractConstraint implements CompilerPassInterface
 {
-    public const CONTRACT_CODE_CONSTRAINT = 'evrinoma.contract.constraint.contract.property';
+    public const CONTRACT_CODE_CONSTRAINT = 'evrinoma.contract.constraint.property.contract';
 
     protected static string $alias      = self::CONTRACT_CODE_CONSTRAINT;
     protected static string $class      = ContractValidator::class;
