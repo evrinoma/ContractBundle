@@ -187,8 +187,8 @@ class EvrinomaContractExtension extends Extension //implements PrependExtensionI
     private function wireValidator(ContainerBuilder $container, string $name, string $class): void
     {
         $definitionApiController = $container->getDefinition('evrinoma.'.$this->getAlias().'.'.$name.'.validator');
-        $definitionApiController->setArgument(0, $class);
-        $definitionApiController->setArgument(1, new Reference('validator'));
+        $definitionApiController->setArgument(0, new Reference('validator'));
+        $definitionApiController->setArgument(1, $class);
     }
 
     private function wireRepository(ContainerBuilder $container, Reference $doctrineRegistry, string $name, string $class): void
