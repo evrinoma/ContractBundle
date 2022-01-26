@@ -19,7 +19,7 @@ class LeftOrRightValidator extends ConstraintValidator
     public function validate($value, Constraint $constraint)
     {
         /** @var $value SideInterface */
-        if (($value->hasLeft() && $value->hasRight()) || (!$value->getLeft() && !$value->getRight())) {
+        if (($value->hasLeft() && $value->hasRight()) || (!$value->hasLeft() && !$value->hasRight())) {
             $this->context->buildViolation($constraint->message)
                 ->setCode(LeftOrRight::INVALID_LEFT_OR_RIGHT_ERROR)
                 ->addViolation();
