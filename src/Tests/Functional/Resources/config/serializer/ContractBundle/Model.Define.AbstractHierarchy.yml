@@ -2,9 +2,17 @@ Evrinoma\ContractBundle\Model\Define\AbstractHierarchy:
   exclusion_policy: ALL
   properties:
     id:
-      groups: [ api_get_contract_hierarchy, api_post_contract_hierarchy, api_put_contract_hierarchy, api_get_contract, api_post_contract, api_put_contract ]
+      groups: [
+          api_get_contract_hierarchy, api_post_contract_hierarchy, api_put_contract_hierarchy,
+          api_get_contract, api_post_contract, api_put_contract,
+          api_get_side, api_post_side, api_put_side,
+      ]
       expose: true
     identity:
-      groups: [ api_get_contract_hierarchy, api_post_contract_hierarchy, api_put_contract_hierarchy, api_get_contract, api_post_contract, api_put_contract ]
+      groups: [
+          api_get_contract_hierarchy, api_post_contract_hierarchy, api_put_contract_hierarchy,
+          api_get_contract, api_post_contract, api_put_contract,
+          api_get_side, api_post_side, api_put_side,
+      ]
       expose: true
 

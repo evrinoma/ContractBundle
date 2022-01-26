@@ -2,25 +2,46 @@ Evrinoma\ContractBundle\Model\Contract\AbstractContract:
   exclusion_policy: ALL
   properties:
     id:
-      groups: [ api_get_contract, api_post_contract, api_put_contract ]
+      groups: [
+          api_get_contract, api_post_contract, api_put_contract,
+          api_get_side, api_post_side, api_put_side,
+      ]
       expose: true
     createdAt:
       type: DateTimeImmutable<'Y-m-d H:i'>
-      groups: [ api_get_contract, api_post_contract, api_put_contract  ]
+      groups: [
+          api_get_contract, api_post_contract, api_put_contract,
+          api_get_side, api_post_side, api_put_side,
+      ]
     updatedAt:
       type: DateTimeImmutable<'Y-m-d H:i'>
-      groups: [ api_get_contract, api_post_contract, api_put_contract ]
+      groups: [
+          api_get_contract, api_post_contract, api_put_contract,
+          api_get_side, api_post_side, api_put_side,
+      ]
     active:
-      groups: [ api_get_contract, api_post_contract, api_put_contract ]
+      groups: [
+          api_get_contract, api_post_contract, api_put_contract,
+          api_get_side, api_post_side, api_put_side,
+      ]
       expose: true
     type:
       type: Evrinoma\ContractBundle\Model\Define\AbstractType
-      groups: [ api_get_contract, api_post_contract, api_put_contract ]
+      groups: [
+          api_get_contract, api_post_contract, api_put_contract,
+          api_get_side, api_post_side, api_put_side,
+      ]
       expose: true
     hierarchy:
       type: Evrinoma\ContractBundle\Model\Define\AbstractHierarchy
-      groups: [ api_get_contract, api_post_contract, api_put_contract ]
+      groups: [
+          api_get_contract, api_post_contract, api_put_contract,
+          api_get_side, api_post_side, api_put_side,
+      ]
       expose: true
     number:
-      groups: [ api_get_contract, api_post_contract, api_put_contract ]
+      groups: [
+          api_get_contract, api_post_contract, api_put_contract,
+          api_get_side, api_post_side, api_put_side,
+      ]
       expose: true
