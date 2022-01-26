@@ -111,6 +111,8 @@ final class CommandManager implements CommandManagerInterface, RestInterface
         try {
             if ($dto->hasLeft()) {
                 $side->setLeft($this->contractQueryManager->proxy($dto->getLeft()));
+            } else {
+                $side->resetLeft();
             }
         } catch (\Exception $e) {
             throw new SideCannotBeSavedException($e->getMessage());
@@ -119,6 +121,8 @@ final class CommandManager implements CommandManagerInterface, RestInterface
         try {
             if ($dto->hasRight()) {
                 $side->setRight($this->contractQueryManager->proxy($dto->getRight()));
+            } else {
+                $side->resetRight();
             }
         } catch (\Exception $e) {
             throw new SideCannotBeSavedException($e->getMessage());

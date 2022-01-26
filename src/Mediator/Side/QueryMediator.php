@@ -20,12 +20,26 @@ class QueryMediator extends AbstractQueryMediator implements QueryMediatorInterf
         $alias = $this->alias();
 
         /** @var $dto SideApiDtoInterface */
-        if ($dto->hasTypeApiDto() && $dto->getTypeApiDto()->hasBrief()) {
-            $aliasType = AliasInterface::TYPE;
+        if ($dto->hasLeft()) {
+            $aliasLeft = AliasInterface::LEFT;
+            $builder
+                ->leftJoin($alias.'.left', $aliasLeft)
+                ->addSelect($aliasLeft);
+            if ($dto->getLeft()->hasId()) {
+                $builder->andWhere($aliasLeft.'.id = :idLeft')
+                    ->setParameter('idLeft', $dto->getLeft()->getId());
+            }
         }
 
-        if ($dto->hasHierarchyApiDto() && $dto->getHierarchyApiDto()->hasId()) {
-            $aliasHierarchy = AliasInterface::HIERARCHY;
+        if ($dto->hasRight()) {
+            $aliasRight = AliasInterface::RIGHT;
+            $builder
+                ->leftJoin($alias.'.right', $aliasRight)
+                ->addSelect($aliasRight);
+            if ($dto->getRight()->hasId()) {
+                $builder->andWhere($aliasRight.'.id = :idRight')
+                    ->setParameter('idRight', $dto->getRight()->getId());
+            }
         }
     }
 //endregion Public
