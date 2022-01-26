@@ -31,12 +31,26 @@ abstract class AbstractSide implements SideInterface
         return $this->right;
     }
 
+    public function resetLeft(): LeftSideInterface
+    {
+        $this->left = null;
+
+        return $this;
+    }
+
+    public function resetRight(): RightSideInterface
+    {
+        $this->right = null;
+
+        return $this;
+    }
+
     /**
      * @param ContractInterface $right
      *
-     * @return SideInterface
+     * @return RightSideInterface
      */
-    public function setRight(ContractInterface $right): SideInterface
+    public function setRight(ContractInterface $right): RightSideInterface
     {
         $this->right = $right;
 
@@ -62,9 +76,9 @@ abstract class AbstractSide implements SideInterface
     /**
      * @param ContractInterface $left
      *
-     * @return SideInterface
+     * @return LeftSideInterface
      */
-    public function setLeft(ContractInterface $left): SideInterface
+    public function setLeft(ContractInterface $left): LeftSideInterface
     {
         $this->left = $left;
 

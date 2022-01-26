@@ -9,6 +9,11 @@ interface LeftSideInterface
 {
 //region SECTION: Getters/Setters
     /**
+     * @return LeftSideInterface
+     */
+    public function resetLeft(): LeftSideInterface;
+
+    /**
      * @return bool
      */
     public function hasLeft(): bool;
@@ -21,8 +26,8 @@ interface LeftSideInterface
     /**
      * @param ContractInterface $left
      *
-     * @return SideInterface
+     * @return LeftSideInterface
      */
-    public function setLeft(ContractInterface $left): SideInterface;
+    public function setLeft(ContractInterface $left): LeftSideInterface;
 //endregion Getters/Setters
 }
