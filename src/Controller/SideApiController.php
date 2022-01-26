@@ -80,7 +80,7 @@ final class SideApiController extends AbstractApiController implements ApiContro
     /**
      * @Rest\Post("/api/contract/side/create", options={"expose"=true}, name="api_contract_side_create")
      * @OA\Post(
-     *     tags={"side"},
+     *     tags={"contract"},
      *     description="the method perform create side",
      *     @OA\RequestBody(
      *         @OA\MediaType(
@@ -133,7 +133,7 @@ final class SideApiController extends AbstractApiController implements ApiContro
     /**
      * @Rest\Put("/api/contract/side/save", options={"expose"=true}, name="api_contract_side_save")
      * @OA\Put(
-     *     tags={"side"},
+     *     tags={"contract"},
      *     description="the method perform save side for current entity",
      *     @OA\RequestBody(
      *         @OA\MediaType(
@@ -195,7 +195,7 @@ final class SideApiController extends AbstractApiController implements ApiContro
     /**
      * @Rest\Delete("/api/contract/side/delete", options={"expose"=true}, name="api_contract_side_delete")
      * @OA\Delete(
-     *     tags={"side"},
+     *     tags={"contract"},
      *     @OA\Parameter(
      *         description="class",
      *         in="query",
@@ -253,7 +253,7 @@ final class SideApiController extends AbstractApiController implements ApiContro
     /**
      * @Rest\Get("/api/contract/side/criteria", options={"expose"=true}, name="api_contract_side_criteria")
      * @OA\Get(
-     *     tags={"side"},
+     *     tags={"contract"},
      *     @OA\Parameter(
      *         description="class",
      *         in="query",
@@ -273,32 +273,6 @@ final class SideApiController extends AbstractApiController implements ApiContro
      *           type="string",
      *         )
      *     ),
-     *     @OA\Parameter(
-     *         name="type[identity]",
-     *         in="query",
-     *         description="Type Identity",
-     *         @OA\Schema(
-     *              type="array",
-     *              @OA\Items(
-     *                  type="string",
-     *                  ref=@Model(type=Evrinoma\CodeBundle\Form\Rest\TypeChoiceType::class, options={"data":"identity"})
-     *              ),
-     *          ),
-     *         style="form"
-     *     ),
-     *     @OA\Parameter(
-     *         name="hierarchy[identity]",
-     *         in="query",
-     *         description="Hierarchy Identity",
-     *         @OA\Schema(
-     *              type="array",
-     *              @OA\Items(
-     *                  type="string",
-     *                  ref=@Model(type=Evrinoma\CodeBundle\Form\Rest\HierarchyChoiceType::class, options={"data":"identity"})
-     *              ),
-     *          ),
-     *         style="form"
-     *     )
      * )
      * @OA\Response(response=200,description="Return sides")
      *
@@ -323,7 +297,7 @@ final class SideApiController extends AbstractApiController implements ApiContro
     /**
      * @Rest\Get("/api/contract/side", options={"expose"=true}, name="api_contract_side")
      * @OA\Get(
-     *     tags={"side"},
+     *     tags={"contract"},
      *     @OA\Parameter(
      *         description="class",
      *         in="query",
