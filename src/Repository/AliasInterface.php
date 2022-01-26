@@ -9,5 +9,7 @@ interface AliasInterface
     public const SIDE      = 'side';
     public const TYPE      = 'type';
     public const HIERARCHY = 'hierarchy';
+    public const LEFT      = 'left_contract';
+    public const RIGHT     = 'right_contract';
 //endregion Fields
 }
