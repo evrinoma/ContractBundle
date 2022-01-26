@@ -273,6 +273,32 @@ final class SideApiController extends AbstractApiController implements ApiContro
      *           type="string",
      *         )
      *     ),
+     *     @OA\Parameter(
+     *         name="left[id]",
+     *         in="query",
+     *         description="Left side contract",
+     *         @OA\Schema(
+     *              type="array",
+     *              @OA\Items(
+     *                  type="string",
+     *                  ref=@Model(type=Evrinoma\ContractBundle\Form\Rest\ContractSideChoiceType::class, options={"data":"id"})
+     *              ),
+     *          ),
+     *         style="form"
+     *     ),
+     *     @OA\Parameter(
+     *         name="right[id]",
+     *         in="query",
+     *         description="Right side contract",
+     *         @OA\Schema(
+     *              type="array",
+     *              @OA\Items(
+     *                  type="string",
+     *                  ref=@Model(type=Evrinoma\ContractBundle\Form\Rest\ContractSideChoiceType::class, options={"data":"id"})
+     *              ),
+     *          ),
+     *         style="form"
+     *     )
      * )
      * @OA\Response(response=200,description="Return sides")
      *

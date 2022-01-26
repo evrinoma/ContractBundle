@@ -44,12 +44,12 @@ services:
   Evrinoma\ContractBundle\Validator\HierarchyValidator:
     alias: evrinoma.contract.hierarchy.validator
 
-#  evrinoma.contract.form.rest.hierarchy:
-#    class: Evrinoma\ContractBundle\Form\Rest\HierarchyChoiceType
-#    arguments:
-#      - '@evrinoma.contract.hierarchy.query.manager'
-#    tags: { - name: form.type }
-#
-#  Evrinoma\ContractBundle\Form\Rest\HierarchyChoiceType:
-#    alias: evrinoma.contract.form.rest.hierarchy
-#    public: true
+  evrinoma.contract.form.rest.hierarchy:
+    class: Evrinoma\ContractBundle\Form\Rest\ContractHierarchyChoiceType
+    arguments:
+      - '@evrinoma.contract.hierarchy.query.manager'
+    tags: { - name: form.type }
+
+  Evrinoma\ContractBundle\Form\Rest\ContractHierarchyChoiceType:
+    alias: evrinoma.contract.form.rest.hierarchy
+    public: true
