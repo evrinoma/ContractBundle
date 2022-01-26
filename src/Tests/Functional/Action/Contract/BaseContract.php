@@ -168,10 +168,8 @@ class BaseContract extends AbstractServiceTest implements BaseContractTestInterf
         $created = $this->createContract();
         $this->testResponseStatusCreated();
 
-        $criteria = $this->get($created['data']['id']);
-        Assert::assertArrayHasKey('data', $criteria);
-
-        $find = $this->get($criteria['data']['id']);
+        $find = $this->get($created['data']['id']);
+        Assert::assertArrayHasKey('data', $find);
         Assert::assertTrue($created['data'] == $find['data']);
     }
 

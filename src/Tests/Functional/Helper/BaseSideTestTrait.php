@@ -20,5 +20,19 @@ trait BaseSideTestTrait
 
         return $this->post($query);
     }
+
+    protected function createWithoutLeftRightSide(): array
+    {
+        $query = static::getDefault();
+
+        return $this->post($query);
+    }
+
+    protected function createWithLeftRightSide(): array
+    {
+        $query = static::getDefault(["left" => BaseContract::defaultData(), "right" => BaseContract::defaultData(),]);
+
+        return $this->post($query);
+    }
 }
 
