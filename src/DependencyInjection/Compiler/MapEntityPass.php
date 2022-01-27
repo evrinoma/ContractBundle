@@ -4,10 +4,8 @@ namespace Evrinoma\ContractBundle\DependencyInjection\Compiler;
 
 use Doctrine\Common\Annotations\AnnotationReader;
 use Evrinoma\ContractBundle\DependencyInjection\EvrinomaContractExtension;
-use Evrinoma\ContractBundle\Entity\Contract\BaseContract;
 use Evrinoma\ContractBundle\Entity\Define\BaseHierarchy;
 use Evrinoma\ContractBundle\Entity\Define\BaseType;
-use Evrinoma\ContractBundle\Entity\Side\BaseSide;
 use Evrinoma\ContractBundle\Model\Contract\ContractInterface;
 use Evrinoma\ContractBundle\Model\Define\HierarchyInterface;
 use Evrinoma\ContractBundle\Model\Define\TypeInterface;
