@@ -45,25 +45,6 @@ class MapEntityPass extends AbstractMapEntity implements CompilerPassInterface
             false
         );
 
-//        $entityBunch = $container->getParameter('evrinoma.contract.entity_side');
-//        if ((strpos($entityBunch, EvrinomaContractExtension::ENTITY) !== false)) {
-//            $annotationReader = new AnnotationReader();
-//            $reflectionClass = new ReflectionClass(BaseContract::class);
-//            $joinTableAttribute = $annotationReader->getClassAnnotation($reflectionClass, Mapping\Table::class);
-//
-//            $joinTableAttribute->name
-//            $this->loadMetadata($driver, $referenceAnnotationReader, '%s/Model/Side', '%s/Entity/Side');
-//            $this->addResolveTargetEntity([BaseSide::class => [LeftSideInterface::class => ['joinTable' => ['name' => 'qweqweqw']], RightSideInterface::class => ['SUPER' => 'Right'],],], false);
-//        }
-//
-//        $entityCode = $container->getParameter('evrinoma.contract.entity_contract');
-//
-//        if ((strpos($entityCode, EvrinomaContractExtension::ENTITY) !== false)) {
-//            $this->loadMetadata($driver, $referenceAnnotationReader, '%s/Model/Contract', '%s/Entity/Contract');
-//            $this->addResolveTargetEntity([BaseContract::class => [ContractInterface::class => [],],], false);
-//        }
-
-
         $entityContract = $container->getParameter('evrinoma.contract.entity_contract');
         if ((strpos($entityContract, EvrinomaContractExtension::ENTITY) !== false)) {
             $this->loadMetadata($driver, $referenceAnnotationReader, '%s/Model/Contract', '%s/Entity/Contract');
@@ -76,7 +57,7 @@ class MapEntityPass extends AbstractMapEntity implements CompilerPassInterface
         }
 
         $mapping = $this->getMapping($entitySide);
-        $this->addResolveTargetEntity([$entitySide => [LeftSideInterface::class => ['joinTable' => $mapping], RightSideInterface::class => ['joinTable' => $mapping],],], false);
+        $this->addResolveTargetEntity([$entitySide => [LeftSideInterface::class => ['inherited' => true, 'joinTable' => $mapping], RightSideInterface::class => ['inherited' => true, 'joinTable' => $mapping],],], false);
 
     }
 
