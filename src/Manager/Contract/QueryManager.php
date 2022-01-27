@@ -3,6 +3,7 @@
 namespace Evrinoma\ContractBundle\Manager\Contract;
 
 use Evrinoma\ContractBundle\Dto\ContractApiDtoInterface;
+use Evrinoma\ContractBundle\Entity\Contract\BaseContract;
 use Evrinoma\ContractBundle\Exception\Contract\ContractNotFoundException;
 use Evrinoma\ContractBundle\Exception\Contract\ContractProxyException;
 use Evrinoma\ContractBundle\Model\Contract\ContractInterface;
@@ -38,6 +39,12 @@ final class QueryManager implements QueryManagerInterface, RestInterface
             $contract = $this->repository->findByCriteria($dto);
         } catch (ContractNotFoundException $e) {
             throw $e;
+        }
+
+        /** @var BaseContract $value */
+        foreach ($contract as $value) {
+            $countL = $value->getLeftSide()->count();
+            $countR = $value->getRightSide()->count();
         }
 
         return $contract;
