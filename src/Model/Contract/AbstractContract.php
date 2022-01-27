@@ -26,19 +26,24 @@ abstract class AbstractContract implements ContractInterface
 {
     use IdTrait, ActiveTrait, CreateUpdateAtTrait, NameTrait, DescriptionTrait;
 
-//region SECTION: Fields
     /**
      * @var ArrayCollection|LeftSideInterface[]
      *
      * @ORM\ManyToMany(targetEntity="Evrinoma\ContractBundle\Model\Side\LeftSideInterface")
-     * @ORM\JoinColumn(name="id", referencedColumnName="left_id", nullable=true)
+     * @ORM\JoinTable(
+     *      joinColumns={@ORM\JoinColumn(name="left_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="id", referencedColumnName="id")}
+     * )
      */
     protected $leftSide;
     /**
      * @var ArrayCollection|RightSideInterface[]
      *
      * @ORM\ManyToMany(targetEntity="Evrinoma\ContractBundle\Model\Side\RightSideInterface")
-     * @ORM\JoinColumn(name="id", referencedColumnName="right_id", nullable=true)
+     * @ORM\JoinTable(
+     *      joinColumns={@ORM\JoinColumn(name="right_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="id", referencedColumnName="id")}
+     * )
      */
     protected $rightSide;
     /**

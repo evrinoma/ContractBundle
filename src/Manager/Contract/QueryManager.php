@@ -41,12 +41,6 @@ final class QueryManager implements QueryManagerInterface, RestInterface
             throw $e;
         }
 
-        /** @var BaseContract $value */
-        foreach ($contract as $value) {
-            $countL = $value->getLeftSide()->count();
-            $countR = $value->getRightSide()->count();
-        }
-
         return $contract;
     }
 //endregion Public
