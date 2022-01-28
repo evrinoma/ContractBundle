@@ -3,8 +3,6 @@
 
 namespace Evrinoma\ContractBundle\Dto\Preserve;
 
-use Evrinoma\ContractBundle\Dto\ContractApiDto;
-
 trait ContractApiDtoTrait
 {
     /**
