@@ -6,7 +6,7 @@ use Evrinoma\ContractBundle\Dto\SideApiDtoInterface;
 use Evrinoma\ContractBundle\Entity\Side\BaseSide;
 use Evrinoma\ContractBundle\Model\Side\SideInterface;
 
-final class SideFactory implements SideFactoryInterface
+class SideFactory implements SideFactoryInterface
 {
 //region SECTION: Fields
     private static string $entityClass = BaseSide::class;

@@ -33,8 +33,6 @@ class BaseContract extends AbstractServiceTest implements BaseContractTestInterf
     {
         $this->postWrong();
         $this->testResponseStatusUnprocessable();
-//        $this->post(static::getDefault(["description" => Description::empty(),]));
-//        $this->testResponseStatusUnprocessable();
         $this->post(static::getDefault(["name" => Name::empty(),]));
         $this->testResponseStatusUnprocessable();
         $this->post(static::getDefault(["type" => [],]));
@@ -63,8 +61,6 @@ class BaseContract extends AbstractServiceTest implements BaseContractTestInterf
     {
         $this->put(static::getDefault(['id' => Id::empty()]));
         $this->testResponseStatusUnprocessable();
-//        $this->put(static::getDefault(["description" => Description::empty(),]));
-//        $this->testResponseStatusUnprocessable();
         $this->put(static::getDefault(["name" => Name::empty(),]));
         $this->testResponseStatusUnprocessable();
         $this->put(static::getDefault(["type" => [],]));

@@ -6,7 +6,7 @@ use Evrinoma\ContractBundle\Dto\ContractApiDtoInterface;
 use Evrinoma\ContractBundle\Entity\Contract\BaseContract;
 use Evrinoma\ContractBundle\Model\Contract\ContractInterface;
 
-final class ContractFactory implements ContractFactoryInterface
+class ContractFactory implements ContractFactoryInterface
 {
 //region SECTION: Fields
     private static string $entityClass = BaseContract::class;
