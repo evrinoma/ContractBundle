@@ -10,7 +10,12 @@ final class SideFactory implements SideFactoryInterface
 {
 //region SECTION: Fields
     private static string $entityClass = BaseSide::class;
+
 //endregion Fields
+    public function __construct(string $entityClass)
+    {
+        self::$entityClass = $entityClass;
+    }
 
 //region SECTION: Public
     public function create(SideApiDtoInterface $dto): SideInterface

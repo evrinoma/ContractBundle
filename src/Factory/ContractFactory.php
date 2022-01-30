@@ -10,7 +10,13 @@ final class ContractFactory implements ContractFactoryInterface
 {
 //region SECTION: Fields
     private static string $entityClass = BaseContract::class;
+
 //endregion Fields
+
+    public function __construct(string $entityClass)
+    {
+        self::$entityClass = $entityClass;
+    }
 
 //region SECTION: Public
     public function create(ContractApiDtoInterface $dto): ContractInterface
