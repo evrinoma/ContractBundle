@@ -4,14 +4,14 @@
 namespace Evrinoma\ContractBundle\Constraint\Property\Contract;
 
 use Evrinoma\UtilsBundle\Constraint\Property\ConstraintInterface;
-use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\Component\Validator\Constraints\NotNull;
 
 final class Description implements ConstraintInterface
 {
     public function getConstraints(): array
     {
         return [
-            new NotBlank(),
+            new NotNull(),
         ];
     }
 
