@@ -18,7 +18,7 @@ final class HierarchyFactory implements HierarchyFactoryInterface
         /** @var BaseHierarchy $hierarchy */
         $hierarchy = new self::$entityClass;
 
-        $hierarchy->setIdentity($dto->getIdentity());
+        $hierarchy->setIdentity(trim($dto->getIdentity()));
 
         return $hierarchy;
     }

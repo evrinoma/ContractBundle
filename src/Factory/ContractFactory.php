@@ -19,11 +19,11 @@ final class ContractFactory implements ContractFactoryInterface
         $contract = new self::$entityClass;
 
         $contract
-            ->setName($dto->getName())
-            ->setNumber($dto->getNumber())
-            ->setDescription($dto->getDescription())
+            ->setName(trim($dto->getName()))
+            ->setNumber(trim($dto->getNumber()))
             ->setCreatedAt(new \DateTimeImmutable())
-            ->setActiveToActive();
+            ->setActiveToActive()
+            ->setDescription(trim($dto->getDescription()));
 
         return $contract;
     }
