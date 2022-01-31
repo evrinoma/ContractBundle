@@ -112,6 +112,8 @@ class EvrinomaContractExtension extends Extension //implements PrependExtensionI
         $this->wireController($container, 'contract', $config['dto_contract']);
         $this->wireController($container, 'side', $config['dto_side']);
 
+        $this->wireForm($container, 'side', $config['dto_side']);
+
         $this->wireValidator($container, 'contract', $config['entity_contract']);
         $this->wireValidator($container, 'side', $config['entity_side']);
 
@@ -182,6 +184,12 @@ class EvrinomaContractExtension extends Extension //implements PrependExtensionI
     {
         $definitionApiController = $container->getDefinition('evrinoma.'.$this->getAlias().'.'.$name.'.api.controller');
         $definitionApiController->setArgument(5, $class);
+    }
+
+    private function wireForm(ContainerBuilder $container, string $name, string $class): void
+    {
+        $definitionForm = $container->getDefinition('evrinoma.'.$this->getAlias().'.form.rest.'.$name);
+        $definitionForm->setArgument(1, $class);
     }
 
     private function wireValidator(ContainerBuilder $container, string $name, string $class): void

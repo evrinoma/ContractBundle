@@ -17,11 +17,13 @@ class ContractSideChoiceType extends AbstractType
 
 //region SECTION: Fields
     private QueryManagerInterface $queryManager;
+    private static string         $dtoClass = SideApiDto::class;
 //endregion Fields
 
 //region SECTION: Constructor
-    public function __construct(QueryManagerInterface $queryManager)
+    public function __construct(QueryManagerInterface $queryManager, string $entityClass)
     {
+        self::$dtoClass     = $entityClass;
         $this->queryManager = $queryManager;
     }
 //endregion Constructor
@@ -33,7 +35,7 @@ class ContractSideChoiceType extends AbstractType
             $value = [];
             try {
                 if ($options->offsetExists('data')) {
-                    $criteria = $this->queryManager->criteria(new SideApiDto());
+                    $criteria = $this->queryManager->criteria(new self::$dtoClass);
                     switch ($options->offsetGet('data')) {
                         default:
                             foreach ($criteria as $entity) {
