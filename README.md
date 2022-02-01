@@ -119,6 +119,26 @@ release 1.0.1<br>
         если тип не может быть создан TypeCannotBeCreatedException возвращает HTTP_BAD_REQUEST 400
         все остальные ошибки возвращаются как HTTP_BAD_REQUEST 400
 
+# Constraint
+
+Для добавления проверки поля сушности contract нужно описать логику проверки реализующую интерфейс Evrinoma\UtilsBundle\Constraint\Property\ConstraintInterface и зарегестрировать сервис с этикеткой evrinoma.contract.constraint.property.contract
+
+    evrinoma.contract.constraint.property.contract.custom:
+        class: App\Contract\Constraint\Property\ContractCustom
+        tags: [ 'evrinoma.contract.constraint.property.contract' ]
+
+Для добавления проверки поля сушности side нужно описать логику проверки реализующую интерфейс Evrinoma\UtilsBundle\Constraint\Property\ConstraintInterface и зарегестрировать сервис с этикеткой evrinoma.contract.constraint.property.side
+
+    evrinoma.contract.constraint.property.side.custom:
+        class: App\Contract\Constraint\Property\SideCustom
+        tags: [ 'evrinoma.contract.constraint.property.side' ]
+
+Для добавления проверки сушности side нужно описать логику проверки реализующую интерфейс Evrinoma\UtilsBundle\Constraint\Complex\ConstraintInterface; и зарегестрировать сервис с этикеткой evrinoma.contract.constraint.complex.side
+
+    evrinoma.contract.constraint.property.side.custom:
+        class: App\Contract\Constraint\Complex\SideCustom
+        tags: [ 'evrinoma.contract.constraint.complex.side' ]
+
 # Тесты:
 
     composer install --dev
