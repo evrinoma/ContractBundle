@@ -7,6 +7,11 @@ use Doctrine\ORM\Mapping as ORM;
 use Evrinoma\ContractBundle\Model\Contract\ContractInterface;
 use Evrinoma\UtilsBundle\Entity\IdTrait;
 
+/**
+ * Class AbstractSide
+ *
+ * @ORM\MappedSuperclass
+ */
 abstract class AbstractSide implements SideInterface
 {
     use IdTrait;
