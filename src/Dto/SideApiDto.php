@@ -2,12 +2,10 @@
 
 namespace Evrinoma\ContractBundle\Dto;
 
-use Evrinoma\CodeBundle\Dto\TypeApiDto;
 use Evrinoma\ContractBundle\Model\ModelInterface;
 use Evrinoma\DtoBundle\Annotation\Dto;
 use Evrinoma\DtoBundle\Dto\AbstractDto;
 use Evrinoma\DtoBundle\Dto\DtoInterface;
-use Evrinoma\DtoCommon\ValueObject\IdentityTrait;
 use Evrinoma\DtoCommon\ValueObject\IdTrait;
 use Symfony\Component\HttpFoundation\Request;
 
