@@ -45,3 +45,17 @@ Evrinoma\ContractBundle\Model\Contract\AbstractContract:
           api_get_side, api_post_side, api_put_side,
       ]
       expose: true
+    leftSide:
+      type: Evrinoma\ContractBundle\Model\Side\AbstractSide
+      groups: [
+          api_get_contract, api_post_contract, api_put_contract,
+          api_get_side, api_post_side, api_put_side,
+      ]
+      expose: true
+    rightSide:
+      type: Evrinoma\ContractBundle\Model\Side\AbstractSide
+      groups: [
+          api_get_contract, api_post_contract, api_put_contract,
+          api_get_side, api_post_side, api_put_side,
+      ]
+      expose: true

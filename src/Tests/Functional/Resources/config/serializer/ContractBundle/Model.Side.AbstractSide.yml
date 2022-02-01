@@ -2,13 +2,19 @@ Evrinoma\ContractBundle\Model\Side\AbstractSide:
   exclusion_policy: ALL
   properties:
     id:
-      groups: [ api_get_side, api_post_side, api_put_side ]
+      groups: [
+          api_get_side, api_post_side, api_put_side
+      ]
       expose: true
     left:
       type: Evrinoma\ContractBundle\Model\Contract\AbstractContract
-      groups: [ api_get_side, api_post_side, api_put_side ]
+      groups: [
+          api_get_side, api_post_side, api_put_side
+      ]
       expose: true
     right:
       type: Evrinoma\ContractBundle\Model\Contract\AbstractContract
-      groups: [ api_get_side, api_post_side, api_put_side ]
+      groups: [
+          api_get_side, api_post_side, api_put_side
+      ]
       expose: true
