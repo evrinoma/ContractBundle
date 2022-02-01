@@ -18,15 +18,15 @@ class ContractApiDto extends AbstractDto implements ContractApiDtoInterface
 
     /**
      * @Dto(class="Evrinoma\ContractBundle\Dto\TypeApiDto", generator="genRequestTypeApiDto")
-     * @var TypeApiDto|null
+     * @var TypeApiDtoInterface|null
      */
-    private ?TypeApiDto $typeApiDto = null;
+    private ?TypeApiDtoInterface $typeApiDto = null;
 
     /**
      * @Dto(class="Evrinoma\ContractBundle\Dto\HierarchyApiDto", generator="genRequestHierarchyApiDto")
-     * @var HierarchyApiDto|null
+     * @var HierarchyApiDtoInterface|null
      */
-    private ?HierarchyApiDto $hierarchyApiDto = null;
+    private ?HierarchyApiDtoInterface $hierarchyApiDto = null;
 
     /**
      * @var string

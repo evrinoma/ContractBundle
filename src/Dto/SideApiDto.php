@@ -17,14 +17,14 @@ class SideApiDto extends AbstractDto implements SideApiDtoInterface
 
     /**
      * @Dto(class="Evrinoma\ContractBundle\Dto\ContractApiDto", generator="genRequestRightContractApiDto")
-     * @var ContractApiDto|null
+     * @var ContractApiDtoInterface|null
      */
-    private ?ContractApiDto $left = null;
+    private ?ContractApiDtoInterface $left = null;
     /**
      * @Dto(class="Evrinoma\ContractBundle\Dto\ContractApiDto", generator="genRequestLeftContractApiDto")
-     * @var ContractApiDto|null
+     * @var ContractApiDtoInterface|null
      */
-    private ?ContractApiDto $right = null;
+    private ?ContractApiDtoInterface $right = null;
 //region SECTION: Private
 
     /**
