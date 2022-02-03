@@ -2,14 +2,16 @@
 
 namespace Evrinoma\ContractBundle\Dto\Preserve;
 
+use Evrinoma\DtoBundle\Dto\DtoInterface;
+
 trait TypeApiDtoTrait
 {
     /**
      * @param string $identity
      *
-     * @return self
+     * @return DtoInterface
      */
-    public function setIdentity(string $identity): self
+    public function setIdentity(string $identity): DtoInterface
     {
         return parent::setIdentity($identity);
     }
@@ -17,9 +19,9 @@ trait TypeApiDtoTrait
     /**
      * @param int|null $id
      *
-     * @return self
+     * @return DtoInterface
      */
-    public function setId(?int $id): self
+    public function setId(?int $id): DtoInterface
     {
         return parent::setId($id);
     }

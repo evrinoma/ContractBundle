@@ -6,6 +6,7 @@ namespace Evrinoma\ContractBundle\Dto\Preserve;
 
 use Evrinoma\ContractBundle\Dto\HierarchyApiDtoInterface as BaseHierarchyApiDtoInterface;
 use Evrinoma\ContractBundle\Dto\TypeApiDtoInterface as BaseTypeApiDtoInterface;
+use Evrinoma\DtoBundle\Dto\DtoInterface;
 use Evrinoma\DtoCommon\ValueObject\Mutable\ActiveInterface;
 use Evrinoma\DtoCommon\ValueObject\Mutable\DescriptionInterface;
 use Evrinoma\DtoCommon\ValueObject\Mutable\IdInterface;
@@ -17,14 +18,14 @@ interface ContractApiDtoInterface extends IdInterface, NameInterface, ActiveInte
     /**
      * @param BaseHierarchyApiDtoInterface $hierarchyApiDto
      *
-     * @return \Evrinoma\ContractBundle\Dto\Preserve\HierarchyApiDtoInterface
+     * @return DtoInterface
      */
-    public function setHierarchyApiDto(BaseHierarchyApiDtoInterface $hierarchyApiDto): self;
+    public function setHierarchyApiDto(BaseHierarchyApiDtoInterface $hierarchyApiDto): DtoInterface;
 
     /**
      * @param BaseTypeApiDtoInterface $typeApiDto
      *
-     * @return self
+     * @return DtoInterface
      */
-    public function setTypeApiDto(BaseTypeApiDtoInterface $typeApiDto): self;
+    public function setTypeApiDto(BaseTypeApiDtoInterface $typeApiDto): DtoInterface;
 }

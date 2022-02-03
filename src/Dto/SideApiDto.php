@@ -43,9 +43,9 @@ class SideApiDto extends AbstractDto implements SideApiDtoInterface
     /**
      * @param ContractApiDtoInterface $left
      *
-     * @return self
+     * @return DtoInterface
      */
-    public function setLeft(ContractApiDtoInterface $left): self
+    public function setLeft(ContractApiDtoInterface $left): DtoInterface
     {
         $this->left = $left;
 
@@ -55,9 +55,9 @@ class SideApiDto extends AbstractDto implements SideApiDtoInterface
     /**
      * @param ContractApiDtoInterface $right
      *
-     * @return self
+     * @return DtoInterface
      */
-    public function setRight(ContractApiDtoInterface $right): self
+    public function setRight(ContractApiDtoInterface $right): DtoInterface
     {
         $this->right = $right;
 
