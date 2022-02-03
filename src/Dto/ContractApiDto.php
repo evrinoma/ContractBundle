@@ -2,7 +2,7 @@
 
 namespace Evrinoma\ContractBundle\Dto;
 
-use Evrinoma\ContractBundle\Model\ModelInterface;
+
 use Evrinoma\DtoBundle\Annotation\Dto;
 use Evrinoma\DtoBundle\Dto\AbstractDto;
 use Evrinoma\DtoBundle\Dto\DtoInterface;
@@ -10,11 +10,12 @@ use Evrinoma\DtoCommon\ValueObject\ActiveTrait;
 use Evrinoma\DtoCommon\ValueObject\DescriptionTrait;
 use Evrinoma\DtoCommon\ValueObject\IdTrait;
 use Evrinoma\DtoCommon\ValueObject\NameTrait;
+use Evrinoma\DtoCommon\ValueObject\NumberTrait;
 use Symfony\Component\HttpFoundation\Request;
 
 class ContractApiDto extends AbstractDto implements ContractApiDtoInterface
 {
-    use IdTrait, ActiveTrait, NameTrait, DescriptionTrait;
+    use IdTrait, ActiveTrait, NameTrait, DescriptionTrait, NumberTrait;
 
     /**
      * @Dto(class="Evrinoma\ContractBundle\Dto\TypeApiDto", generator="genRequestTypeApiDto")
@@ -27,27 +28,6 @@ class ContractApiDto extends AbstractDto implements ContractApiDtoInterface
      * @var HierarchyApiDtoInterface|null
      */
     private ?HierarchyApiDtoInterface $hierarchyApiDto = null;
-
-    /**
-     * @var string
-     */
-    private string $number = '';
-
-    /**
-     * @return bool
-     */
-    public function hasNumber(): bool
-    {
-        return $this->number !== '';
-    }
-
-    /**
-     * @return string
-     */
-    public function getNumber(): string
-    {
-        return $this->number;
-    }
 
     /**
      * @return TypeApiDtoInterface
@@ -71,7 +51,7 @@ class ContractApiDto extends AbstractDto implements ContractApiDtoInterface
     public function genRequestHierarchyApiDto(?Request $request): ?\Generator
     {
         if ($request) {
-            $owner = $request->get('hierarchy');
+            $owner = $request->get(HierarchyApiDtoInterface::HIERARCHY);
             if ($owner) {
                 $newRequest                     = $this->getCloneRequest();
                 $owner[DtoInterface::DTO_CLASS] = HierarchyApiDto::class;
@@ -88,7 +68,7 @@ class ContractApiDto extends AbstractDto implements ContractApiDtoInterface
     public function genRequestTypeApiDto(?Request $request): ?\Generator
     {
         if ($request) {
-            $type = $request->get('type');
+            $type = $request->get(TypeApiDtoInterface::TYPE);
             if ($type) {
                 $newRequest                    = $this->getCloneRequest();
                 $type[DtoInterface::DTO_CLASS] = TypeApiDto::class;
@@ -177,11 +157,11 @@ class ContractApiDto extends AbstractDto implements ContractApiDtoInterface
         $class = $request->get(DtoInterface::DTO_CLASS);
 
         if ($class === $this->getClass()) {
-            $id          = $request->get(ModelInterface::ID);
-            $active      = $request->get(ModelInterface::ACTIVE);
-            $description = $request->get(ModelInterface::DESCRIPTION);
-            $name        = $request->get(ModelInterface::NAME, "");
-            $number      = $request->get(ModelInterface::NUMBER);
+            $id          = $request->get(ContractApiDtoInterface::ID);
+            $active      = $request->get(ContractApiDtoInterface::ACTIVE);
+            $description = $request->get(ContractApiDtoInterface::DESCRIPTION);
+            $name        = $request->get(ContractApiDtoInterface::NAME, "");
+            $number      = $request->get(ContractApiDtoInterface::NUMBER);
 
             if ($active) {
                 $this->setActive($active);

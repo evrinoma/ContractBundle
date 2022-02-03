@@ -2,7 +2,6 @@
 
 namespace Evrinoma\ContractBundle\Dto;
 
-use Evrinoma\ContractBundle\Model\ModelInterface;
 use Evrinoma\DtoBundle\Dto\AbstractDto;
 use Evrinoma\DtoBundle\Dto\DtoInterface;
 use Evrinoma\DtoCommon\ValueObject\IdentityTrait;
@@ -34,8 +33,8 @@ class HierarchyApiDto extends  AbstractDto implements HierarchyApiDtoInterface
         $class = $request->get(DtoInterface::DTO_CLASS);
 
         if ($class === $this->getClass()) {
-            $id       = $request->get(ModelInterface::ID);
-            $identity = $request->get(ModelInterface::IDENTITY);
+            $id       = $request->get(HierarchyApiDtoInterface::ID);
+            $identity = $request->get(HierarchyApiDtoInterface::IDENTITY);
 
             if ($identity) {
                 $this->setIdentity($identity);

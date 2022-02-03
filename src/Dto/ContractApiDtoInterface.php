@@ -7,8 +7,9 @@ use Evrinoma\DtoCommon\ValueObject\ActiveInterface;
 use Evrinoma\DtoCommon\ValueObject\DescriptionInterface;
 use Evrinoma\DtoCommon\ValueObject\IdInterface;
 use Evrinoma\DtoCommon\ValueObject\NameInterface;
+use Evrinoma\DtoCommon\ValueObject\NumberInterface;
 
-interface ContractApiDtoInterface extends DtoInterface, IdInterface, NameInterface, ActiveInterface, DescriptionInterface
+interface ContractApiDtoInterface extends DtoInterface, IdInterface, NameInterface, ActiveInterface, DescriptionInterface, NumberInterface
 {
     /**
      * @return bool

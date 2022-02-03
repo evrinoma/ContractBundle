@@ -8,6 +8,9 @@ use Evrinoma\DtoCommon\ValueObject\IdInterface;
 
 interface SideApiDtoInterface extends DtoInterface, IdInterface
 {
+    public const LEFT  = 'left';
+    public const RIGHT = 'right';
+
     /**
      * @return bool
      */

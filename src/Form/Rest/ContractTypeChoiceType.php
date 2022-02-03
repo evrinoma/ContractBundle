@@ -4,9 +4,9 @@ namespace Evrinoma\ContractBundle\Form\Rest;
 
 
 use Evrinoma\ContractBundle\Dto\TypeApiDto;
+use Evrinoma\ContractBundle\Dto\TypeApiDtoInterface;
 use Evrinoma\ContractBundle\Exception\Type\TypeNotFoundException;
 use Evrinoma\ContractBundle\Manager\Type\QueryManagerInterface;
-use Evrinoma\ContractBundle\Model\ModelInterface;
 use Evrinoma\UtilsBundle\Form\Rest\RestChoiceType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\OptionsResolver\Options;
@@ -35,7 +35,7 @@ class ContractTypeChoiceType extends AbstractType
                 if ($options->offsetExists('data')) {
                     $criteria = $this->queryManager->criteria(new TypeApiDto());
                     switch ($options->offsetGet('data')) {
-                        case  ModelInterface::IDENTITY:
+                        case  TypeApiDtoInterface::IDENTITY:
                             foreach ($criteria as $entity) {
                                 $value[] = $entity->getIdentity();
                             }

@@ -8,5 +8,5 @@ use Evrinoma\DtoCommon\ValueObject\IdInterface;
 
 interface TypeApiDtoInterface extends DtoInterface, IdInterface, IdentityInterface
 {
-
+    public const TYPE = 'type';
 }

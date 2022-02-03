@@ -8,5 +8,5 @@ use Evrinoma\DtoCommon\ValueObject\IdInterface;
 
 interface HierarchyApiDtoInterface extends DtoInterface, IdInterface, IdentityInterface
 {
-
+    public const HIERARCHY = 'hierarchy';
 }

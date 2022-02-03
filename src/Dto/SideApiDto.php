@@ -2,7 +2,6 @@
 
 namespace Evrinoma\ContractBundle\Dto;
 
-use Evrinoma\ContractBundle\Model\ModelInterface;
 use Evrinoma\DtoBundle\Annotation\Dto;
 use Evrinoma\DtoBundle\Dto\AbstractDto;
 use Evrinoma\DtoBundle\Dto\DtoInterface;
@@ -71,7 +70,7 @@ class SideApiDto extends AbstractDto implements SideApiDtoInterface
     public function genRequestRightContractApiDto(?Request $request): ?\Generator
     {
         if ($request) {
-            $type = $request->get('left');
+            $type = $request->get(SideApiDtoInterface::LEFT);
             if ($type) {
                 $newRequest                    = $this->getCloneRequest();
                 $type[DtoInterface::DTO_CLASS] = ContractApiDto::class;
@@ -88,7 +87,7 @@ class SideApiDto extends AbstractDto implements SideApiDtoInterface
     public function genRequestLeftContractApiDto(?Request $request): ?\Generator
     {
         if ($request) {
-            $type = $request->get('right');
+            $type = $request->get(SideApiDtoInterface::RIGHT);
             if ($type) {
                 $newRequest                    = $this->getCloneRequest();
                 $type[DtoInterface::DTO_CLASS] = ContractApiDto::class;
@@ -111,7 +110,7 @@ class SideApiDto extends AbstractDto implements SideApiDtoInterface
         $class = $request->get(DtoInterface::DTO_CLASS);
 
         if ($class === $this->getClass()) {
-            $id = $request->get(ModelInterface::ID);
+            $id = $request->get(SideApiDtoInterface::ID);
             if ($id) {
                 $this->setId($id);
             }

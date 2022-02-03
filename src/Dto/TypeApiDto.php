@@ -2,7 +2,6 @@
 
 namespace Evrinoma\ContractBundle\Dto;
 
-use Evrinoma\ContractBundle\Model\ModelInterface;
 use Evrinoma\DtoBundle\Dto\AbstractDto;
 use Evrinoma\DtoBundle\Dto\DtoInterface;
 use Evrinoma\DtoCommon\ValueObject\IdentityTrait;
@@ -37,8 +36,8 @@ class TypeApiDto extends AbstractDto implements TypeApiDtoInterface
         $class = $request->get(DtoInterface::DTO_CLASS);
 
         if ($class === $this->getClass()) {
-            $id       = $request->get(ModelInterface::ID);
-            $identity = $request->get(ModelInterface::IDENTITY);
+            $id       = $request->get(TypeApiDtoInterface::ID);
+            $identity = $request->get(TypeApiDtoInterface::IDENTITY);
 
             if ($identity) {
                 $this->setIdentity($identity);

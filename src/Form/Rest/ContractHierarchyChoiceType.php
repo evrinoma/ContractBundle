@@ -3,9 +3,9 @@
 namespace Evrinoma\ContractBundle\Form\Rest;
 
 use Evrinoma\ContractBundle\Dto\HierarchyApiDto;
+use Evrinoma\ContractBundle\Dto\HierarchyApiDtoInterface;
 use Evrinoma\ContractBundle\Exception\Hierarchy\HierarchyNotFoundException;
 use Evrinoma\ContractBundle\Manager\Hierarchy\QueryManagerInterface;
-use Evrinoma\ContractBundle\Model\ModelInterface;
 use Evrinoma\UtilsBundle\Form\Rest\RestChoiceType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\OptionsResolver\Options;
@@ -33,7 +33,7 @@ class ContractHierarchyChoiceType extends AbstractType
                 if ($options->offsetExists('data')) {
                     $criteria = $this->queryManager->criteria(new HierarchyApiDto());
                     switch ($options->offsetGet('data')) {
-                        case  ModelInterface::IDENTITY:
+                        case  HierarchyApiDtoInterface::IDENTITY:
                             foreach ($criteria as $entity) {
                                 $value[] = $entity->getIdentity();
                             }
