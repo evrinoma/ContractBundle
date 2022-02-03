@@ -2,7 +2,10 @@
 
 namespace Evrinoma\ContractBundle\Dto\Preserve;
 
-interface TypeApiDtoInterface
+use Evrinoma\DtoCommon\ValueObject\Immutable\IdentityInterface;
+use Evrinoma\DtoCommon\ValueObject\Immutable\IdInterface;
+
+interface TypeApiDtoInterface extends IdInterface, IdentityInterface
 {
     /**
      * @param string $identity

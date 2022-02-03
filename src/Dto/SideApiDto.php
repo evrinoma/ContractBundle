@@ -5,7 +5,7 @@ namespace Evrinoma\ContractBundle\Dto;
 use Evrinoma\DtoBundle\Annotation\Dto;
 use Evrinoma\DtoBundle\Dto\AbstractDto;
 use Evrinoma\DtoBundle\Dto\DtoInterface;
-use Evrinoma\DtoCommon\ValueObject\IdTrait;
+use Evrinoma\DtoCommon\ValueObject\Immutable\IdTrait;
 use Symfony\Component\HttpFoundation\Request;
 
 class SideApiDto extends AbstractDto implements SideApiDtoInterface

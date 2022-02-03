@@ -3,11 +3,11 @@
 namespace Evrinoma\ContractBundle\Dto;
 
 use Evrinoma\DtoBundle\Dto\DtoInterface;
-use Evrinoma\DtoCommon\ValueObject\ActiveInterface;
-use Evrinoma\DtoCommon\ValueObject\DescriptionInterface;
-use Evrinoma\DtoCommon\ValueObject\IdInterface;
-use Evrinoma\DtoCommon\ValueObject\NameInterface;
-use Evrinoma\DtoCommon\ValueObject\NumberInterface;
+use Evrinoma\DtoCommon\ValueObject\Immutable\ActiveInterface;
+use Evrinoma\DtoCommon\ValueObject\Immutable\DescriptionInterface;
+use Evrinoma\DtoCommon\ValueObject\Immutable\IdInterface;
+use Evrinoma\DtoCommon\ValueObject\Immutable\NameInterface;
+use Evrinoma\DtoCommon\ValueObject\Immutable\NumberInterface;
 
 interface ContractApiDtoInterface extends DtoInterface, IdInterface, NameInterface, ActiveInterface, DescriptionInterface, NumberInterface
 {
@@ -30,14 +30,4 @@ interface ContractApiDtoInterface extends DtoInterface, IdInterface, NameInterfa
      * @return TypeApiDtoInterface
      */
     public function getTypeApiDto(): TypeApiDtoInterface;
-
-    /**
-     * @return bool
-     */
-    public function hasNumber(): bool;
-
-    /**
-     * @return string
-     */
-    public function getNumber(): string;
 }

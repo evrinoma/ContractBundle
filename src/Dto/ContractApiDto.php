@@ -6,11 +6,11 @@ namespace Evrinoma\ContractBundle\Dto;
 use Evrinoma\DtoBundle\Annotation\Dto;
 use Evrinoma\DtoBundle\Dto\AbstractDto;
 use Evrinoma\DtoBundle\Dto\DtoInterface;
-use Evrinoma\DtoCommon\ValueObject\ActiveTrait;
-use Evrinoma\DtoCommon\ValueObject\DescriptionTrait;
-use Evrinoma\DtoCommon\ValueObject\IdTrait;
-use Evrinoma\DtoCommon\ValueObject\NameTrait;
-use Evrinoma\DtoCommon\ValueObject\NumberTrait;
+use Evrinoma\DtoCommon\ValueObject\Mutable\ActiveTrait;
+use Evrinoma\DtoCommon\ValueObject\Mutable\DescriptionTrait;
+use Evrinoma\DtoCommon\ValueObject\Mutable\IdTrait;
+use Evrinoma\DtoCommon\ValueObject\Mutable\NameTrait;
+use Evrinoma\DtoCommon\ValueObject\Mutable\NumberTrait;
 use Symfony\Component\HttpFoundation\Request;
 
 class ContractApiDto extends AbstractDto implements ContractApiDtoInterface
@@ -110,47 +110,6 @@ class ContractApiDto extends AbstractDto implements ContractApiDtoInterface
     {
         $this->hierarchyApiDto = $hierarchyApiDto;
     }
-
-    /**
-     * @param string $active
-     */
-    protected function setActive(string $active): void
-    {
-        $this->active = $active;
-    }
-
-    /**
-     * @param int|null $id
-     */
-    protected function setId(?int $id): void
-    {
-        $this->id = $id;
-    }
-
-    /**
-     * @param string $number
-     */
-    protected function setNumber(string $number): void
-    {
-        $this->number = $number;
-    }
-
-    /**
-     * @param string $description
-     */
-    protected function setDescription(string $description): void
-    {
-        $this->description = $description;
-    }
-
-    /**
-     * @param string $name
-     */
-    protected function setName(string $name): void
-    {
-        $this->name = $name;
-    }
-
 //region SECTION: Dto
     public function toDto(Request $request): DtoInterface
     {
