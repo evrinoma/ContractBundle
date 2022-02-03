@@ -4,32 +4,13 @@ namespace Evrinoma\ContractBundle\Dto;
 
 use Evrinoma\DtoBundle\Dto\AbstractDto;
 use Evrinoma\DtoBundle\Dto\DtoInterface;
-use Evrinoma\DtoCommon\ValueObject\Immutable\IdentityTrait;
-use Evrinoma\DtoCommon\ValueObject\Immutable\IdTrait;
+use Evrinoma\DtoCommon\ValueObject\Mutable\IdentityTrait;
+use Evrinoma\DtoCommon\ValueObject\Mutable\IdTrait;
 use Symfony\Component\HttpFoundation\Request;
 
 class TypeApiDto extends AbstractDto implements TypeApiDtoInterface
 {
     use IdTrait, IdentityTrait;
-
-//region SECTION: Private
-
-    /**
-     * @param string $identity
-     */
-    protected function setIdentity(string $identity): void
-    {
-        $this->identity = $identity;
-    }
-
-    /**
-     * @param int|null $id
-     */
-    protected function setId(?int $id): void
-    {
-        $this->id = $id;
-    }
-//endregion Private
 
 //region SECTION: Dto
     public function toDto(Request $request): DtoInterface
