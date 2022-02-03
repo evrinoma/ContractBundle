@@ -7,42 +7,52 @@ trait ContractApiDtoTrait
 {
     /**
      * @param string $active
+     *
+     * @return self
      */
-    public function setActive(string $active): void
+    public function setActive(string $active): self
     {
-        parent::setActive($active);
+        return parent::setActive($active);
     }
 
     /**
      * @param int|null $id
+     *
+     * @return self
      */
-    public function setId(?int $id): void
+    public function setId(?int $id): self
     {
-        parent::setId($id);
+        return parent::setId($id);
     }
 
     /**
      * @param string $number
+     *
+     * @return self
      */
-    public function setNumber(string $number): void
+    public function setNumber(string $number): self
     {
-        parent::setNumber($number);
+        return parent::setNumber($number);
     }
 
     /**
      * @param string $description
+     *
+     * @return self
      */
-    public function setDescription(string $description): void
+    public function setDescription(string $description): self
     {
-        parent::setDescription($description);
+        return parent::setDescription($description);
     }
 
     /**
      * @param string $name
+     *
+     * @return self
      */
-    public function setName(string $name): void
+    public function setName(string $name): self
     {
-        parent::setName($name);
+        return parent::setName($name);
     }
 
 }

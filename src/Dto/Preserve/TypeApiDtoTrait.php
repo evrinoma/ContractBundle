@@ -6,17 +6,21 @@ trait TypeApiDtoTrait
 {
     /**
      * @param string $identity
+     *
+     * @return self
      */
-    public function setIdentity(string $identity): void
+    public function setIdentity(string $identity): self
     {
-        parent::setIdentity($identity);
+        return parent::setIdentity($identity);
     }
 
     /**
      * @param int|null $id
+     *
+     * @return self
      */
-    public function setId(?int $id): void
+    public function setId(?int $id): self
     {
-        parent::setId($id);
+        return parent::setId($id);
     }
 }
