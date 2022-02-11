@@ -127,6 +127,12 @@ release 1.0.1<br>
         class: App\Contract\Constraint\Property\ContractCustom
         tags: [ 'evrinoma.contract.constraint.property.contract' ]
 
+Для добавления проверки сушности contract нужно описать логику проверки реализующую интерфейс Evrinoma\UtilsBundle\Constraint\Complex\ConstraintInterface; и зарегестрировать сервис с этикеткой evrinoma.contract.constraint.complex.contract
+
+    evrinoma.contract.constraint.complex.side.custom:
+        class: App\Contract\Constraint\Complex\ContractCustom
+        tags: [ 'evrinoma.contract.constraint.complex.contract' ]
+
 Для добавления проверки поля сушности side нужно описать логику проверки реализующую интерфейс Evrinoma\UtilsBundle\Constraint\Property\ConstraintInterface и зарегестрировать сервис с этикеткой evrinoma.contract.constraint.property.side
 
     evrinoma.contract.constraint.property.side.custom:
@@ -135,7 +141,7 @@ release 1.0.1<br>
 
 Для добавления проверки сушности side нужно описать логику проверки реализующую интерфейс Evrinoma\UtilsBundle\Constraint\Complex\ConstraintInterface; и зарегестрировать сервис с этикеткой evrinoma.contract.constraint.complex.side
 
-    evrinoma.contract.constraint.property.side.custom:
+    evrinoma.contract.constraint.complex.side.custom:
         class: App\Contract\Constraint\Complex\SideCustom
         tags: [ 'evrinoma.contract.constraint.complex.side' ]
 

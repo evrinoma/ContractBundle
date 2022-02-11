@@ -3,6 +3,7 @@
 
 namespace Evrinoma\ContractBundle;
 
+use Evrinoma\ContractBundle\DependencyInjection\Compiler\Constraint\Complex\ContractPass;
 use Evrinoma\ContractBundle\DependencyInjection\Compiler\Constraint\Complex\SidePass;
 use Evrinoma\ContractBundle\DependencyInjection\Compiler\Constraint\Property\ContractPass as PropertyContractPass;
 use Evrinoma\ContractBundle\DependencyInjection\Compiler\Constraint\Property\HierarchyPass as PropertyHierarchyPass;
@@ -38,7 +39,7 @@ class EvrinomaContractBundle extends Bundle
             ->addCompilerPass(new PropertyHierarchyPass())
             ->addCompilerPass(new PropertySidePass())
             ->addCompilerPass(new SidePass())
-        ;
+            ->addCompilerPass(new ContractPass());
     }
 //endregion Public
 
