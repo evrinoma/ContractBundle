@@ -9,8 +9,9 @@ use Evrinoma\UtilsBundle\Entity\ActiveInterface;
 use Evrinoma\UtilsBundle\Entity\CreateUpdateAtInterface;
 use Evrinoma\UtilsBundle\Entity\DescriptionInterface;
 use Evrinoma\UtilsBundle\Entity\IdInterface;
+use Evrinoma\UtilsBundle\Entity\NameInterface;
 
-interface ContractInterface extends ActiveInterface, CreateUpdateAtInterface, IdInterface, DescriptionInterface
+interface ContractInterface extends ActiveInterface, CreateUpdateAtInterface, IdInterface, DescriptionInterface, NameInterface
 {
 //region SECTION: Getters/Setters
     /**
