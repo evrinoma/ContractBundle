@@ -1,4 +1,5 @@
 imports:
   - { resource: constraint/hierarchy.yml }
   - { resource: constraint/type.yml }
-
+  - { resource: constraint/side.yml }
+  - { resource: constraint/contract.yml }
